@@ -1,11 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ECOHUP - Free / Awareness & Consultation</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f2e7;
+      color: #333;
+    }
+
+    /* ضبط عرض الصفحة الكلي */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    /* ====== الهيدر ====== */
+    header {
+      background-color: #4a6735;
+      color: white;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 20px 60px;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      box-sizing: border-box;
+    }
+
+    header .logo {
+      margin-right: 40px;
+    }
+
+    header .logo img {
+      height: 60px;
+      width: auto;
+      border-radius: 6px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #f5f2e7;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #8b6b4a;
+    }
+
+    /* ====== القسم الرئيسي ====== */
+    .hero {
+      background-color: #e4eed9;
+      color: #4a6735;
+      text-align: center;
+      padding: 110px 20px;
+      margin-top: 90px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ====== الخدمات ====== */
+    .services {
+      text-align: center;
+      padding: 60px 0;
+      background-color: #edf3e3;
+    }
+
+    .services .container {
+      max-width: 1100px;
+    }
+
+    .services h2 {
+      font-size: 1.8rem;
+      color: #4a6735;
+      margin-bottom: 10px;
+    }
+
+    .services p {
+      color: #555;
+      max-width: 700px;
+      margin: 0 auto 40px auto;
+      font-size: 1rem;
+    }
+
+    .service-grid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: nowrap;          /* <<< يمنع النزول تحت */
+  overflow-x: auto;           /* <<< يسمح بالسحب الأفقي إذا المساحة ما تكفي */
+  padding-bottom: 10px;       /* مسافة خفيفة تحت */
+}
+
+
+    .service-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 240px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .service-box:hover {
+      transform: scale(1.05);
+    }
+
+    .service-box img {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      object-fit: cover;
+    }
+
+    .service-box h3 {
+      font-size: 1.2rem;
+      color: #4a6735;
+      margin-bottom: 10px;
+    }
+
+    .service-box button {
+      background-color: #f9a825;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .service-box button:hover {
+      background-color: #f57f17;
+    }
+
+    /* ====== قسم التقييمات ====== */
+    .reviews {
+      padding: 60px 0;
+      background-color: #e6ecde;
+      text-align: center;
+      color: #4a6735;
+    }
+
+    .reviews h2 {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+    }
+
+    .review-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .review-box {
+      background-color: white;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      text-align: left;
+    }
+
+    .stars {
+      color: #f9a825;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .review-box p {
+      color: #777;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .author {
+      font-weight: 600;
+      margin-top: 10px;
+      color: #4a6735;
+    }
+
+    /* ====== الفوتر ====== */
+    footer {
+      background-color: #3e3e3e;
+      color: #f5f2e7;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 25px 40px;
+      flex-wrap: wrap;
+      width: 100%;
+      box-sizing: border-box;
+      gap: 50px;
+    }
+
+    footer div {
+      min-width: 180px;
+      margin-bottom: 15px;
+    }
+
+    footer .logo img {
+      height: 50px;
+      width: auto;
+      display: block;
+      margin-bottom: 10px;
+      border-radius: 6px;
+    }
+
+    footer small {
+      display: block;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #ccc;
+    }
+
+    footer a {
+      color: #d4b996;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+      color: #c6d3b3;
+    }
+
+    h4 {
+      color: #8b6b4a;
+    }
+
+    footer p, footer p a {
+      color: #d4b996;
+    }
+
+    footer p a:hover {
+      color: #c6d3b3;
+    }
+
+    /* متجاوب */
+    @media (max-width: 900px) {
+      .service-box, .review-box {
+        width: 45%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .service-box, .review-box {
+        width: 90%;
+      }
+    }
+    /* لتصحيح تناسب حجم الصفحة */
+body {
+  max-width: 1200px;
+  margin: 0 auto; /* يوسّط الموقع ويمنع تمدده الزايد */
+}
+
+  </style>
 </head>
+
 <body>
-    
+  <header>
+    <div class="logo">
+      <img src="your-logo.png" alt="ECOHUP Logo" />
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Customer Dashboard</a>
+      <a href="#">Services</a>
+      <a href="#">Service Provider</a>
+      <a href="#">Free / Awareness & Consultation</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Free / Awareness & Consultation</h1>
+      <p>
+        Welcome to our awareness and consultation page!  
+        Here you’ll find helpful resources, campaigns, and expert guidance  
+        to support a greener, more sustainable lifestyle.
+      </p>
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <p>We provide educational programs, personalized consultations, and eco-friendly tips to help you make better environmental choices.</p>
+
+      <div class="service-grid">
+        <div class="service-box">
+          <img src="https://via.placeholder.com/220x130?text=Awareness+Campaigns" alt="Awareness Campaigns" />
+          <h3>Awareness Campaigns</h3>
+          <button>Join now</button>
+        </div>
+
+        <div class="service-box">
+          <img src="https://via.placeholder.com/220x130?text=Plant+Consultations" alt="Plant Consultations" />
+          <h3>Plant Consultations</h3>
+          <button>Get advice</button>
+        </div>
+
+        <div class="service-box">
+          <img src="https://via.placeholder.com/220x130?text=Recyclable+Materials" alt="Recyclable Materials guidance" />
+          <h3>Recyclable Materials guidance</h3>
+          <button>Learn more</button>
+        </div>
+
+        <div class="service-box">
+          <img src="https://via.placeholder.com/220x130?text=Eco+Tips+Blog" alt="Eco Tips / Blog" />
+          <h3>Eco Tips / Blog</h3>
+          <button>Read blog</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews">
+    <div class="container">
+      <h2>Our Reviews</h2>
+      <div class="review-container">
+        <div class="review-box">
+          <div class="stars">★★★★★</div>
+          <p>“I learned so much about recycling and sustainability here. Amazing team!”</p>
+          <div class="author">By Sara</div>
+        </div>
+        <div class="review-box">
+          <div class="stars">★★★★★</div>
+          <p>“Excellent consultation service! They really helped me care for my plants better.”</p>
+          <div class="author">By Laila</div>
+        </div>
+        <div class="review-box">
+          <div class="stars">★★★★★</div>
+          <p>“Their awareness campaigns are inspiring and well-organized. Highly recommend!”</p>
+          <div class="author">By Noor</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="logo">
+        <img src="your-logo.png" alt="ECOHUP Footer Logo" />
+      </div>
+      <small>All rights reserved ©️ 2025 ECOHUP</small>
+    </div>
+    <div>
+      <h4>Contact Us</h4>
+      <p>Email: <a href="mailto:info@ecohub.com">info@ecohub.com</a></p>
+      <p>Phone: 0100-200-300</p>
+    </div>
+    <div>
+      <h4>About</h4>
+      <p><a href="#">About Us</a></p>
+      <p><a href="#">Services</a></p>
+    </div>
+    <div>
+      <h4>Community</h4>
+      <p><a href="#">LinkedIn</a></p>
+      <p><a href="#">Instagram</a></p>
+    </div>
+  </footer>
 </body>
 </html>
