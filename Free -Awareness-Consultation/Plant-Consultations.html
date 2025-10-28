@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ECOHUP - Plant Consultations</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f2e7;
+      color: #333;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    /* ====== الهيدر ====== */
+    header {
+      background-color: #4a6735;
+      color: white;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 20px 60px;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      box-sizing: border-box;
+    }
+
+    header .logo {
+      margin-right: 40px;
+    }
+
+    header .logo img {
+      height: 60px;
+      width: auto;
+      border-radius: 6px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #f5f2e7;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #8b6b4a;
+    }
+
+    /* ====== القسم الرئيسي ====== */
+    .hero {
+      margin-top: 110px;
+      padding: 60px 20px;
+    }
+
+    .consultation-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      background-color: #edf3e3;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .consultation-image {
+      flex: 1 1 45%;
+      text-align: center;
+    }
+
+    .consultation-image img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .consultation-text {
+      flex: 1 1 45%;
+      text-align: left;
+      color: #4a6735;
+    }
+
+    .consultation-text h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .stars {
+      color: #f9a825;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .reviews-count {
+      color: #777;
+      font-size: 0.9rem;
+      margin-left: 6px;
+    }
+
+    .consultation-text p {
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-top: 15px;
+      margin-bottom: 20px;
+    }
+
+    /* ====== نموذج السؤال ====== */
+    .consultation-form label {
+      font-weight: 600;
+      color: #4a6735;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .consultation-form input[type="text"] {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      margin-bottom: 15px;
+    }
+
+    .consultation-form button {
+      background-color: #f9a825;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .consultation-form button:hover {
+      background-color: #f57f17;
+    }
+
+    /* ====== الفوتر ====== */
+    footer {
+      background-color: #3e3e3e;
+      color: #f5f2e7;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 25px 40px;
+      flex-wrap: wrap;
+      width: 100%;
+      box-sizing: border-box;
+      gap: 50px;
+      margin-top: 60px;
+    }
+
+    footer div {
+      min-width: 180px;
+      margin-bottom: 15px;
+    }
+
+    footer .logo img {
+      height: 50px;
+      width: auto;
+      display: block;
+      margin-bottom: 10px;
+      border-radius: 6px;
+    }
+
+    footer small {
+      display: block;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #ccc;
+    }
+
+    footer a {
+      color: #d4b996;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+      color: #c6d3b3;
+    }
+
+    h4 {
+      color: #8b6b4a;
+    }
+
+    footer p, footer p a {
+      color: #d4b996;
+    }
+
+    footer p a:hover {
+      color: #c6d3b3;
+    }
+
+    @media (max-width: 800px) {
+      .consultation-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .consultation-text {
+        text-align: center;
+      }
+
+      .consultation-form input[type="text"] {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ====== الهيدر ====== -->
+  <header>
+    <div class="logo">
+      <img src="../Logo.png" alt="ECOHUP Logo" />
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Customer Dashboard</a>
+      <a href="#">Services</a>
+      <a href="#">Service Provider</a>
+      <a href="#">Free / Awareness & Consultation</a>
+    </nav>
+  </header>
+
+  <!-- ====== القسم الرئيسي ====== -->
+  <section class="hero">
+    <div class="container">
+      <div class="consultation-content">
+        <div class="consultation-image">
+          <img src="https://via.placeholder.com/500x350?text=Plant+Consultations" alt="Plant Consultation Image">
+        </div>
+
+        <div class="consultation-text">
+          <h1>Plant Consultations</h1>
+          <div class="stars">
+            ★★★★★ <span class="reviews-count">435 Reviews</span>
+          </div>
+          <p>
+            Get personalized advice for your plants. Ask our experts about care, watering, 
+            and maintenance tips to keep your garden healthy and green.
+          </p>
+
+          <form class="consultation-form">
+            <label for="question">Type your question here</label>
+            <input type="text" id="question" name="question" placeholder="Type your question here">
+            <br>
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== الفوتر ====== -->
+  <footer>
+    <div>
+      <div class="logo">
+        <img src="../Logo.png" alt="ECOHUP Footer Logo" />
+      </div>
+      <small>All rights reserved ©️ 2025 ECOHUP</small>
+    </div>
+    <div>
+      <h4>Contact Us</h4>
+      <p>Email: <a href="mailto:info@ecohub.com">info@ecohub.com</a></p>
+      <p>Phone: 0100-200-300</p>
+    </div>
+    <div>
+      <h4>About</h4>
+      <p><a href="#">About Us</a></p>
+      <p><a href="#">Services</a></p>
+    </div>
+    <div>
+      <h4>Community</h4>
+      <p><a href="#">LinkedIn</a></p>
+      <p><a href="#">Instagram</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
