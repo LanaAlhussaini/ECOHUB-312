@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ECOHUP - Free / Awareness & Consultation</title>
 
+  <!-- استدعاء الخط من Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
+  
   <style>
+    /* إعدادات الخطوط والخلفية العامة */
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -23,7 +25,7 @@
       box-sizing: border-box;
     }
 
-    /* ====== الهيدر ====== */
+    /* ====== الهيدر الثابت ====== */
     header {
       background-color: #4a6735;
       color: white;
@@ -49,6 +51,7 @@
       border-radius: 6px;
     }
 
+    /* شريط التنقل */
     nav {
       display: flex;
       gap: 20px;
@@ -86,7 +89,7 @@
       line-height: 1.6;
     }
 
-    /* ====== الخدمات ====== */
+    /* ====== قسم الخدمات ====== */
     .services {
       text-align: center;
       padding: 60px 0;
@@ -111,14 +114,13 @@
     }
 
     .service-grid {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: nowrap;          /* <<< يمنع النزول تحت */
-  overflow-x: auto;           /* <<< يسمح بالسحب الأفقي إذا المساحة ما تكفي */
-  padding-bottom: 10px;       /* مسافة خفيفة تحت */
-}
-
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
 
     .service-box {
       background-color: white;
@@ -148,18 +150,19 @@
       margin-bottom: 10px;
     }
 
-    .service-box button {
+    /* تنسيق زر الرابط */
+    .service-box a {
+      display: inline-block;
       background-color: #f9a825;
       color: white;
-      border: none;
+      text-decoration: none;
       padding: 8px 20px;
       font-size: 0.95rem;
       border-radius: 8px;
-      cursor: pointer;
       transition: background-color 0.3s;
     }
 
-    .service-box button:hover {
+    .service-box a:hover {
       background-color: #f57f17;
     }
 
@@ -266,7 +269,6 @@
       color: #c6d3b3;
     }
 
-    /* متجاوب */
     @media (max-width: 900px) {
       .service-box, .review-box {
         width: 45%;
@@ -278,16 +280,17 @@
         width: 90%;
       }
     }
-    /* لتصحيح تناسب حجم الصفحة */
-body {
-  max-width: 1200px;
-  margin: 0 auto; /* يوسّط الموقع ويمنع تمدده الزايد */
-}
+
+    body {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
   </style>
 </head>
 
 <body>
+  <!-- ====== الهيدر (يبقى ثابت في كل الصفحات) ====== -->
   <header>
     <div class="logo">
       <img src="../Logo.png" alt="ECOHUP Logo" />
@@ -298,10 +301,11 @@ body {
       <a href="#">Customer Dashboard</a>
       <a href="#">Services</a>
       <a href="#">Service Provider</a>
-      <a href="#">Free / Awareness & Consultation</a>
+      <a href="Free-Awareness-Consultation.html">Free / Awareness & Consultation</a>
     </nav>
   </header>
 
+  <!-- ====== القسم التعريفي ====== -->
   <section class="hero">
     <div class="container">
       <h1>Free / Awareness & Consultation</h1>
@@ -313,39 +317,46 @@ body {
     </div>
   </section>
 
+  <!-- ====== الخدمات الأربعة ====== -->
   <section class="services">
     <div class="container">
       <h2>Our Services</h2>
       <p>We provide educational programs, personalized consultations, and eco-friendly tips to help you make better environmental choices.</p>
 
       <div class="service-grid">
+        <!-- كل مربع يمثل صفحة فرعية -->
         <div class="service-box">
           <img src="https://via.placeholder.com/220x130?text=Awareness+Campaigns" alt="Awareness Campaigns" />
           <h3>Awareness Campaigns</h3>
-          <button>Join now</button>
+          <!-- رابط يفتح صفحة الحملات -->
+          <a href="Awareness-Campaigns.html">Join now</a>
         </div>
 
         <div class="service-box">
           <img src="https://via.placeholder.com/220x130?text=Plant+Consultations" alt="Plant Consultations" />
           <h3>Plant Consultations</h3>
-          <button>Get advice</button>
+          <!-- رابط يفتح صفحة الاستشارات النباتية -->
+          <a href="Plant-Consultations.html">Get advice</a>
         </div>
 
         <div class="service-box">
           <img src="https://via.placeholder.com/220x130?text=Recyclable+Materials" alt="Recyclable Materials guidance" />
           <h3>Recyclable Materials guidance</h3>
-          <button>Learn more</button>
+          <!-- رابط يفتح صفحة المواد القابلة لإعادة التدوير -->
+          <a href="Recyclable-Materials-guidance.html">Learn more</a>
         </div>
 
         <div class="service-box">
           <img src="https://via.placeholder.com/220x130?text=Eco+Tips+Blog" alt="Eco Tips / Blog" />
           <h3>Eco Tips / Blog</h3>
-          <button>Read blog</button>
+          <!-- رابط يفتح صفحة المدونة البيئية -->
+          <a href="Eco Tips-Blog.html">Read blog</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ====== قسم التقييمات ====== -->
   <section class="reviews">
     <div class="container">
       <h2>Our Reviews</h2>
@@ -369,6 +380,7 @@ body {
     </div>
   </section>
 
+  <!-- ====== الفوتر الثابت ====== -->
   <footer>
     <div>
       <div class="logo">
