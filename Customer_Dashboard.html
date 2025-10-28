@@ -1,11 +1,143 @@
 ﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <meta charset="UTF-8">
+    <title>your page name</title>
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f2e7; /* Page */
+            color: #333;
+        }
+
+
+        header {
+            background-color: #4a6735; /* dark green */
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+        }
+
+            header .logo img {
+                height: 50px;
+                width: auto;
+                border-radius: 6px;
+            }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #f5f2e7; /* page */
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+            nav a:hover {
+                color: #8b6b4a; /* light brown */
+            }
+
+
+        footer {
+            background-color: #3e3e3e; /* gray */
+            color: #f5f2e7;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 25px 50px;
+            flex-wrap: wrap;
+        }
+
+            footer div {
+                width: 22%;
+                min-width: 180px;
+                margin-bottom: 15px;
+            }
+
+            footer .logo img {
+                height: 50px;
+                width: auto;
+                display: block;
+                margin: 0 auto 10px;
+                border-radius: 6px;
+            }
+
+            footer small {
+                display: block;
+                margin-top: 10px;
+                font-size: 12px;
+                text-align: center;
+                color: #ccc;
+            }
+
+            footer a {
+                color: #d4b996; /* gray */
+                text-decoration: none;
+            }
+
+                footer a:hover {
+                    text-decoration: underline;
+                    color: #c6d3b3; /* light green */
+                }
+
+        h4 {
+            color: #8b6b4a; /* brown */
+        }
+    </style>
 </head>
 <body>
+
+
+    <header>
+        <div class="logo">
+
+            <img src="Logo.png" alt="Logo">
+        </div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Customer Dashboard</a>
+            <a href="#">Services</a>
+            <a href="#">Service Provider</a>
+            <a href="#">Free / Awareness & Consultation</a>
+        </nav>
+    </header>
+
+
+    <main>
+        <h1 style="text-align:center; margin:100px 0; color:#4a6735;">Page Content Here</h1>
+    </main>
+
+
+    <footer>
+        <div>
+            <div class="logo">
+                <img src="your-logo.png" alt="Footer Logo">
+            </div>
+            <small>All rights reserved © 2025 WebsiteName</small>
+        </div>
+
+        <div>
+            <h4>Contact Us</h4>
+            <p>Call us: 1800-456-0000</p>
+            <p>Email: info@example.com</p>
+        </div>
+
+        <div>
+            <h4>About</h4>
+            <p><a href="#">About Us</a></p>
+            <p><a href="#">Services</a></p>
+        </div>
+
+        <div>
+            <h4>Community</h4>
+            <p><a href="#">LinkedIn</a></p>
+            <p><a href="#">Instagram</a></p>
+        </div>
+    </footer>
 
 </body>
 </html>
