@@ -1,11 +1,324 @@
 ﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request A Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* ===== إعدادات عامة ===== */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f2e7; /* بيج فاتح */
+            color: #333;
+        }
+
+        /* ===== HEADER الموحد (الروابط لليسار) ===== */
+        .page-header {
+            background-color: #4a6735; /* أخضر غامق */
+            color: #f5f2e7;
+            display: flex;
+            flex-direction: row-reverse; /* عكس الترتيب: الشعار يمين والروابط يسار */
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 40px;
+        }
+
+            .page-header .logo-box img {
+                height: 45px;
+                width: auto;
+                border-radius: 6px;
+            }
+
+        .header-nav {
+            display: flex;
+            justify-content: flex-end; /* لدفع الروابط لليسار (بجوار الشعار) */
+            flex-grow: 1;
+        }
+
+            .header-nav a {
+                margin-right: 20px; /* التباعد بين الروابط */
+                margin-left: 0;
+                text-decoration: none;
+                color: #f5f2e7;
+                font-size: 15px;
+                font-weight: 500;
+            }
+
+                .header-nav a:hover {
+                    color: #d4b996; /* لون رملي فاتح */
+                }
+
+        /* ===== العنوان الرئيسي للطلب (Main Title) ===== */
+        .main-title-section {
+            text-align: center;
+            padding: 50px 20px 20px;
+        }
+
+            .main-title-section .main-heading {
+                font-size: 48px;
+                color: #333;
+                font-weight: normal;
+                margin: 0;
+            }
+
+        /* ===== حاوية نموذج الطلب (Request Container) ===== */
+        .request-container {
+            max-width: 750px;
+            margin: 30px auto 80px;
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===== صفوف معلومات المستخدم (User Info Row) ===== */
+        .user-info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+            .user-info-row .info-group {
+                width: 48%;
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+            }
+
+                .user-info-row .info-group .placeholder-box,
+                .request-container .description-group .placeholder-box {
+                    background-color: #e8e4d9; /* لون خلفية البطاقة */
+                    padding: 10px 15px;
+                    border-radius: 8px;
+                    margin-top: 5px;
+                    font-weight: normal;
+                    font-size: 16px;
+                    color: #555;
+                    border: 1px solid #ccc;
+                }
+
+        .request-container .description-group {
+            width: 100%;
+            margin-bottom: 40px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* ===== مجموعة اختيار الخدمة (Service Selection Group) ===== */
+        .service-selection-group {
+            background-color: #e8e4d9; /* لون خلفية البطاقة */
+            border-radius: 30px;
+            padding: 20px 40px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+            .service-selection-group .group-label {
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+                width: 30%;
+            }
+
+            .service-selection-group .service-dropdown {
+                width: 65%;
+                position: relative;
+            }
+
+            .service-selection-group .select-header {
+                background-color: #f2f2f2; /* رمادي فاتح للخلفية */
+                padding: 12px;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 16px;
+                color: #555;
+            }
+
+            .service-selection-group .service-options .option-item {
+                padding: 10px;
+                background-color: #fff;
+                border-bottom: 1px solid #eee;
+                font-size: 15px;
+                cursor: default;
+            }
+
+        /* ===== زر التأكيد (Confirm Button) ===== */
+        .confirm-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+            .confirm-section .confirm-button {
+                background-color: #8b6b4a; /* بني متوسط */
+                color: #fff;
+                font-size: 18px;
+                font-weight: 600;
+                border: none;
+                border-radius: 5px;
+                padding: 12px 60px;
+                cursor: pointer;
+                transition: 0.3s;
+                box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            }
+
+                .confirm-section .confirm-button:hover {
+                    background-color: #4a6735; /* أخضر غامق */
+                }
+
+        /* ===== FOOTER الموحد ===== */
+        .page-footer {
+            background-color: #3e3e3e; /* رمادي غامق */
+            color: #f5f2e7;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 30px 40px;
+            margin-top: 50px;
+        }
+
+            .page-footer .footer-col {
+                width: 22%;
+                min-width: 180px;
+                margin-bottom: 15px;
+            }
+
+                .page-footer .footer-col .col-title {
+                    color: #8b6b4a; /* بني متوسط */
+                    margin-bottom: 10px;
+                }
+
+                .page-footer .footer-col a, .page-footer .footer-col p {
+                    text-decoration: none;
+                    color: #d4b996; /* لون رملي فاتح */
+                    display: block;
+                    margin: 5px 0;
+                    font-size: 14px;
+                }
+
+                    .page-footer .footer-col a:hover {
+                        color: #c6d3b3;
+                        text-decoration: underline;
+                    }
+
+            .page-footer .footer-branding img {
+                height: 50px;
+                width: auto;
+                border-radius: 6px;
+                margin-bottom: 10px;
+            }
+
+            .page-footer .footer-branding .copyright {
+                font-size: 12px;
+                color: #ccc;
+            }
+    </style>
 </head>
 <body>
+
+    <header class="page-header">
+        <nav class="header-nav">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Customer Dashboard</a>
+            <a href="#">Services</a>
+            <a href="#">Service Provider</a>
+            <a href="#">Free / Awareness & Consultation</a>
+        </nav>
+        <div class="logo-box">
+            <img src="your-logo.png" alt="Logo">
+        </div>
+    </header>
+
+    <section class="main-title-section">
+        <h1 class="main-heading">Request A Service</h1>
+    </section>
+
+    <div class="request-container">
+
+        <div class="user-info-row">
+            <div class="info-group">
+                Customer Name :
+                <div class="placeholder-box">dummy dummy dummy</div>
+            </div>
+            <div class="info-group">
+                Duo Date :
+                <div class="placeholder-box">dummy dummy dummy</div>
+            </div>
+        </div>
+
+        <div class="description-group">
+            Description:
+            <div class="placeholder-box">dummy dummy dummy</div>
+        </div>
+
+        <div class="service-selection-group">
+            <div class="group-label">Recycling Collection</div>
+            <div class="service-dropdown">
+                <div class="service-options">
+                    <div class="option-item" style="background-color: #e8e4d9; font-weight: bold;">Choose the service .........</div>
+                    <div class="option-item">Recycling Paper</div>
+                    <div class="option-item">Recycling Plastic</div>
+                    <div class="option-item">Recycling Glass</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-selection-group">
+            <div class="group-label">Environmental Workshops</div>
+            <div class="service-dropdown">
+                <div class="select-header">
+                    Choose the service ......... <i class="fas fa-caret-down"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-selection-group">
+            <div class="group-label">Recycling Collection</div>
+            <div class="service-dropdown">
+                <div class="select-header">
+                    Choose the service ......... <i class="fas fa-caret-down"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="confirm-section">
+            <button class="confirm-button">Confirm</button>
+        </div>
+
+    </div>
+
+    <footer class="page-footer">
+        <div class="footer-col footer-branding">
+            <img src="your-logo.png" alt="Footer Logo">
+            <small class="copyright">All rights reserved © 2025 WebsiteName</small>
+        </div>
+
+        <div class="footer-col">
+            <h4 class="col-title">Contact Us</h4>
+            <p>Call: +1 (234) 567-8900</p>
+            <p>Email: info@example.com</p>
+        </div>
+
+        <div class="footer-col">
+            <h4 class="col-title">About</h4>
+            <a href="#">About Us</a>
+            <a href="#">Careers</a>
+        </div>
+
+        <div class="footer-col">
+            <h4 class="col-title">Community</h4>
+            <a href="#">Forums</a>
+            <a href="#">Bloggers</a>
+        </div>
+    </footer>
 
 </body>
 </html>
