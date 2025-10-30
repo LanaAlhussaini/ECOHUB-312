@@ -69,9 +69,11 @@
 .hero {
   position: relative;
   height: 100vh;
+  max-width: 100%;
   margin-top: 50px; /* يترك مساحة للهيدر الثابت */
   background: url('HomeImages/home.jpeg') center/cover no-repeat;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -95,40 +97,42 @@
   position: relative;
   z-index: 1;
   max-width: 700px;
-  font-style: italic; /* كل النص مائل */
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 5rem;
+  margin-top: 60px;
   margin-bottom: 10px;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
 }
 
 .hero .welcome-text {
   font-size: 1.2rem;
+  margin-top: 20px;
   margin-bottom: 25px;
   color: #6a7162;
 }
 
 .hero-btn {
   display: inline-block;
-  background-color: #f9a825;
+  background-color: #efb780;
   color: white;
   text-decoration: none;
   padding: 10px 28px;
+  margin-top: 100px;
   border-radius: 30px;
   font-weight: 600;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .hero-btn:hover {
-  background-color: #f57f17;
+  background-color: #e2914a;
   transform: scale(1.05);
 }
 
 /* ===== Vision Section ===== */
 .vision {
-  background-color: white;
+  background-color:white;
   padding: 80px 0;
 }
 
@@ -137,6 +141,7 @@
   align-items: center;
   gap: 50px;
   flex-wrap: wrap;
+  background-color: white;
  box-shadow: 0 6px 15px rgba(82, 124, 13, 0.15);
 
 }
@@ -203,7 +208,8 @@
   padding: 80px 0;
   overflow: hidden;
   transition: transform 0.3s ease;
-  background-color: white;
+  background-color:white;
+
 }
 
 .services h2 {
@@ -224,7 +230,7 @@
 
 .service-box {
   position: relative;
-  background-color: rgb(225, 245, 236);
+  background-color: rgb(226, 222, 203);
   border-radius: 10px;
   text-align: center;
   width: 280px;
@@ -295,6 +301,7 @@
   background-color: #f1f7ee;
   text-align: center;
   padding: 80px 0;
+
 }
 
 .stories h2 {
@@ -312,13 +319,13 @@
   line-height: 1.6;
 }
 
-/* الحاوية العامة */
 .stories-container {
   display: flex;
   justify-content: center;
   align-items: stretch;
   gap: 30px;
   flex-wrap: wrap;
+  
 }
 
 /* ===== Green Stories Section (Before/After Effect) ===== */
@@ -394,19 +401,18 @@
 
 .overlay h3 {
   font-size: 1.2rem;
-  color: #d8f3dc;
+  color: #112915;
   margin-bottom: 8px;
 }
 
 .overlay p {
   font-size: 0.95rem;
   line-height: 1.5;
-  color: #f5f5f5;
+  color: #edeadb;
   max-width: 90%;
 }
 
 
-/* زر "Share Your Story" */
 .share-btn-container {
   margin-top: 50px;
 }
@@ -638,7 +644,7 @@
 
     <div class="service-grid">
       <a href="services.html" class="service-box">
-        <img src="images/workshop.jpg" alt="Green Living Workshop">
+        <img src="HomeImages/Green Living Workshop[1].jpg" alt="Green Living Workshop">
         <h3>Green Living Workshop</h3>
         <div class="service-info">
         <p>Learn to live sustainably with our hands-on workshops and training sessions.</p>
@@ -654,10 +660,10 @@
       </a>
 
       <a href="services.html" class="service-box">
-        <img src="images/gardening.jpg" alt="Urban Gardening">
-        <h3>Urban Gardening</h3>
+        <img src="HomeImages/Garden Plant Care[1].jpg" alt="Garden plant care">
+        <h3>Garden plant care</h3>
         <div class="service-info">
-        <p>Transform your balcony into a green oasis with our urban garden kits.</p>
+        <p>Our garden plant care service ensures your plants receive the right watering, pruning, and nutrition to maintain a lush, vibrant outdoor space.</p>
         </div>
       </a>
     </div>
@@ -669,7 +675,7 @@
    <!-- ===== Extra Section: Green Stories ===== -->
 <section class="stories">
   <h2>From Waste to Wonder</h2>
-  <p>See how members of our community turn waste into beauty — and share their own green journeys.</p>
+  <p>See how members of our community turn waste into beauty and share their own green journeys.</p>
 
   <div class="stories-container">
   <!-- Story 1 -->
@@ -684,8 +690,8 @@
 
   <!-- Story 2 -->
   <div class="story-item">
-    <img src="images/story2-before.jpg" alt="Before - old tires" class="before-img">
-    <img src="images/story2-after.jpg" alt="After - colorful garden pots" class="after-img">
+    <img src="HomeImages/before old tires.png" alt="Before - old tires" class="before-img">
+    <img src="HomeImages/After tires.png" alt="After - colorful garden pots" class="after-img">
     <div class="overlay">
       <h3>From Tires to Garden Pots</h3>
       <p>"Recycling helped me bring more green into my neighborhood!" — <strong>Hassan</strong></p>
@@ -694,8 +700,8 @@
 
   <!-- Story 3 -->
   <div class="story-item">
-    <img src="images/story3-before.jpg" alt="Before - metal cans" class="before-img">
-    <img src="images/story3-after.jpg" alt="After - metal art" class="after-img">
+    <img src="HomeImages/Before cans.png" alt="Before - metal cans" class="before-img">
+    <img src="HomeImages/After cans.png" alt="After - metal art" class="after-img">
     <div class="overlay">
       <h3>From Cans to Art</h3>
       <p>"Now my kids love crafting with old cans instead of throwing them away." — <strong>Sara</strong></p>
@@ -705,7 +711,7 @@
 
 
   <div class="share-btn-container">
-    <a href="share-story.html" class="share-btn">Share Your Story 🌿</a>
+    <a href="share-story.html" class="share-btn">Share Your Story</a>
   </div>
 </section>
 
@@ -746,7 +752,7 @@
 <footer>
     <div>
       <div class="logo">
-        <img src="../Logo.png" alt="ECOHUP Footer Logo" />
+        <img src="Logo.png" alt="ECOHUP Footer Logo" />
       </div>
       <small>All rights reserved ©️ 2025 ECOHUP</small>
     </div>
