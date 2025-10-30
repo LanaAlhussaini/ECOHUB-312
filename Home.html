@@ -65,8 +65,8 @@
     }
 
 
-/* ====== main SECTION ====== */
-.hero {
+/*  main SECTION */
+.main {
   position: relative;
   height: 100vh;
   max-width: 100%;
@@ -82,7 +82,6 @@
 }/*
 
 .hero::after {
-  /* طبقة شفافة لزيادة وضوح النص 
   content: "";
   position: absolute;
   top: 0;
@@ -93,27 +92,27 @@
   z-index: 0;
 }*/
 
-.hero-content {
+.main-content {
   position: relative;
   z-index: 1;
   max-width: 700px;
 }
 
-.hero h1 {
+.main h1 {
   font-size: 5rem;
   margin-top: 60px;
   margin-bottom: 10px;
   letter-spacing: 2px;
 }
 
-.hero .welcome-text {
+.main .welcome-text {
   font-size: 1.2rem;
   margin-top: 20px;
   margin-bottom: 25px;
   color: #6a7162;
 }
 
-.hero-btn {
+.main-btn {
   display: inline-block;
   background-color: #efb780;
   color: white;
@@ -125,12 +124,12 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.hero-btn:hover {
+.main-btn:hover {
   background-color: #e2914a;
   transform: scale(1.05);
 }
 
-/* ===== Vision Section ===== */
+/*  Vision Section */
 .vision {
   background-color:white;
   padding: 80px 0;
@@ -148,7 +147,6 @@
 
 .vision-text {
   flex: 1;
-  /* الإطار حول النص */
   padding: 30px;
   border-radius: 12px;
   color: #333;
@@ -184,7 +182,6 @@
   object-fit: cover;
 }
 
-/* ===== Responsive Design ===== */
 @media (max-width: 900px) {
   .vision-container {
     flex-direction: column-reverse;
@@ -201,7 +198,7 @@
   }
 }
 
-/* ====== Services Section ====== */
+/* Services Section  */
 .services {
   position: relative;
   text-align: center;
@@ -219,7 +216,6 @@
 }
 
 
-/* الشبكة */
 .service-grid {
   display: flex;
   justify-content: center;
@@ -241,33 +237,32 @@
   cursor: pointer;
   overflow: hidden;
   height: 350px;
-  z-index: 0; /* هذا السطر يضمن أن كل بوكس ما يغطي الثاني */
+  z-index: 0; 
 }
 
-/* لما نمر الماوس عليه */
 .service-box:hover {
   transform: scale(1.03);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-  z-index: 2; /* البوكس النشط يطلع للأمام */
+  z-index: 2; 
 }
 
-/* الصورة داخل الصندوق */
+
 .service-box img {
   width: 100%;
   height: 75%;
   object-fit: cover;
   display: block;
-  pointer-events: none; /* يمنع الصورة من التفاعل مع hover خارج الصندوق */
+  pointer-events: none; 
 }
 
-/* النصوص */
+
 .service-box h3 {
   font-size: 1.1rem;
   color: #4a6735;
   margin: 8px 0 5px 0;
 }
 
-/* المربع الأخضر */
+
 .service-info {
   position: absolute;
   inset: 0;
@@ -281,18 +276,17 @@
   opacity: 0;
   transition: opacity 0.35s ease;
   border-radius: 10px;
-  pointer-events: none; /* يمنع تغطية الصناديق المجاورة */
+  pointer-events: none; 
 }
 
 .service-box:hover .service-info {
   opacity: 1;
 }
 
-/* الصندوق الأوسط نازل قليلاً */
 .center-box {
   background-color: #c6d3b3;
   margin-top: 25px;
-  margin-bottom: -8%; /* يخليه منخفض عن البقية */
+  margin-bottom: -8%; 
 }
 
 
@@ -328,7 +322,6 @@
   
 }
 
-/* ===== Green Stories Section (Before/After Effect) ===== */
 .story-item {
   position: relative;
   width: 360px;
@@ -345,7 +338,6 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* الصورتين داخل القصة */
 .story-item img {
   position: absolute;
   inset: 0;
@@ -355,19 +347,16 @@
   transition: opacity 0.7s ease;
 }
 
-/* الصورة الأولى (قبل) ظاهرة افتراضياً */
 .story-item .before-img {
   opacity: 1;
   z-index: 1;
 }
 
-/* الصورة الثانية (بعد) مخفية في البداية */
 .story-item .after-img {
   opacity: 0;
   z-index: 2;
 }
 
-/* عند تمرير الماوس: تخفي الصورة الأولى وتظهر الثانية */
 .story-item:hover .before-img {
   opacity: 0;
 }
@@ -376,7 +365,6 @@
   opacity: 1;
 }
 
-/* النص فوق الصور */
 .overlay {
   position: absolute;
   inset: 0;
@@ -432,7 +420,6 @@
   transform: scale(1.05);
 }
 
-/* استجابة الشاشات الصغيرة */
 @media (max-width: 900px) {
   .story-item {
     width: 100%;
@@ -441,7 +428,7 @@
 }
 
 
-/* ====== قسم التقييمات ====== */
+/* Reviews section */
 .reviews {
   padding: 60px 0;
   background-color: #e6ecde;
@@ -521,7 +508,7 @@
 
 
 
- /* ====== الفوتر ====== */
+ /* Footer */
     footer {
       background-color: #3e3e3e;
       color: #f5f2e7;
@@ -611,11 +598,11 @@
     </nav>
   </header>
 <main>
-<section class="hero">
-  <div class="hero-content">
+<section class="main">
+  <div class="main-content">
     <h1>Eco-Hub</h1>
     <p class="welcome-text">Welcome to a greener world</p>
-    <a href="services.html" class="hero-btn">Explore Our Services</a>
+    <a href="services.html" class="main-btn">Explore Our Services</a>
   </div>
 
 </section>
@@ -672,7 +659,6 @@
 
 
     <!--Extra Section -->
-   <!-- ===== Extra Section: Green Stories ===== -->
 <section class="stories">
   <h2>From Waste to Wonder</h2>
   <p>See how members of our community turn waste into beauty and share their own green journeys.</p>
@@ -711,13 +697,13 @@
 
 
   <div class="share-btn-container">
-    <a href="share-story.html" class="share-btn">Share Your Story</a>
+    <a href="#" class="share-btn">Share Your Story</a>
   </div>
 </section>
 
 
 
-    <!-- Customer Reviews -->
+    <!-- Reviews -->
     <section class="reviews">
     <div class="container">
       <h2>Our Reviews</h2>
