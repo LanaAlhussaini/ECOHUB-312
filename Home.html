@@ -70,8 +70,8 @@
   position: relative;
   height: 100vh;
   max-width: 100%;
-  margin-top: 50px; /* يترك مساحة للهيدر الثابت */
-  background: url('HomeImages/home.jpeg') center/cover no-repeat;
+  margin-top: 50px; 
+  background: url('HomeImages/home.jpeg') center/cover no-repeat scroll;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -439,12 +439,14 @@
 
 .reviews .container{
   display: flex;
+  flex-wrap: wrap;
   position: absolute;
   position: 10px 700px 150px 10px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 300px;
+  margin-left: 30px;
 
 }
 .reviews h2 {
@@ -466,6 +468,7 @@
 
 .review-container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: right;
   margin-right: 20px;
@@ -597,7 +600,7 @@
       <a href="Free -Awareness-Consultation/Free -Awareness-Consultation.HTML">Free / Awareness & Consultation</a>
     </nav>
   </header>
-<main>
+
 <section class="main">
   <div class="main-content">
     <h1>Eco-Hub</h1>
@@ -606,7 +609,7 @@
   </div>
 
 </section>
-
+<main>
 <!-- ====== Vision Section ====== -->
 <section class="vision">
   <div class="container vision-container">
@@ -630,7 +633,7 @@
     <h2>Discover What We Offer</h2>
 
     <div class="service-grid">
-      <a href="services.html" class="service-box">
+      <a href="ServicesCatagories/EnviromentalWorkshopes.html" class="service-box">
         <img src="HomeImages/Green Living Workshop[1].jpg" alt="Green Living Workshop">
         <h3>Green Living Workshop</h3>
         <div class="service-info">
@@ -638,7 +641,7 @@
       </div>
       </a>
 
-      <a href="services.html" class="service-box center-box">
+      <a href="ServicesCatagories/RecyclingCollection.html" class="service-box center-box">
         <img src="Plastic Recycling.jpg" alt="Plastic Recycling">
         <h3>Plastic Recycling</h3>
         <div class="service-info">
@@ -646,7 +649,7 @@
         </div>
       </a>
 
-      <a href="services.html" class="service-box">
+      <a href="ServicesCatagories/GardenMaitenance.html" class="service-box">
         <img src="HomeImages/Garden Plant Care[1].jpg" alt="Garden plant care">
         <h3>Garden plant care</h3>
         <div class="service-info">
@@ -734,7 +737,9 @@
       </div>
     
   </section>
+</main>
 
+    <!-- Footer --> 
 <footer>
     <div>
       <div class="logo">
@@ -750,7 +755,7 @@
     <div>
       <h4>About</h4>
       <p><a href="#">About Us</a></p>
-      <p><a href="#">Services</a></p>
+      <p><a href="Services.html">Services</a></p>
     </div>
     <div>
       <h4>Community</h4>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+        <title>ECOHUP Services</title>
+    <style>
+ /* إعدادات الخطوط والخلفية العامة */
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f2e7;
+      color: #333;
+    }
+
+    /* ضبط عرض الصفحة الكلي */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    /* ====== الهيدر الثابت ====== */
+    header {
+      background-color: #4a6735;
+      color: white;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 20px 60px;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      box-sizing: border-box;
+    }
+
+    header .logo {
+      margin-right: 40px;
+    }
+
+    header .logo img {
+      height: 60px;
+      width: auto;
+      border-radius: 6px;
+    }
+
+    /* شريط التنقل */
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #f5f2e7;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #8b6b4a;
+    }
+
+
+/*  main SECTION */
+.mainService {
+  position: relative;
+  height: 45vh;
+  max-width: 100%;
+  margin-top: 50px; 
+  background-color: #e4eed9;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color:#4a6735;
+  overflow: hidden;
+}
+
+.mainService-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.mainService h1 {
+  font-size: 3rem;
+  margin-top: 60px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.mainService .Service-text {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  color: #304d0e;
+}
+
+
+/* Services Section */
+.servicesCatagories {
+  padding: 60px 0;
+  background-color:#edf3e3;
+  text-align: center;
+  color: #4a6735;
+   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.services-box {
+  position: relative;
+  background-color: rgb(238, 237, 229);
+  border-radius: 10px;
+  text-align: center;
+  width: 280px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+  cursor: pointer;
+  height: 380px;
+  z-index: 0; 
+  border: 3px solid #365140;
+
+}
+
+.services-box p {
+  font-size: 0.95rem;
+  color: #555;
+  padding: 0 15px;}
+
+.services-box:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.15);
+  z-index: 2; 
+}
+
+
+.services-box img {
+ margin-top: 20px;
+   width: 85%;
+   height: 55%;
+   border-radius: 8px;
+   margin-bottom: 15px;
+   object-fit: cover; 
+}
+
+
+.services-box h3 {
+  font-size: 1.1rem;
+  color: #4a6735;
+  margin: 8px 0 5px 0;
+}
+
+/* Reviews section */
+.reviews {
+  padding: 60px 0;
+  background-color: #e6ecde;
+  align-items: left;
+  text-align: left;
+  color: #4a6735;
+}
+
+.reviews .container{
+  display: flex;
+  position: absolute;
+  position: 10px 700px 150px 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  margin-left: 30px;
+
+}
+.reviews h2 {
+  display: flex;
+  padding: 0%;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+ 
+}
+
+.reviews p {
+  padding: 0%;
+  text-align: center;
+  margin-bottom: 10px;
+  display:flex;
+  color: #555;
+  font-size: 1rem;
+}
+
+.review-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  margin-right: 70px;
+  align-items: center;
+  gap: 20px;
+}
+
+.review-box {
+  background-color: white;
+  padding: 3px;
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.stars {
+  color: #f9a825;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.review-box p {
+  color: #777;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.author {
+  font-weight: 600;
+  margin-top: 10px;
+  color: #4a6735;
+}
+
+.center2-box {
+  margin-top: -30px;
+  margin-bottom: 30px;
+}
+
+/* Footer */
+footer {
+background-color: #3e3e3e;
+color: #f5f2e7;
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+padding: 25px 40px;
+flex-wrap: wrap;
+width: 100%;
+box-sizing: border-box;
+gap: 50px;
+}
+
+footer div {
+min-width: 180px;
+margin-bottom: 15px;
+}
+
+footer .logo img {
+height: 50px;
+width: auto;
+display: block;
+margin-bottom: 10px;
+border-radius: 6px;
+}
+
+footer small {
+display: block;
+margin-top: 10px;
+font-size: 12px;
+color: #ccc;
+}
+
+footer a {
+color: #d4b996;
+text-decoration: none;
+}
+
+footer a:hover {
+text-decoration: underline;
+color: #c6d3b3;
+}
+
+h4 {
+color: #8b6b4a;
+}
+
+footer p, footer p a {
+color: #d4b996;
+}
+
+footer p a:hover {
+color: #c6d3b3;
+}
+
+@media (max-width: 900px) {
+.service-box, .review-box {
+    width: 45%;
+}
+}
+
+@media (max-width: 600px) {
+.service-box, .review-box {
+    width: 90%;
+}
+}
+
+body {
+max-width: 1200px;
+margin: 0 auto;
+}
+
+</style>
+    </head>
+  <body>
+    <header>
+    <div class="logo">
+      <img src="Logo.png" alt="ECOHUP Logo" />
+    </div>
+    <nav>
+      <a href="Home.html">Home</a>
+      <a href="#">About Us</a>
+      <a href="Customer_Dashboard.html">Customer Dashboard</a>
+      <a href="Services.html">Services</a>
+      <a href="#">Service Provider</a>
+      <a href="Free -Awareness-Consultation/Free -Awareness-Consultation.HTML">Free / Awareness & Consultation</a>
+    </nav>
+  </header>
+<main>
+<section class="mainService">
+  <div class="mainService-content">
+    <h1>Eco-Hub Services</h1>
+    <p class="Services-text">Find the perfect service for your needs</p>
+  </div>
+
+</section>
+
+<section class="servicesCatagories">
+          <a href="ServicesCatagories/RecyclingCollection.html" class="services-box">
+           <img src="ServicesImage/Recycling collection.jpg" alt="Recycling" />
+            <h3>Recycling Collection</h3>
+            <p>Schedule regular pickups for your recyclable materials.</p>
+          </a>
+            <a href="ServicesCatagories/EnviromentalWorkshopes.html" class="services-box">
+            <img src="ServicesImage/Workshopes.jpg" alt="Environmental Workshops" />
+            <h3>Environmental Workshops</h3>
+            <p>Join our workshops to learn about sustainable living.</p>
+          </a>
+             <a href="ServicesCatagories/GardenMaitenance.html" class="services-box">
+            <img src="ServicesImage/Garden.jpg" alt="Garden Maintenance" />
+            <h3>Garden Maintenance</h3>
+            <p>Eco-friendly garden care and landscaping services.</p>
+            </a>
+</section>
+    <!-- Reviews -->
+    <section class="reviews">
+    <div class="container">
+      <h2>Our Reviews</h2>
+      <p>Hear from our satisfied community members:</p>
+      </div>
+
+      <div class="review-container">
+        <div class="review-box">
+          <h3>Recycling Collection</h3>
+          <div class="stars">★★★★★</div>
+             <p>“Amazing service! Made recycling so easy for our neighborhood.”</p>
+          <div class="author">By Mona</div>
+        </div>
+
+        <div  class="review-box center2-box">
+          <h3>Plastic Recycling</h3>
+          <div class="stars">★★★★★</div>
+          <p>“Loved the initiative! Friendly and professional team.”</p>
+          <div class="author">By Sara</div>
+        </div>
+
+        <div class="review-box">
+          <h3>Green Workshop</h3>
+          <div class="stars">★★★★★</div>
+          <p>“Very informative and inspiring session about sustainable living.”</p>
+          <div class="author">By Ahmed</div>
+        </div>
+      </div>
+    
+  </section>
+</main>
+<footer>
+    <div>
+      <div class="logo">
+        <img src="Logo.png" alt="ECOHUP Footer Logo" />
+      </div>
+      <small>All rights reserved ©️ 2025 ECOHUP</small>
+    </div>
+    <div>
+      <h4>Contact Us</h4>
+      <p>Email: <a href="mailto:info@ecohub.com">info@ecohub.com</a></p>
+      <p>Phone: 0100-200-300</p>
+    </div>
+    <div>
+      <h4>About</h4>
+      <p><a href="#">About Us</a></p>
+      <p><a href="#">Services</a></p>
+    </div>
+    <div>
+      <h4>Community</h4>
+      <p><a href="#">LinkedIn</a></p>
+      <p><a href="#">Instagram</a></p>
+    </div>
+  </footer>
+</body>
+</html>
