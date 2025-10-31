@@ -1,317 +1,115 @@
 ﻿<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title>Evaluate a Service</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* ===== إعدادات عامة ===== */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f2e7; /* بيج فاتح */
-            color: #333;
-        }
-
-        /* ===== HEADER الموحد ===== */
-        .page-header {
-            background-color: #4a6735; /* أخضر غامق */
-            color: #f5f2e7;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 40px;
-        }
-
-            .page-header .logo-box img {
-                height: 45px;
-                width: auto;
-                border-radius: 6px;
-            }
-
-        .header-nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #f5f2e7;
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-            .header-nav a:hover {
-                color: #d4b996; /* لون رملي فاتح */
-            }
-
-        /* ===== العنوان الرئيسي للتقييم (Main Title) ===== */
-        .main-title-section {
-            text-align: center;
-            padding: 50px 20px 20px;
-        }
-
-            .main-title-section .main-heading {
-                font-size: 48px;
-                color: #333;
-                font-weight: normal;
-                margin: 0;
-            }
-
-        /* ===== حاوية نموذج التقييم (Evaluation Container) ===== */
-        .evaluation-container {
-            max-width: 650px;
-            margin: 30px auto 80px;
-            background-color: #fff;
-            border-radius: 25px;
-            padding: 40px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        /* ===== مجموعة عناصر النموذج (Form Group) ===== */
-        .form-group {
-            margin-bottom: 30px;
-        }
-
-            .form-group .form-label {
-                display: block;
-                font-size: 20px;
-                font-weight: bold;
-                color: #333;
-                margin-bottom: 15px;
-                text-align: center;
-            }
-
-        /* ===== القائمة المنسدلة (Service Dropdown) ===== */
-        .service-dropdown {
-            width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-top: 10px;
-        }
-
-            .service-dropdown .select-header {
-                background-color: #fff;
-                font-weight: bold;
-                padding: 12px;
-                border-bottom: 1px solid #ccc;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                font-size: 16px;
-                color: #555;
-            }
-
-            .service-dropdown .option-item {
-                width: 100%;
-                padding: 12px;
-                border-bottom: 1px solid #eee;
-                background-color: #e8e4d9; /* لون خلفية البطاقة */
-                font-size: 16px;
-                color: #333;
-                text-align: center;
-            }
-
-                .service-dropdown .option-item:last-child {
-                    border-bottom: none;
-                }
-
-        /* ===== تقييم النجوم (Rating Stars) ===== */
-        .rating-stars {
-            display: flex;
-            justify-content: center;
-            font-size: 40px;
-            color: #ccc; /* لون نجمة فارغة */
-            cursor: pointer;
-            margin-top: 15px;
-        }
-
-            .rating-stars .star-icon {
-                margin: 0 8px;
-            }
-
-        /* ===== حقل التقييم المكتوب (Feedback Textarea) ===== */
-        .feedback-textarea {
-            width: calc(100% - 40px);
-            min-height: 150px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 12px;
-            font-size: 16px;
-            resize: vertical;
-            box-sizing: border-box;
-            background-color: #e8e4d9; /* لون خلفية البطاقة */
-        }
-
-        /* ===== حقل إضافة الصورة (Image Upload) ===== */
-        .image-upload-box {
-            width: 80%;
-            height: 150px;
-            background-color: #e8e4d9; /* لون خلفية البطاقة */
-            border: 2px dashed #ccc;
-            border-radius: 15px;
-            margin: 20px auto 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-            .image-upload-box .plus-icon {
-                font-size: 50px;
-                color: #aaa;
-            }
-
-        /* ===== زر الإرسال (Submit Button) ===== */
-        .submit-section {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-            .submit-section .submit-button {
-                background-color: #8b6b4a; /* بني متوسط */
-                color: #fff;
-                font-size: 18px;
-                font-weight: 600;
-                border: none;
-                border-radius: 5px;
-                padding: 12px 60px;
-                cursor: pointer;
-                transition: 0.3s;
-                box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-            }
-
-                .submit-section .submit-button:hover {
-                    background-color: #4a6735; /* أخضر غامق */
-                }
-
-        /* ===== FOOTER الموحد ===== */
-        .page-footer {
-            background-color: #3e3e3e; /* رمادي غامق */
-            color: #f5f2e7;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            padding: 30px 40px;
-        }
-
-            .page-footer .footer-col {
-                width: 22%;
-                min-width: 180px;
-                margin-bottom: 15px;
-            }
-
-                .page-footer .footer-col .col-title {
-                    color: #8b6b4a; /* بني متوسط */
-                    margin-bottom: 10px;
-                }
-
-                .page-footer .footer-col a, .page-footer .footer-col p {
-                    text-decoration: none;
-                    color: #d4b996; /* لون رملي فاتح */
-                    display: block;
-                    margin: 5px 0;
-                    font-size: 14px;
-                }
-
-                    .page-footer .footer-col a:hover {
-                        color: #c6d3b3;
-                        text-decoration: underline;
-                    }
-
-            .page-footer .footer-branding img {
-                height: 50px;
-                width: auto;
-                border-radius: 6px;
-                margin-bottom: 10px;
-            }
-
-            .page-footer .footer-branding .copyright {
-                font-size: 12px;
-                color: #ccc;
-            }
-    </style>
+    <title>ECOHUP-Evaluate a Service</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-    <header class="page-header">
-        <div class="logo-box">
-            <img src="your-logo.png" alt="Logo">
+    <header>
+        <div class="logo">
+            <img src="Logo.png" alt="ECOHUP Logo" />
         </div>
-        <nav class="header-nav">
-            <a href="#">Home</a>
+        <nav>
+            <a href="Home.html">Home</a>
             <a href="#">About Us</a>
-            <a href="#">Customer Dashboard</a>
-            <a href="#">Services</a>
+            <a href="Customer_Dashboard.html">Customer Dashboard</a>
+            <a href="Services.html">Services</a>
             <a href="#">Service Provider</a>
-            <a href="#">Free / Awareness & Consultation</a>
+            <a href="Free -Awareness-Consultation/Free -Awareness-Consultation.HTML">Free / Awareness & Consultation</a>
         </nav>
     </header>
 
-    <section class="main-title-section">
-        <h1 class="main-heading">Evaluate a Service</h1>
-    </section>
+    <main class="container">
+        <section class="EvaluateService-box">
+            <h1 class="main-title">Evaluate Your Recent Service</h1>
+            <h2>Thank you for helping us improve!</h2>
+            <p>Your opinion helps us grow greener and provide better eco-friendly solutions 🌿</p>
+        </section>
 
-    <div class="evaluation-container">
+        <section class="EvaluateService-form">
+            <div class="form-card">
+                <h2 class="section-title-center">Service Evaluation Form</h2>
 
-        <div class="form-group">
-            <label class="form-label">Choose the service .........</label>
-            <div class="service-dropdown">
-                <div class="select-header">
-                    Choose the service ......... <i class="fas fa-caret-down"></i>
-                </div>
-                <div class="option-item">Recycling Paper</div>
-                <div class="option-item">Recycling Plastic</div>
-                <div class="option-item">Recycling Glass</div>
+                <form>
+                    <div class="form-group service-selection-group">
+                        <label for="serviceType" class="form-label">Which service are you evaluating?</label>
+                        <select id="serviceType" class="form-select" required>
+                            <option value="">-- Choose a Service --</option>
+
+                            <optgroup label="Recycling Collection">
+                                <option value="paper-recycling">Paper Recycling</option>
+                                <option value="plastic-recycling">Plastic Recycling</option>
+                                <option value="glass-recycling">Glass Recycling</option>
+                                <option value="metal-recycling">Metal Recycling</option>
+                                <option value="electronics-disposal">Electronics Disposal</option>
+                            </optgroup>
+
+                            <optgroup label="Environmental Workshops">
+                                <option value="eco-crafts-workshop">Eco-Crafts Workshop</option>
+                                <option value="green-living-workshop">Green Living Workshop</option>
+                                <option value="garden-care-workshop">Garden Care Basics Workshop</option>
+                            </optgroup>
+
+                            <optgroup label="Garden Maintenance">
+                                <option value="tree-trimming">Tree Trimming</option>
+                                <option value="garden-plant-care">Garden Plant Care</option>
+                                <option value="garden-landscaping">Garden Landscaping</option>
+                            </optgroup>
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" style="text-align: center; margin-bottom: 15px;">How would you rate the service quality?</label>
+                        <div class="rating-stars">
+                            <input type="radio" id="star5" name="rating" value="5" required>
+                            <label for="star5" title="Excellent"></label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4" title="Very Good"></label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3" title="Good"></label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2" title="Fair"></label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1" title="Poor"></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feedback" class="form-label">Your Feedback & Comments</label>
+                        <textarea id="feedback" class="form-textarea feedback-textarea" rows="6" placeholder="Please share your experience, good or bad, to help us improve!"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Attach Photos (Optional)</label>
+                        <div class="image-upload-box">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="primary-btn">Submit Evaluation</button>
+                </form>
             </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logo">
+            <img src="https://placehold.co/50x50/3e3e3e/d4b996?text=Eco" alt="EcoCycle Logo">
+            <small>&copy; 2025 Eco Solutions</small>
         </div>
-
-        <div class="form-group">
-            <label class="form-label">Overall Rating:</label>
-            <div class="rating-stars">
-                <i class="far fa-star star-icon"></i>
-                <i class="far fa-star star-icon"></i>
-                <i class="far fa-star star-icon"></i>
-                <i class="far fa-star star-icon"></i>
-            </div>
+        <div>
+            <h4>Quick Links</h4>
+            <p><a href="index.html">Home</a></p>
+            <p><a href="simple_dashboard.html">Dashboard</a></p>
+            <p><a href="simple_request_service.html">Request</a></p>
         </div>
-
-        <div class="form-group">
-            <label class="form-label">Your Feedback:</label>
-            <textarea class="feedback-textarea" placeholder="type your feedback ......"></textarea>
-        </div>
-
-        <div class="form-group">
-            <label class="form-label">Add Image (optional):</label>
-            <div class="image-upload-box">
-                <i class="fas fa-plus plus-icon"></i>
-            </div>
-        </div>
-
-        <div class="submit-section">
-            <button class="submit-button">Submit</button>
-        </div>
-
-    </div>
-
-    <footer class="page-footer">
-        <div class="footer-col footer-branding">
-            <img src="your-logo.png" alt="Footer Logo">
-            <small class="copyright">All rights reserved © 2025 WebsiteName</small>
-        </div>
-
-        <div class="footer-col">
-            <h4 class="col-title">Contact Us</h4>
-            <p>Call: +1 (234) 567-8900</p>
-            <p>Email: info@example.com</p>
-        </div>
-
-        <div class="footer-col">
-            <h4 class="col-title">About</h4>
-            <a href="#">About Us</a>
-            <a href="#">Careers</a>
-        </div>
-
-        <div class="footer-col">
-            <h4 class="col-title">Community</h4>
-            <a href="#">Forums</a>
-            <a href="#">Bloggers</a>
+        <div>
+            <h4>Contact Info</h4>
+            <p>Email: <a href="mailto:info@eco.com">info@eco.com</a></p>
+            <p>Phone: +1 (555) 123-4567</p>
         </div>
     </footer>
 

@@ -3,212 +3,7 @@
 <head>
     <meta charset="UTF-8">
         <title>ECOHUP Services</title>
-    <style>
- /* إعدادات الخطوط والخلفية العامة */
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f5f2e7;
-      color: #333;
-    }
-
-    /* ضبط عرض الصفحة الكلي */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      box-sizing: border-box;
-    }
-
-    /* ====== الهيدر الثابت ====== */
-    header {
-      background-color: #4a6735;
-      color: white;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      padding: 20px 60px;
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 100;
-      box-sizing: border-box;
-    }
-
-    header .logo {
-      margin-right: 40px;
-    }
-
-    header .logo img {
-      height: 60px;
-      width: auto;
-      border-radius: 6px;
-    }
-
-    /* شريط التنقل */
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #f5f2e7;
-      font-size: 15px;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      color: #8b6b4a;
-    }
-
-    /* Sort dropdown container */
-.sort-container {
-  display: flex;
-  justify-content: flex-end; /* move to right side */
-  align-items: center;
-  margin: 20px 40px 30px 0; /* spacing around */
-  gap: 10px;
-}
-
-/* Label style */
-.sort-container label {
-  color: #4a6735;
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-/* Dropdown style */
-.sort-container select {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 6px 12px;
-  font-size: 0.95rem;
-  color: #333;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.sort-container select:hover {
-  border-color: #4a6735;
-  box-shadow: 0 0 5px rgba(74, 103, 53, 0.2);
-}
-
-    .service-info {
-      margin-top: 100px;
-      padding: 20px;
-    }
-    .service-container {
-  position: relative;
-  background-color: rgb(243, 240, 223);
-  border-radius: 10px;
-  text-align: center;
-  width: 1100px;
-  height: 200x;
-  padding: 10px;
-  margin: 20px auto;
-  z-index: 0; 
-  border: 3px solid #4a4a45;
-
-    }
-    .service-container img {
-      border-radius: 6px;
-        float: left;
-        border: #333 solid 2px;
-      margin-top: 10px;
-    }
-    .service-container h3 {
-    text-align: left;
-    margin-bottom: 20px;
-      color: #4a6735;
-    }
-    .price {
-      text-align: left;
-      color: #151515;
-      font-weight: bold;
-    }
-    .service-container p {
-      text-align: left;
-      padding: 0 20px;
-      color: #8a9679;
-    }
-    .service-info h3 {
-    margin-top: 20px; }
-    /* Footer */
-footer {
-background-color: #3e3e3e;
-color: #f5f2e7;
-display: flex;
-justify-content: flex-start;
-align-items: flex-start;
-padding: 25px 40px;
-flex-wrap: wrap;
-width: 100%;
-box-sizing: border-box;
-gap: 50px;
-}
-
-footer div {
-min-width: 180px;
-margin-bottom: 15px;
-}
-
-footer .logo img {
-height: 50px;
-width: auto;
-display: block;
-margin-bottom: 10px;
-border-radius: 6px;
-}
-
-footer small {
-display: block;
-margin-top: 10px;
-font-size: 12px;
-color: #ccc;
-}
-
-footer a {
-color: #d4b996;
-text-decoration: none;
-}
-
-footer a:hover {
-text-decoration: underline;
-color: #c6d3b3;
-}
-
-h4 {
-color: #8b6b4a;
-}
-
-footer p, footer p a {
-color: #d4b996;
-}
-
-footer p a:hover {
-color: #c6d3b3;
-}
-
-@media (max-width: 900px) {
-.service-box, .review-box {
-    width: 45%;
-}
-}
-
-@media (max-width: 600px) {
-.service-box, .review-box {
-    width: 90%;
-}
-}
-
-body {
-max-width: 1200px;
-margin: 0 auto;
-}
-    </style>
+        <link rel="stylesheet" href="../style.css">
  </head>
   <body>
     <header>
@@ -224,56 +19,57 @@ margin: 0 auto;
       <a href="../Free -Awareness-Consultation/Free -Awareness-Consultation.HTML">Free / Awareness & Consultation</a>
     </nav>
   </header>
-<main>
+<main class="ECOHUP-Services">
 
-<div class="service-info">
-    <h2>Garden Maintenance</h2>
+    <div class="service-info">
+        <h2>Garden Maintenance</h2>
 
- <!-- Sorting  -->
-<div class="sort-container">
-  <label for="sort-select" class="visually-hidden">Sort services</label>
-  <select id="sort-select" aria-label="Sort services">
-    <option value="default" selected>Sort by</option>
+        <!-- Sorting  -->
+        <div class="sort-container">
+            <label for="sort-select" class="visually-hidden">Sort services</label>
+            <select id="sort-select" aria-label="Sort services">
+                <option value="default" selected>Sort by</option>
 
-    <optgroup label="Price">
-      <option value="price-asc">Price: Low to High</option>
-      <option value="price-desc">Price: High to Low</option>
-    </optgroup>
+                <optgroup label="Price">
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                </optgroup>
 
-    <optgroup label="Name">
-      <option value="name-asc">Name: A → Z</option>
-      <option value="name-desc">Name: Z → A</option>
-    </optgroup>
-  </select>
-</div>
+                <optgroup label="Name">
+                    <option value="name-asc">Name: A → Z</option>
+                    <option value="name-desc">Name: Z → A</option>
+                </optgroup>
+            </select>
+        </div>
 
-        <div class ='service-container'data-name="Tree Trimming" data-price="70">
-          <img src="../Tree Trimming.jpg" alt="Tree Trimming" style="float:left; width:200px; height:130px; margin:10px;">
-          <h3>Tree Trimming</h3>
-          <spam class="price"><p><strong>Price = </strong>70$</p></spam>
+        <div class='service-container' data-name="Tree Trimming" data-price="70">
+            <img src="../Tree Trimming.jpg" alt="Tree Trimming" style="float:left; width:200px; height:130px; margin:10px;">
+            <h3>Tree Trimming</h3>
+            <spam class="price"><p><strong>Price = </strong>70$</p></spam>
             <p>Our Tree Trimming service ensures the health and aesthetics of your trees. Our skilled arborists will carefully trim and shape your trees, promoting healthy growth while enhancing the overall appearance of your garden.</p>
 
         </div>
 
-        <div class ='service-container'data-name="Garden Plant Care" data-price="80">
+        <div class='service-container' data-name="Garden Plant Care" data-price="80">
             <img src="../HomeImages/Garden Plant Care[1].jpg" alt="Garden Plant Care" style="float:left; width:200px; height:130px; margin:10px;">
-          <h3>Garden Plant Care</h3>
-          <spam class="price"><p><strong>Price = </strong>80$</p></spam>
+            <h3>Garden Plant Care</h3>
+            <spam class="price"><p><strong>Price = </strong>80$</p></spam>
             <p>Our Garden Plant Care service provides expert care for your garden plants. From watering and fertilizing to pest control and pruning, our team will ensure your plants thrive and contribute to a beautiful garden environment.</p>
         </div>
 
-        <div class ='service-container' data-name="Garden Landscaping" data-price="120">
-           <img src="../Garden landscaping.jpg" alt="Garden Landscaping" style="float:left; width:200px; height:130px; margin:10px;">
-          <h3>Garden Landscaping</h3>
-          <spam class="price"><p><strong>Price = </strong>120$</p></spam>
+        <div class='service-container' data-name="Garden Landscaping" data-price="120">
+            <img src="../Garden landscaping.jpg" alt="Garden Landscaping" style="float:left; width:200px; height:130px; margin:10px;">
+            <h3>Garden Landscaping</h3>
+            <spam class="price"><p><strong>Price = </strong>120$</p></spam>
             <p>Transform your outdoor space with our Garden Landscaping service. Our experienced landscapers will work with you to design and implement a stunning garden layout that suits your style and enhances the natural beauty of your property.</p>
         </div>
-        
-        <h3>How It Works:</h3>
-        <p>1. Choose a garden maintenance service that fits your needs.</p>
-        <p>2. Schedule an appointment through <a href="../Customer_Dashboard.html">Customer Dashboard</a> or contact us directly.</p>
-        <p>3. Our team will visit your location at the scheduled time to provide the service.</p>
-    </div>
+
+        <div style="text-align: left; ">
+            <h3>How It Works:</h3>
+            <p>1. Choose a garden maintenance service that fits your needs.</p>
+            <p>2. Schedule an appointment through <a href="../Customer_Dashboard.html">Customer Dashboard</a> or contact us directly.</p>
+            <p>3. Our team will visit your location at the scheduled time to provide the service.</p>
+        </div>
 </main>
 <footer>
     <div>
