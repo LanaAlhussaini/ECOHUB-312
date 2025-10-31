@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ECOHUP - Recyclable Materials Guidance</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
   <style>
+    /* ====== GENERAL PAGE SETTINGS ====== */
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -24,7 +21,7 @@
       box-sizing: border-box;
     }
 
-    /* ====== الهيدر ====== */
+    /* ====== HEADER (FIXED NAVBAR) ====== */
     header {
       background-color: #4a6735;
       color: white;
@@ -50,6 +47,7 @@
       border-radius: 6px;
     }
 
+    /* ====== NAVIGATION LINKS ====== */
     nav {
       display: flex;
       gap: 20px;
@@ -66,9 +64,9 @@
       color: #8b6b4a;
     }
 
-    /* ====== القسم الرئيسي ====== */
+    /* ====== MAIN HERO SECTION ====== */
     .hero {
-      margin-top: 110px;
+      margin-top: 110px; /* space below fixed header */
       padding: 60px 20px 20px;
       text-align: center;
       color: #4a6735;
@@ -79,12 +77,13 @@
       margin-bottom: 30px;
     }
 
-    /* ====== شبكة البطاقات ====== */
+    /* ====== GUIDANCE CARDS SECTION ====== */
     .guidance-section {
       background-color: #edf3e3;
       padding: 40px 0 80px;
     }
 
+    /* Grid layout for cards */
     .guidance-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -92,6 +91,7 @@
       justify-items: center;
     }
 
+    /* Individual card styling */
     .guidance-card {
       display: flex;
       align-items: center;
@@ -104,16 +104,19 @@
       transition: transform 0.3s ease;
     }
 
+    /* Hover animation for cards */
     .guidance-card:hover {
       transform: scale(1.02);
     }
 
+    /* Card image */
     .guidance-card img {
       width: 45%;
       height: 150px;
       object-fit: cover;
     }
 
+    /* Text area inside each card */
     .guidance-text {
       padding: 15px 20px;
       width: 55%;
@@ -132,7 +135,7 @@
       line-height: 1.5;
     }
 
-    /* ✅ البوكس الأخير في المنتصف */
+    /* ====== LAST CARD (CENTERED) ====== */
     .guidance-card.last {
       max-width: 520px;
       margin: 0 auto;
@@ -146,7 +149,7 @@
       height: 150px;
     }
 
-    /* ====== الفوتر ====== */
+    /* ====== FOOTER SECTION ====== */
     footer {
       background-color: #3e3e3e;
       color: #f5f2e7;
@@ -203,8 +206,9 @@
       color: #c6d3b3;
     }
 
-    /* متجاوب */
+    /* ====== RESPONSIVE DESIGN ====== */
     @media (max-width: 700px) {
+      /* Stack image and text vertically on smaller screens */
       .guidance-card {
         flex-direction: column;
       }
@@ -228,33 +232,35 @@
 
 <body>
 
-  <!-- ====== الهيدر ====== -->
+  <!-- ====== HEADER SECTION ====== -->
   <header>
     <div class="logo">
       <img src="../Logo.png" alt="ECOHUP Logo" />
     </div>
     <nav>
-      <a href="#">Home</a>
+      <!-- Navigation bar links -->
+      <a href="../Home.html">Home</a>
       <a href="#">About Us</a>
-      <a href="#">Customer Dashboard</a>
-      <a href="#">Services</a>
+      <a href="../Customer_Dashboard.html">Customer Dashboard</a>
+      <a href="../Services.html">Services</a>
       <a href="#">Service Provider</a>
       <a href="Free -Awareness-Consultation.html">Free / Awareness & Consultation</a>
     </nav>
   </header>
 
-  <!-- ====== القسم الرئيسي ====== -->
+  <!-- ====== HERO / PAGE TITLE ====== -->
   <section class="hero">
     <div class="container">
       <h1>Recyclable Materials Guidance</h1>
     </div>
   </section>
 
-  <!-- ====== البطاقات ====== -->
+  <!-- ====== GUIDANCE CARDS (CONTENT AREA) ====== -->
   <section class="guidance-section">
     <div class="container">
       <div class="guidance-grid">
 
+        <!-- Card 1 -->
         <div class="guidance-card">
           <img src="../Plastic Recycling.jpg" alt="Plastic Recycling">
           <div class="guidance-text">
@@ -263,6 +269,7 @@
           </div>
         </div>
 
+        <!-- Card 2 -->
         <div class="guidance-card">
           <img src="../paper.jpeg" alt="Paper Recycling">
           <div class="guidance-text">
@@ -271,6 +278,7 @@
           </div>
         </div>
 
+        <!-- Card 3 -->
         <div class="guidance-card">
           <img src="../glass.jpeg" alt="Glass Recycling">
           <div class="guidance-text">
@@ -279,6 +287,7 @@
           </div>
         </div>
 
+        <!-- Card 4 -->
         <div class="guidance-card">
           <img src="../Metal Recycling.jpeg" alt="Metal Recycling">
           <div class="guidance-text">
@@ -287,7 +296,7 @@
           </div>
         </div>
 
-        <!-- ✅ البوكس الأخير في المنتصف -->
+        <!-- Last centered card -->
         <div class="guidance-card last">
           <img src="../Electronics.jpeg" alt="Electronics Recycling">
           <div class="guidance-text">
@@ -300,7 +309,7 @@
     </div>
   </section>
 
-  <!-- ====== الفوتر ====== -->
+  <!-- ====== FOOTER SECTION ====== -->
   <footer>
     <div>
       <div class="logo">
@@ -308,16 +317,22 @@
       </div>
       <small>All rights reserved ©️ 2025 ECOHUP</small>
     </div>
+
+    <!-- Contact Information -->
     <div>
       <h4>Contact Us</h4>
       <p>Email: <a href="mailto:info@ecohub.com">info@ecohub.com</a></p>
       <p>Phone: 0100-200-300</p>
     </div>
+
+    <!-- About Section -->
     <div>
       <h4>About</h4>
       <p><a href="#">About Us</a></p>
       <p><a href="#">Services</a></p>
     </div>
+
+    <!-- Community / Social Links -->
     <div>
       <h4>Community</h4>
       <p><a href="#">LinkedIn</a></p>

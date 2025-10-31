@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ECOHUP - Plant Consultations</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
   <style>
+    /* ====== GENERAL PAGE SETTINGS ====== */
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -24,7 +21,7 @@
       box-sizing: border-box;
     }
 
-    /* ====== الهيدر ====== */
+    /* ====== HEADER (FIXED NAVBAR) ====== */
     header {
       background-color: #4a6735;
       color: white;
@@ -50,6 +47,7 @@
       border-radius: 6px;
     }
 
+    /* ====== NAVIGATION LINKS ====== */
     nav {
       display: flex;
       gap: 20px;
@@ -66,12 +64,13 @@
       color: #8b6b4a;
     }
 
-    /* ====== القسم الرئيسي ====== */
+    /* ====== MAIN SECTION ====== */
     .hero {
-      margin-top: 110px;
+      margin-top: 110px; /* Adds space below fixed header */
       padding: 60px 20px;
     }
 
+    /* ====== CONSULTATION SECTION (IMAGE + TEXT) ====== */
     .consultation-content {
       display: flex;
       align-items: center;
@@ -84,6 +83,7 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
+    /* ====== IMAGE PART ====== */
     .consultation-image {
       flex: 1 1 45%;
       text-align: center;
@@ -97,6 +97,7 @@
       object-fit: cover;
     }
 
+    /* ====== TEXT PART ====== */
     .consultation-text {
       flex: 1 1 45%;
       text-align: left;
@@ -108,6 +109,7 @@
       margin-bottom: 10px;
     }
 
+    /* ====== STAR RATING ====== */
     .stars {
       color: #f9a825;
       font-size: 1.2rem;
@@ -128,7 +130,7 @@
       margin-bottom: 20px;
     }
 
-    /* ====== نموذج السؤال ====== */
+    /* ====== CONSULTATION QUESTION FORM ====== */
     .consultation-form label {
       font-weight: 600;
       color: #4a6735;
@@ -162,7 +164,7 @@
       background-color: #f57f17;
     }
 
-    /* ====== الفوتر ====== */
+    /* ====== FOOTER SECTION ====== */
     footer {
       background-color: #3e3e3e;
       color: #f5f2e7;
@@ -219,6 +221,7 @@
       color: #c6d3b3;
     }
 
+    /* ====== RESPONSIVE DESIGN ====== */
     @media (max-width: 800px) {
       .consultation-content {
         flex-direction: column;
@@ -238,39 +241,48 @@
 
 <body>
 
-  <!-- ====== الهيدر ====== -->
+  <!-- ====== HEADER SECTION ====== -->
   <header>
     <div class="logo">
       <img src="../Logo.png" alt="ECOHUP Logo" />
     </div>
     <nav>
-      <a href="#">Home</a>
+      <!-- Navigation links to other site pages -->
+      <a href="../Home.html">Home</a>
       <a href="#">About Us</a>
-      <a href="#">Customer Dashboard</a>
-      <a href="#">Services</a>
+      <a href="../Customer_Dashboard.html">Customer Dashboard</a>
+      <a href="../Services.html">Services</a>
       <a href="#">Service Provider</a>
       <a href="Free -Awareness-Consultation.html">Free / Awareness & Consultation</a>
     </nav>
   </header>
 
-  <!-- ====== القسم الرئيسي ====== -->
+  <!-- ====== MAIN CONTENT ====== -->
   <section class="hero">
     <div class="container">
       <div class="consultation-content">
+        
+        <!-- LEFT SIDE: Image -->
         <div class="consultation-image">
           <img src="../Plant Consultations.JPEG" alt="Plant Consultation Image">
         </div>
 
+        <!-- RIGHT SIDE: Text and form -->
         <div class="consultation-text">
           <h1>Plant Consultations</h1>
+
+          <!-- Star rating and number of reviews -->
           <div class="stars">
             ★★★★★ <span class="reviews-count">435 Reviews</span>
           </div>
+
+          <!-- Service description -->
           <p>
             Get personalized advice for your plants. Ask our experts about care, watering, 
             and maintenance tips to keep your garden healthy and green.
           </p>
 
+          <!-- Simple text form for users to submit questions -->
           <form class="consultation-form">
             <label for="question">Type your question here</label>
             <input type="text" id="question" name="question" placeholder="Type your question here">
@@ -282,7 +294,7 @@
     </div>
   </section>
 
-  <!-- ====== الفوتر ====== -->
+  <!-- ====== FOOTER (STATIC ACROSS PAGES) ====== -->
   <footer>
     <div>
       <div class="logo">
@@ -290,16 +302,22 @@
       </div>
       <small>All rights reserved ©️ 2025 ECOHUP</small>
     </div>
+
+    <!-- Contact information -->
     <div>
       <h4>Contact Us</h4>
       <p>Email: <a href="mailto:info@ecohub.com">info@ecohub.com</a></p>
       <p>Phone: 0100-200-300</p>
     </div>
+
+    <!-- About section -->
     <div>
       <h4>About</h4>
       <p><a href="#">About Us</a></p>
       <p><a href="#">Services</a></p>
     </div>
+
+    <!-- Social links -->
     <div>
       <h4>Community</h4>
       <p><a href="#">LinkedIn</a></p>

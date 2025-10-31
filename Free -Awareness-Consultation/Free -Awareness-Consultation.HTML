@@ -1,15 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ECOHUP - Free / Awareness & Consultation</title>
+  <title>ECOHUP - Free / Awareness & Consultation</title>  
 
-  <!-- استدعاء الخط من Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  
   <style>
-    /* إعدادات الخطوط والخلفية العامة */
+    /* ====== GENERAL PAGE SETTINGS ====== */
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -17,7 +12,7 @@
       color: #333;
     }
 
-    /* ضبط عرض الصفحة الكلي */
+    /* ====== PAGE WIDTH CONTAINER ====== */
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -25,7 +20,7 @@
       box-sizing: border-box;
     }
 
-    /* ====== الهيدر الثابت ====== */
+    /* ====== FIXED HEADER ====== */
     header {
       background-color: #4a6735;
       color: white;
@@ -51,7 +46,7 @@
       border-radius: 6px;
     }
 
-    /* شريط التنقل */
+    /* ====== NAVIGATION BAR ====== */
     nav {
       display: flex;
       gap: 20px;
@@ -68,7 +63,7 @@
       color: #8b6b4a;
     }
 
-    /* ====== القسم الرئيسي ====== */
+    /* ====== HERO SECTION ====== */
     .hero {
       background-color: #e4eed9;
       color: #4a6735;
@@ -89,7 +84,7 @@
       line-height: 1.6;
     }
 
-    /* ====== قسم الخدمات ====== */
+    /* ====== SERVICES SECTION ====== */
     .services {
       text-align: center;
       padding: 60px 0;
@@ -113,6 +108,7 @@
       font-size: 1rem;
     }
 
+    /* ====== SERVICE BOX GRID ====== */
     .service-grid {
       display: flex;
       justify-content: center;
@@ -150,7 +146,7 @@
       margin-bottom: 10px;
     }
 
-    /* تنسيق زر الرابط */
+    /* ====== SERVICE LINK BUTTON ====== */
     .service-box a {
       display: inline-block;
       background-color: #f9a825;
@@ -166,7 +162,7 @@
       background-color: #f57f17;
     }
 
-    /* ====== قسم التقييمات ====== */
+    /* ====== REVIEWS SECTION ====== */
     .reviews {
       padding: 60px 0;
       background-color: #e6ecde;
@@ -195,6 +191,13 @@
       text-align: left;
     }
 
+    .review-box h3 {
+      color: #4a6735;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
     .stars {
       color: #f9a825;
       font-size: 1.3rem;
@@ -213,7 +216,7 @@
       color: #4a6735;
     }
 
-    /* ====== الفوتر ====== */
+    /* ====== FOOTER SECTION ====== */
     footer {
       background-color: #3e3e3e;
       color: #f5f2e7;
@@ -232,6 +235,7 @@
       margin-bottom: 15px;
     }
 
+    /* ====== FOOTER LOGO ====== */
     footer .logo img {
       height: 50px;
       width: auto;
@@ -247,6 +251,7 @@
       color: #ccc;
     }
 
+    /* ====== FOOTER LINKS ====== */
     footer a {
       color: #d4b996;
       text-decoration: none;
@@ -269,6 +274,7 @@
       color: #c6d3b3;
     }
 
+    /* ====== RESPONSIVE DESIGN ====== */
     @media (max-width: 900px) {
       .service-box, .review-box {
         width: 45%;
@@ -290,22 +296,23 @@
 </head>
 
 <body>
-  <!-- ====== الهيدر (يبقى ثابت في كل الصفحات) ====== -->
+  <!-- ===== FIXED HEADER (appears on all pages) ===== -->
   <header>
     <div class="logo">
       <img src="../Logo.png" alt="ECOHUP Logo" />
     </div>
     <nav>
-      <a href="#">Home</a>
+      <!-- Main navigation links -->
+      <a href="../Home.html">Home</a>
       <a href="#">About Us</a>
-      <a href="#">Customer Dashboard</a>
-      <a href="#">Services</a>
+      <a href="../Customer_Dashboard.html">Customer Dashboard</a>
+      <a href="../Services.html">Services</a>
       <a href="#">Service Provider</a>
       <a href="Free -Awareness-Consultation.html">Free / Awareness & Consultation</a>
     </nav>
   </header>
 
-  <!-- ====== القسم التعريفي ====== -->
+  <!-- ===== HERO SECTION (Intro content) ===== -->
   <section class="hero">
     <div class="container">
       <h1>Free / Awareness & Consultation</h1>
@@ -317,87 +324,93 @@
     </div>
   </section>
 
-  <!-- ====== الخدمات الأربعة ====== -->
+  <!-- ===== SERVICES SECTION (4 boxes) ===== -->
   <section class="services">
     <div class="container">
       <h2>Our Services</h2>
       <p>We provide educational programs, personalized consultations, and eco-friendly tips to help you make better environmental choices.</p>
 
       <div class="service-grid">
-        <!-- كل مربع يمثل صفحة فرعية -->
+        <!-- Each box links to a subpage -->
         <div class="service-box">
           <img src="../Awareness Campaigns.JPEG" alt="Awareness Campaigns" />
           <h3>Awareness Campaigns</h3>
-          <!-- رابط يفتح صفحة الحملات -->
           <a href=" Awareness-Campaigns.html">Join now</a>
         </div>
 
         <div class="service-box">
           <img src="../Plant Consultations.JPEG" alt="Plant Consultations" />
           <h3>Plant Consultations</h3>
-          <!-- رابط يفتح صفحة الاستشارات النباتية -->
           <a href="Plant-Consultations.html">Get advice</a>
         </div>
 
         <div class="service-box">
-          <img src="../Recyclable Materials Guidance.JPEG" alt="Recyclable Materials guidance" />
+          <img src="../Recyclable Materials Guidance.jpg" alt="Recyclable Materials guidance" />
           <h3>Recyclable Materials guidance</h3>
-          <!-- رابط يفتح صفحة المواد القابلة لإعادة التدوير -->
           <a href="Recyclable-Materials-guidance.html">Learn more</a>
         </div>
 
         <div class="service-box">
           <img src="../Eco Tips-Blog.JPEG" alt="Eco Tips / Blog" />
           <h3>Eco Tips / Blog</h3>
-          <!-- رابط يفتح صفحة المدونة البيئية -->
           <a href="Eco Tips-Blog.html">Read blog</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ====== قسم التقييمات ====== -->
+  <!-- ===== REVIEWS SECTION ===== -->
   <section class="reviews">
-    <div class="container">
-      <h2>Our Reviews</h2>
-      <div class="review-container">
-        <div class="review-box">
-          <div class="stars">★★★★★</div>
-          <p>“I learned so much about recycling and sustainability here. Amazing team!”</p>
-          <div class="author">By Sara</div>
-        </div>
-        <div class="review-box">
-          <div class="stars">★★★★★</div>
-          <p>“Excellent consultation service! They really helped me care for my plants better.”</p>
-          <div class="author">By Laila</div>
-        </div>
-        <div class="review-box">
-          <div class="stars">★★★★★</div>
-          <p>“Their awareness campaigns are inspiring and well-organized. Highly recommend!”</p>
-          <div class="author">By Noor</div>
-        </div>
+    <h2>Our Reviews</h2>
+    <div class="review-container">
+      <div class="review-box">
+        <h3>Recycling Materials guidance</h3>
+        <div class="stars">★★★★★</div>
+        <p>“I learned so much about recycling from this service! Helped us set up a community recycling program.”</p>
+        <div class="author">By Sara</div>
+      </div>
+
+      <div class="review-box">
+        <h3>Plant Consultation</h3>
+        <div class="stars">★★★★★</div>
+        <p>“Excellent service! The team was very knowledgeable and helpful.”</p>
+        <div class="author">By Laila</div>
+      </div>
+
+      <div class="review-box">
+        <h3>Awareness Campaigns</h3>
+        <div class="stars">★★★★★</div>
+        <p>“Their campaigns really opened my eyes to environmental issues.”</p>
+        <div class="author">By Noor</div>
       </div>
     </div>
   </section>
 
-  <!-- ====== الفوتر الثابت ====== -->
+  <!-- ===== FOOTER SECTION (same for all pages) ===== -->
   <footer>
+    <!-- Footer Logo and Rights -->
     <div>
       <div class="logo">
         <img src="../Logo.png" alt="ECOHUP Footer Logo" />
       </div>
       <small>All rights reserved ©️ 2025 ECOHUP</small>
     </div>
+
+    <!-- Contact Info -->
     <div>
       <h4>Contact Us</h4>
       <p>Email: <a href="mailto:info@ecohub.com">info@ecohub.com</a></p>
       <p>Phone: 0100-200-300</p>
     </div>
+
+    <!-- About Section -->
     <div>
       <h4>About</h4>
       <p><a href="#">About Us</a></p>
       <p><a href="#">Services</a></p>
     </div>
+
+    <!-- Community Links -->
     <div>
       <h4>Community</h4>
       <p><a href="#">LinkedIn</a></p>

@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ECOHUP - Eco Tips / Blog</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
   <style>
+    /* ====== GENERAL PAGE SETTINGS ====== */
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -24,7 +21,7 @@
       box-sizing: border-box;
     }
 
-    /* ====== الهيدر ====== */
+    /* ====== HEADER SECTION ====== */
     header {
       background-color: #4a6735;
       color: white;
@@ -50,6 +47,7 @@
       border-radius: 6px;
     }
 
+    /* ====== NAVIGATION MENU ====== */
     nav {
       display: flex;
       gap: 20px;
@@ -66,7 +64,7 @@
       color: #8b6b4a;
     }
 
-    /* ====== القسم العلوي ====== */
+    /* ====== HERO SECTION ====== */
     .hero {
       background-color: #e4eed9;
       color: #4a6735;
@@ -94,7 +92,7 @@
       margin: 0 auto;
     }
 
-    /* ====== القسم الأول ====== */
+    /* ====== BLOG SECTION ====== */
     .blog-section {
       display: flex;
       align-items: center;
@@ -137,7 +135,7 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    /* ====== Why Recycle ====== */
+    /* ====== WHY RECYCLE SECTION ====== */
     .why-section {
       text-align: center;
       padding: 60px 20px;
@@ -184,7 +182,7 @@
       line-height: 1.4;
     }
 
-    /* ====== القسم الأخير ====== */
+    /* ====== REDUCE WASTE SECTION ====== */
     .reduce-section {
       background-color: #e6ecde;
       display: flex;
@@ -224,7 +222,7 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    /* ====== الفوتر ====== */
+    /* ====== FOOTER SECTION ====== */
     footer {
       background-color: #3e3e3e;
       color: #f5f2e7;
@@ -243,6 +241,7 @@
       margin-bottom: 15px;
     }
 
+    /* ====== FOOTER LOGO ====== */
     footer .logo img {
       height: 50px;
       width: auto;
@@ -258,6 +257,7 @@
       color: #ccc;
     }
 
+    /* ====== FOOTER LINKS ====== */
     footer a {
       color: #d4b996;
       text-decoration: none;
@@ -280,7 +280,7 @@
       color: #c6d3b3;
     }
 
-    /* متجاوب */
+    /* ====== RESPONSIVE DESIGN ====== */
     @media (max-width: 800px) {
       .blog-section, .reduce-section {
         flex-direction: column;
@@ -298,22 +298,22 @@
 
 <body>
 
-  <!-- ====== الهيدر ====== -->
+  <!-- ===== HEADER SECTION ===== -->
   <header>
     <div class="logo">
       <img src="../Logo.png" alt="ECOHUP Logo" />
     </div>
     <nav>
-      <a href="#">Home</a>
+      <a href="../Home.html">Home</a>
       <a href="#">About Us</a>
-      <a href="#">Customer Dashboard</a>
-      <a href="#">Services</a>
+      <a href="../Customer_Dashboard.html">Customer Dashboard</a>
+      <a href="../Services.html">Services</a>
       <a href="#">Service Provider</a>
       <a href="Free -Awareness-Consultation.html">Free / Awareness & Consultation</a>
     </nav>
   </header>
 
-  <!-- ====== القسم العلوي ====== -->
+  <!-- ===== HERO SECTION ===== -->
   <section class="hero">
     <div class="container">
       <h1>Eco Tips / Blog</h1>
@@ -322,7 +322,7 @@
     </div>
   </section>
 
-  <!-- ====== القسم الأول ====== -->
+  <!-- ===== BLOG SECTION ===== -->
   <section class="blog-section">
     <div class="blog-text">
       <h2>How to live sustainably?</h2>
@@ -334,7 +334,7 @@
     </div>
   </section>
 
-  <!-- ====== Why Recycle ====== -->
+  <!-- ===== WHY RECYCLE SECTION ===== -->
   <section class="why-section">
     <h2>Why Recycle?</h2>
     <div class="why-grid">
@@ -353,7 +353,7 @@
     </div>
   </section>
 
-  <!-- ====== القسم الأخير ====== -->
+  <!-- ===== REDUCE WASTE SECTION ===== -->
   <section class="reduce-section">
     <div class="reduce-text">
       <h2>Reducing Waste in Your Daily Life</h2>
@@ -364,24 +364,31 @@
     </div>
   </section>
 
-  <!-- ====== الفوتر ====== -->
+  <!-- ===== FOOTER SECTION ===== -->
   <footer>
+    <!-- Footer Logo and Rights -->
     <div>
       <div class="logo">
         <img src="../Logo.png" alt="ECOHUP Footer Logo" />
       </div>
       <small>All rights reserved ©️ 2025 ECOHUP</small>
     </div>
+
+    <!-- Contact Info -->
     <div>
       <h4>Contact Us</h4>
       <p>Email: <a href="mailto:info@ecohub.com">info@ecohub.com</a></p>
       <p>Phone: 0100-200-300</p>
     </div>
+
+    <!-- About Section -->
     <div>
       <h4>About</h4>
       <p><a href="#">About Us</a></p>
-      <p><a href="#">Services</a></p>
+      <p><a href="../Services.html">Services</a></p>
     </div>
+
+    <!-- Community Links -->
     <div>
       <h4>Community</h4>
       <p><a href="#">LinkedIn</a></p>
