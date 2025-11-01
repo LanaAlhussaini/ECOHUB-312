@@ -209,27 +209,45 @@ footer {
             min-width: 280px;
         }
 
-    
-        footer {
-            margin-top: 0 ;
-            padding-top: 0 ;
-        }
 
+        footer {
+            margin-top: 0;
+            padding-top: 0;
+          
+           
+        }
         .dashboard-Requests-box {
-            background-color: #e6ecde; /* same green tone as Services */
+            background-color: #e6ecde;
             color: #4a6735;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 40px;
-            padding: 100px 0 120px 0; /* bottom padding extends color to footer */
-            margin: 0; /* removes any gap */
+            padding: 100px 0; 
+            margin: 0; 
             width: 100%;
             box-sizing: border-box;
             position: relative;
-            z-index: 0;
+            z-index: 1;
         }
+
+.dashboard-buttons-box {
+    background-color: #e6ecde;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 60px 0 80px;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+            .dashboard-buttons-box .primary-btn {
+                width: 250px;
+                text-align: center;
+            }
 
         /* Request list container centered & same width as summary grid */
         .request-list {
