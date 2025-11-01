@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+
+    <style>
+        /* --- Basic Page Styles --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #ffffff;
+        }
+
+        main {
+          
+    width: 90%;
+    max-width: 1500px;       
+    margin: 1.5rem auto;   
+    padding: 1.5rem;      
+    border-radius: 8px;
+}
+        
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ddd;
+            margin: 2rem auto;
+            
+        }
+        h2 {
+    text-align: center; 
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+   font-family: "Noto Sans", sans-serif;
+}
+        
+        /* --- Navbar Styles (Flexbox) --- */
+      
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color:#4a6735;
+            padding: 1rem 5%;
+            border-bottom: 1px solid #dddddd00;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0 auto;
+        }
+
+        .nav-links li {
+            padding-left: 25px; /* Space BETWEEN links */
+            white-space: nowrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: clamp(1.5 rem, 1.5vw, 0.9rem);;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        
+
+        /* --- "beginning" Section --- */
+       #beginning {
+/* 1. Background image styles */
+background-image: url('images/people-planting-vector-illustration_862994-461134.jpg'); 
+background-size: contain;    
+background-position: center; 
+background-repeat: no-repeat; 
+   
+    
+    /* 2. Set the size of the section */
+    height: 400px;
+    width: 100%;  
+    margin-top: -1.5rem; 
+
+    display: flex;         
+    align-items: center; 
+    justify-content: center;
+    
+    /* 3. Text styles */
+    color: rgb(183, 248, 209); 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    font-size: 3rem; 
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+    padding-bottom: 30px; 
+    box-sizing: border-box; 
+}
+
+#beginning h1 {
+    margin: 0; 
+}
+
+        /* --- "Our Story" Section --- */
+        #our-story {
+    
+    text-align: center; 
+    padding: 3rem 0; 
+    max-width: 800px; 
+    margin: 0 auto; 
+}
+
+#our-story p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+        /* --- "Our Team" Section  --- */
+        #our-team {
+    padding-top: 1.5rem; 
+}
+
+/* This is the container for the scrolling box */
+.team-scroll-container {
+    display: flex;        
+    overflow-x: auto;      
+    background-color: #f9f9f900;
+    padding:0.3cm;
+    border: 1px solid #dddddd00;
+    border-radius: 8px;
+}
+
+.team-member {
+     flex: 1 0 200px; 
+    text-align: center;
+    margin-right: 20px; 
+}
+.team-member p{
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 0.5rem;
+}
+
+.team-member img {
+    width: 450px;
+    height: 450px;
+    border-radius: 30%; 
+    object-fit: cover;  
+}
+
+.team-member a {
+    display: block;
+    margin-top: 2rem;
+    font-weight: bold;
+    font-size: 3.5rem;
+    font-family: "Noto Sans", sans-serif;
+    color: #333;
+    text-decoration: none;
+}
+
+.team-member a:hover {
+    text-decoration: underline;
+    color: #174c0b;
+}
+
+        /* --- "Join Form" Styles  --- */
+        #join-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border: 1px solid #057c3b;
+            border-radius: 8px;
+            background-color: #e5f5e3a3;
+        }
+
+        #join-form label {
+            display: block;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        #join-form input[type="text"],
+        #join-form input[type="date"],
+        #join-form input[type="email"],
+        #join-form input[type="file"], 
+        #join-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; 
+        }
+
+        #join-form button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 1.5rem;
+            background-color: #026720;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #join-form button:hover {
+            background-color: #0056b3;
+        }
+        /*-- area of expertise--*/
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select {
+        width: 100%;
+        padding: 10px;
+        background-color: #ffffff;
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box;}
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus,    
+
+        select:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0,123,255,0.5);
+         outline: none;
+      }
+
+      .file-upload-area {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    background-color: #f9f9f9; /* Light gray background */
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.file-upload-area:hover {
+    background-color: #f0f0f0;
+    border-color: #aaa;
+}
+
+.file-upload-area .upload-icon {
+    font-size: 2.5rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.file-upload-area .upload-text {
+    font-size: 1rem;
+    color: #037dff; 
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+        /* --- Footer Styles --- */
+       footer {
+    /* This uses your green theme */
+    background-color: #355E2B; 
+    color: #f4f4f4; 
+    padding: 40px 20px;
+    margin-top: 50px; 
+    /* This makes it full-width */
+    width: 100%;
+    box-sizing: border-box; /* Important for 100% width */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+    max-width: 1200px;
+    margin: 0 auto; 
+    padding-bottom: 30px;
+}
+
+.footer-column {
+    flex-basis: 22%;
+    min-width: 200px; 
+    margin: 10px;
+}
+
+.footer-logo {
+    width: 100px;
+    height: auto;
+}
+
+.footer-column h3 {
+    color: #ffffff;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.footer-column p {
+    color: #e0e0e0;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.footer-column ul {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+}
+
+.footer-column ul li a:hover {
+    color: #ffffff; 
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid #5a8e4a; 
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #c0c0c0;
+    font-size: 0.9em;
+    text-align: left; /* Aligns with your wireframe */
+}
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <img class="logo" src="/Logo.png" alt="Logo" width="60">
+            <ul class="nav-links">
+                <li><a href="/Home.html">Home</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                 <li><a href="/Customer_Dashboard.html">Customer Dashboard</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="Service Dashboard/Dashboard.html">Service Provider</a></li>
+                <li><a href="Free -Awareness-Consultation/Free -Awareness-Consultation.HTML">Free / Awareness & Consultation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+
+        <section id="beginning">
+            <h1>About Us</h1>
+        </section>
+
+        <section id="our-story">
+            <h2>Our Story</h2>
+            <p>Eco Hub started not in a boardroom, but in a classroom. We were a group of students united by a single school project and a shared, ambitious goal: to make a tangible contribution to the health of our planet. What began as an academic exercise quickly blossomed into a full-fledged mission. We knew our idea could be more than just an assignment—it could be a real hub for change, dedicated to building a sustainable future for everyone.</p>
+        </section>
+            <hr>
+
+        <section id="our-team">
+    <h2>Our Team</h2>
+    
+    <div class="team-scroll-container">
+        
+        <div class="team-member">
+            <img src="images/lana.png" alt="Photo of [lana]">
+            <a href="Our Staff/Lana_profile.html">Lana</a>
+            <p>Head of Human Resources</p>
+        </div>
+
+        <div class="team-member">
+            <img src="images/shaden.png" alt="Photo of [Shaden]">
+            <a href="Our Staff/Shaden_profile.html">Shaden</a>
+            <p>Chief Executive Officer</p>
+        </div>
+        
+        <div class="team-member">
+            <img src="images/layan.png" alt="Photo of [layan]">
+            <a href="Our Staff/Layan_profile.html">Layan</a>
+            <p>Head of Operations</p>
+        </div>
+        
+        <div class="team-member">
+            <img src="images/leen.png" alt="Photo of [Leena]">
+            <a href="Our Staff/Leena_profile.html">Leena</a>
+            <p>Head of Consulting</p>
+        </div>
+
+    </div>
+</section>
+
+        <hr>
+
+         <h2>Join Our Team!</h2>
+        <section id="join-form">
+           
+            
+            <form action="/submit-join-form" method="POST" enctype="multipart/form-data">
+                
+                 <div>
+                <label for="join-name">Name:</label>
+                <input type="text" id="join-name" name="member_name" required>
+                </div>
+
+                 <div>
+                <label for="join-dob">Date of Birth:</label>
+                <input type="date" id="join-dob" name="member_dob">
+                </div>
+
+                 <div>
+                <label for="join-email">Email:</label>
+                <input type="email" id="join-email" name="member_email" required>
+                </div>
+
+                <div>
+             <label for="expertise">Area of expertise:</label>
+             <select id="expertise" name="expertise" required>
+             <option value="" disabled selected>-- Select an Area --</option>
+             <option value="gardener">Gardener </option>
+             <option value="P-con">Plant Consultant </option>
+             <option value="Sales"> Sales</option>
+             <option value="development">Software Development</option>
+             <option value="design">Graphic Design</option>
+             <option value="marketing">Marketing</option>
+             <option value="writing">Content Writing</option>
+             <option value="support">Customer Support</option>
+             <option value="other">Other</option>
+             </select>
+             </div> 
+
+                <div>
+                <label for="join-skills">Skills:</label>
+                <textarea id="join-skills" name="member_skills" rows="3"></textarea>
+                </div>
+
+                 <div>
+                <label for="join-education">Education:</label>
+                <textarea id="join-education" name="member_education" rows="3"></textarea>
+                </div>
+
+                 <div>
+                <label for="join-message">General Message:</label>
+                <textarea id="join-message" name="member_message" rows="5"></textarea>
+                </div>
+
+                
+<div class="form-group-styled">
+    <label>Upload your photo:</label>
+   
+    <label for="join-photo" class="file-upload-area">
+       
+        <input type="file" id="join-photo" name="member_photo" accept="image/*" style="display: none;">
+        
+        <div class="upload-icon">🖹</div>
+        
+        <span class="upload-text">upload from file</span>
+    </label>
+</div>
+
+                <button type="submit">Submit Application</button>
+            </form>
+        </section>
+
+    </main>
+
+   
+<footer>
+    <div class="footer-container">
+
+        <div class="footer-column logo-column">
+            <img src="/Logo.png" alt="Eco Hub Logo" class="footer-logo">
+        </div>
+
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p>Call us: 000-000-0000</p>
+            <p>Email us: info@example.com</p>
+        </div>
+
+        <div class="footer-column">
+            <h3>About</h3>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Services</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Community</h3>
+            <ul>
+                <li><a href="#">Linked in</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>All rights reserved 2025. © ECOHUB</p>
+    </div>
+</footer>
+
+</body>
+</html>

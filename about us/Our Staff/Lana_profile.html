@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Profile</title>
+    
+    <style>
+        /* --- General Page Styles --- */
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #ffffff;
+}
+         main {
+          
+         width: 90%;
+         max-width: 1500px;       
+         margin: 1.5rem auto;   
+         padding: 1.5rem;      
+         border-radius: 8px;
+         box-sizing: border-box;
+         }
+
+        h1 {
+            color: #000000;
+            text-align: center;
+        }
+        
+         /* --- Navbar Styles (Flexbox) --- */
+      
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color:#4a6735;
+            padding: 1rem 5%;
+            border-bottom: 1px solid #dddddd00;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0 auto;
+        }
+
+        .nav-links li {
+            padding-left: 25px; /* Space BETWEEN links */
+            white-space: nowrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: clamp(1.5 rem, 1.5vw, 0.9rem);;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        /* --- Breadcrumbs --- */
+        .breadcrumbs {
+            padding: 10px 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .breadcrumbs a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .breadcrumbs span {
+            color: #777;
+        }
+
+
+        /* --- Profile Table Styles --- */
+        .profile-table {
+            width: 100%;
+            max-width: 700px;
+            border-collapse: collapse;
+            margin-top: 20px auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .page-content-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This centers the h1 and table */
+    padding: 20px 0; /* Adds some space */
+}
+
+        /* --- General Cell Styles --- */
+        .profile-table td {
+            border: 1px solid #03230b;
+            padding: 12px;
+            vertical-align: top; 
+        }
+
+        /* --- Header Cell (Name) --- */
+        .header-cell {
+            background-color: #2c5e1a; 
+            color: white;
+            text-align: center;
+        }
+
+        .header-cell h2 {
+            margin: 0;
+        }
+        /*-- flower images in header --*/
+
+        .header-cell h2:before,
+        .header-cell h2:after {
+
+            content: ''; 
+            display: inline-block;
+            
+            /* Set the size of your flower icon */
+            width: 30px; 
+            height: 30px; 
+            background-image: url('/about us/images/tl.webp');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            vertical-align: middle;
+        }
+        .header-cell h2:before {
+            margin-right: 200px; 
+        }
+
+        .header-cell h2:after {
+            margin-left:200px; 
+        }
+
+        /* --- Photo Cell (Left) --- */
+.photo-cell {
+    width: 170px;
+    text-align: center;
+    vertical-align: middle;
+    background-color:#83b582;
+}
+
+        .photo-cell img {
+            border-radius: 10%; 
+            border: 3px solid #2c5e1a;
+            width: 100%; 
+            height: 225px; 
+            object-fit: cover; 
+        }
+        .label-cell {
+            background-color: #83b582; 
+            width: 180px;
+            color: rgb(255, 255, 255);
+        }
+
+        /* --- List Styles (for Skills & Education) --- */
+        .profile-table ul {
+            margin-top: 0;
+            padding-left: 20px;
+        }
+
+        /* --- Footer Styles --- */
+        footer {
+    /* This uses your green theme */
+    background-color: #355E2B; 
+    color: #f4f4f4; 
+    padding: 40px 20px;
+    margin-top: 50px; 
+    /* This makes it full-width */
+    width: 100%;
+    box-sizing: border-box; /* Important for 100% width */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+    max-width: 1200px;
+    margin: 0 auto; 
+    padding-bottom: 30px;
+}
+
+.footer-column {
+    flex-basis: 22%;
+    min-width: 200px; 
+    margin: 10px;
+}
+
+.footer-logo {
+    width: 100px;
+    height: auto;
+}
+
+.footer-column h3 {
+    color: #ffffff;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.footer-column p {
+    color: #e0e0e0;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.footer-column ul {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+}
+
+.footer-column ul li a:hover {
+    color: #ffffff; 
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid #5a8e4a; 
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #c0c0c0;
+    font-size: 0.9em;
+    text-align: left; /* Aligns with your wireframe */
+}
+        
+    </style>
+</head>
+<body>
+
+    
+    <header>
+        <nav class="navbar">
+            <img class="logo" src="/Logo.png" alt="Logo" width="60">
+            <ul class="nav-links">
+                <li><a href="/Home.html">Home</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                 <li><a href="/Customer_Dashboard.html">Customer Dashboard</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="/Service Dashboard/Dashboard.html">Service Provider</a></li>
+                <li><a href="/Free -Awareness-Consultation/Free -Awareness-Consultation.HTML -Awareness-Consultation.html">Free / Awareness & Consultation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <h1>OUR TEAM</h1>
+
+    <div class="page-content-wrapper">
+    <table class="profile-table">
+        
+        <tr>
+            <td colspan="2" class="header-cell">
+                <h2>LANA</h2>
+            </td>
+        </tr>
+
+        <tr>
+            <td rowspan="4" class="photo-cell">
+                <img src="/about us/images/lana.png" alt="Profile Photo">
+            </td>
+            
+            <td class="label-cell"><strong>Date of Birth:</strong></td>
+        </tr>
+        <tr>
+            <td>03 / 05 / 2005</td>
+        </tr>
+        <tr>
+            <td class="label-cell"><strong>Email:</strong></td>
+        </tr>
+        <tr>
+            <td>Lana@ecohhub.com</td>
+        </tr>
+        
+        <tr>
+            <td class="label-cell"><strong>Area of Expertise:</strong></td>
+            <td>Head of HR</td>
+        </tr>
+
+        <tr>
+            <td class="label-cell"><strong>Skills:</strong></td>
+            <td>
+                <ul>
+                    <li>Leadership & Management</li>
+                    <li>Software Proficiency
+                        <ul>
+                            <li>Workday (HRIS)</li>
+                            <li>Microsoft Office Suite</li>
+                        </ul>
+                    </li>
+                    <li>Talent Acquisition</li>
+                    <li>Employee Relations</li>
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="label-cell"><strong>Education:</strong></td>
+            <td>
+                <ul>
+                    <li>M.S. in Human Resource Management</li>
+                    <li>B.A. in Psychology</li>
+                </ul>
+            </td>
+        </tr>
+        
+    </table>
+</div>
+<footer>
+    <div class="footer-container">
+
+        <div class="footer-column logo-column">
+            <img src="/Logo.png" alt="Eco Hub Logo" class="footer-logo">
+        </div>
+
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p>Call us: 000-000-0000</p>
+            <p>Email us: info@example.com</p>
+        </div>
+
+        <div class="footer-column">
+            <h3>About</h3>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Services</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Community</h3>
+            <ul>
+                <li><a href="#">Linked in</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>All rights reserved 2025. © ECOHUB</p>
+    </div>
+</footer>
+</body>
+</html>

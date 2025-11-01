@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Provider Dashboard</title>
+
+    <style>
+        /* --- 1. General Page Styles --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #ffffff;
+        }
+
+        /* --- 2. Navbar Styles  --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #4a6735;
+            padding: 1rem 5%;
+            border-bottom: 1px solid #dddddd00;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .logo {
+            width: 60px; 
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            padding-left: 25px;
+            white-space: nowrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: clamp(0.9rem, 1.2vw, 1rem); 
+        }
+
+        .nav-links a:hover {
+            color: #d4e8c6;
+        }
+
+        /* --- 3. Hero Section --- */
+        .hero-dashboard {
+    background-image: url('images2/istockphoto-1483284915-612x612.jpg'); 
+    background-size: contain;    
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 400px;
+    width: 100%;   
+    display: flex;         
+    align-items: center; 
+    justify-content: center;
+    color: white; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    font-size: 3rem; 
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+    padding-bottom: 30px; 
+    box-sizing: border-box; 
+}
+
+.hero-dashboard h2 {
+    margin: 0;
+    color: white; 
+    font-size: 3rem;
+}
+
+        /* --- 4. Main Content Wrapper --- */
+        .content-wrapper {
+            width: 90%;
+            max-width: 900px;
+            margin: 2rem auto; /* Centers the content */
+            padding: 1.5rem;
+        }
+
+        /* --- 5. Services List (From Wireframe) --- */
+        .services-list-container h3 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .services-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .services-list li {
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            color: #444;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee; 
+        }
+
+        /* Styles for icons */
+        .services-list li .icon {
+            font-size: 1.2rem;
+            width: 30px; 
+            text-align: center; 
+        }
+        
+        /* NEW: Styles for the centered text */
+        .services-list li .service-text {
+            flex-grow: 1; 
+            text-align: center; 
+            font-weight: 500;
+        }
+
+
+        /* --- 6. Action Buttons  --- */
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            max-width: 450px;
+            margin: 15px auto;
+            padding: 18px 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #5a8e4a;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e0e0e0;
+            border-color: #bbb;
+        }
+
+        /* --- 7. Footer Styles --- */
+        footer {
+            background-color: #355E2B;
+            color: #f4f4f4;
+            padding: 40px 20px;
+            margin-top: 50px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 30px;
+        }
+
+        .footer-column {
+            flex-basis: 22%;
+            min-width: 200px;
+            margin: 10px;
+        }
+        
+        .footer-logo {
+            width: 100px;
+            height: auto;
+        }
+
+        .footer-column h3 {
+            color: #ffffff;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .footer-column p {
+            color: #e0e0e0;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid #5a8e4a;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            color: #c0c0c0;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 1. Navbar (Consistent with your site) -->
+    <header>
+       <nav class="navbar">
+            <img class="logo" src="/Logo.png" alt="Logo" width="60">
+            <ul class="nav-links">
+                <li><a href="/Home.html">Home</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                 <li><a href="/Customer_Dashboard.html">Customer Dashboard</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="/Service Dashboard/Dashboard.html">Service Provider</a></li>
+                <li><a href="/Free -Awareness-Consultation/Free -Awareness-Consultation.HTML -Awareness-Consultation.html">Free / Awareness & Consultation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 2. Hero Section (From Wireframe) -->
+    <section class="hero-dashboard">
+        <h2>Service Provider Dashboard</h2>
+    </section>
+
+    <main class="content-wrapper">
+
+        <!-- 3a. Services List -->
+        <section class="services-list-container">
+            <h3>Our Services</h3>
+            
+            <ul class="services-list">
+                <li>
+                    <span class="icon">🌿</span>
+                    <span class="service-text">Paper Recycling</span>
+                    <span class="icon">🌿</span>
+                </li>
+                <li>
+                    <span class="icon">♻️</span>
+                    <span class="service-text">Glass Recycling</span>
+                    <span class="icon">♻️</span>
+                </li>
+                <li>
+                    <span class="icon">🌱</span>
+                    <span class="service-text">Plastic Recycling</span>
+                    <span class="icon">🌱</span>
+                </li>
+                <li>
+                    <span class="icon">🌸</span>
+                    <span class="service-text">Eco-Crafts Workshop</span>
+                    <span class="icon">🌸</span>
+                </li>
+                <li>
+                    <span class="icon">🌳</span>
+                    <span class="service-text">Green Living Workshop</span>
+                    <span class="icon">🌳</span>
+                </li>
+                <li>
+                    <span class="icon">🪴</span>
+                    <span class="service-text">Garden Care Basics Workshop</span>
+                    <span class="icon">🪴</span>
+                </li>
+                <li>
+                    <span class="icon">🌲</span>
+                    <span class="service-text">Tree Trimming</span>
+                    <span class="icon">🌲</span>
+                </li>
+                <li>
+                    <span class="icon">🌷</span>
+                    <span class="service-text">Garden Plant Care</span>
+                    <span class="icon">🌷</span>
+                </li>
+                <li>
+                    <span class="icon">🌾</span>
+                    <span class="service-text">Garden Landscaping</span>
+                    <span class="icon">🌾</span>
+                </li>
+            </ul>
+
+            <!-- 3b. Action Buttons -->
+            <div class="button-container">
+                <a href="Service Dashboard/new_service.html" class="btn">Add a New Service</a>
+                <a href="manage_staff.html" class="btn">Manage Staff Members</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 4. Footer  -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column logo-column">
+                
+                <img src="/Logo.png" alt="Eco Hub Logo" class="footer-logo">
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p>Call us: 000-000-0000</p>
+                <p>Email us: info@example.com</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>About</h3>
+                <ul>
+                    <li><a href="about_us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="#">Linked in</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>All rights reserved 2025. © ECOHUB</p>
+        </div>
+    </footer>
+
+</body>
+</html>
