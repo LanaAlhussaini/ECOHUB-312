@@ -5,221 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Service</title>
+            <link rel="stylesheet" href="../style.css">
 
-    <style>
-        /* --- 1. General Page Styles --- */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
 
-        /* --- 2. Navbar Styles (Consistent) --- */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #4a6735;
-            padding: 1rem 5%;
-            border-bottom: 1px solid #dddddd00;
-        }
-        .logo { width: 60px; }
-        .nav-links {
-            display: flex;
-            list-style: none;
-            align-items: center;
-            justify-content: space-between;
-            margin: 0;
-            padding: 0;
-        }
-        .nav-links li { padding-left: 25px; white-space: nowrap; }
-        .nav-links a {
-            text-decoration: none;
-            color: #ffffff;
-            font-size: clamp(0.9rem, 1.2vw, 1rem);
-        }
-        .nav-links a:hover { color: #d4e8c6; }
-
-        /* --- 3. Main Content Wrapper --- */
-        .content-wrapper {
-            width: 90%;
-            max-width: 700px; 
-            margin: 2rem auto;
-            padding: 1.5rem;
-        }
-
-        /* --- 4. Form Container  --- */
-        .form-container {
-            background-color: #c0f0cc;
-            border: 1px solid #054716;
-            border-radius: 8px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        /* Page Title */
-        .form-title {
-            text-align: center;
-            font-family:  sans-serif; 
-            font-size: 2.8rem;
-            font-weight: 300;
-            color: #030202;
-            margin-bottom: 2.5rem;
-        }
-        
-        /* Form Field Groups */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #080404;
-        }
-        
-        .form-group input[type="text"],
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            font-size: 1rem;
-            border: 1px solid #061e08;
-            border-radius: 5px;
-            box-sizing: border-box; 
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        /* --- 5. File Upload Area  --- */
-        .file-upload-area {
-            border: 2px dashed #ccc;
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            background-color: #f9f9f9;
-            cursor: pointer;
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        .file-upload-area:hover {
-            background-color: #f0f0f0;
-            border-color: #aaa;
-        }
-        
-        .file-upload-area input[type="file"] {
-            display: none;
-        }
-
-       
-        .file-upload-area .upload-icon {
-            font-size: 2.5rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-        
-        .file-upload-area .upload-text {
-            font-size: 1rem;
-            color: #007bff;
-            font-weight: bold;
-            text-decoration: underline;
-        }
-
-        /* --- 6. Submit Button (From Wireframe) --- */
-        .submit-btn {
-            display: block;
-            width: 100%;
-            max-width: 250px;
-            margin: 2rem auto 0;
-            padding: 15px 20px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #ffffff;
-            background-color: #0a5821; 
-            border: 1px solid #bbb;
-            border-radius: 8px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        .submit-btn:hover {
-            background-color: #c0c0c0;
-            border-color: #999;
-        }
-
-        /* --- 7. Footer Styles  --- */
-        footer {
-            background-color: #355E2B;
-            color: #f4f4f4;
-            padding: 40px 20px;
-            margin-top: 50px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-bottom: 30px;
-        }
-        .footer-column {
-            flex-basis: 22%;
-            min-width: 200px;
-            margin: 10px;
-        }
-        .footer-logo { width: 100px; height: auto; }
-        .footer-column h3 {
-            color: #ffffff;
-            font-size: 1.3em;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-        .footer-column p { color: #e0e0e0; margin-bottom: 10px; line-height: 1.6; }
-        .footer-column ul { list-style: none; padding: 0; margin: 0; }
-        .footer-column ul li a {
-            color: #e0e0e0;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 8px;
-            transition: color 0.2s;
-        }
-        .footer-column ul li a:hover { color: #ffffff; text-decoration: underline; }
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 20px;
-            border-top: 1px solid #5a8e4a;
-        }
-        .footer-bottom p {
-            margin: 0;
-            color: #c0c0c0;
-            font-size: 0.9em;
-            text-align: left;
-        }
-
-    </style>
 </head>
 <body>
-
-    <!-- 1. Navbar  -->
-    <header>
-       <nav class="navbar">
-            <img class="logo" src="/Logo.png" alt="Logo" width="60">
-            <ul class="nav-links">
-                <li><a href="/Home.html">Home</a></li>
-                <li><a href="about_us.html">About Us</a></li>
-                 <li><a href="/Customer_Dashboard.html">Customer Dashboard</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="/Service Dashboard/Dashboard.html">Service Provider</a></li>
-                <li><a href="/Free -Awareness-Consultation/Free -Awareness-Consultation.HTML -Awareness-Consultation.html">Free / Awareness & Consultation</a></li>
-            </ul>
-        </nav>
-    </header>
+   <header>
+    <div class="logo">
+      <img src="../Logo.png" alt="ECOHUP Logo" />
+    </div>
+    <nav>
+      <a href="../Home.html">Home</a>
+      <a href="../about us/about_us.html">About Us</a>
+      <a href="../Customer_Dashboard.html">Customer Dashboard</a>
+      <a href="../Services.html">Services</a>
+      <a href="Dashboard.html">Service Provider</a>
+      <a href="../Free -Awareness-Consultation/Free -Awareness-Consultation.HTML">Free / Awareness & Consultation</a>
+    </nav>
+  </header>
 
     <!-- 2. Main Content -->
     <main class="content-wrapper">
@@ -271,35 +74,28 @@
     </main>
 
     <!-- 3. Footer  -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-column logo-column">
-                <img src="/Logo.png" alt="Eco Hub Logo" class="footer-logo">
-            </div>
-            <div class="footer-column">
-                <h3>Contact Us</h3>
-                <p>Call us: 000-000-0000</p>
-                <p>Email us: info@example.com</p>
-            </div>
-            <div class="footer-column">
-                <h3>About</h3>
-                <ul>
-                    <li><a href="about_us.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Community</h3>
-                <ul>
-                    <li><a href="#">Linked in</a></li>
-                    <li><a href="#">Instagram</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>All rights reserved 2025. ©ECOHUB</p>
-        </div>
-    </footer>
-
+<footer>
+    <div>
+      <div class="logo">
+        <img src="../Logo.png" alt="ECOHUP Footer Logo" />
+      </div>
+      <small>All rights reserved ©️ 2025 ECOHUP</small>
+    </div>
+    <div>
+      <h4>Contact Us</h4>
+      <p>Email: <a href="mailto:info@ecohub.com">info@ecohub.com</a></p>
+      <p>Phone: 0100-200-300</p>
+    </div>
+    <div>
+      <h4>About</h4>
+      <p><a href="../about us/about_us.html">About Us</a></p>
+      <p><a href="../Services.html">Services</a></p>
+    </div>
+    <div>
+      <h4>Community</h4>
+      <p><a href="#">LinkedIn</a></p>
+      <p><a href="#">Instagram</a></p>
+    </div>
+  </footer>
 </body>
 </html>
