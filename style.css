@@ -2366,11 +2366,11 @@ h2 {
 
 /* About Us Hero Section */
 #beginning {
-    background-image: url('images/people-planting-vector-illustration_862994-461134.jpg'); 
-    background-size: contain;    
+    background-image: url('about us/images/people-planting-vector-illustration_862994-461134.jpg'); 
+    background-size: cover;    
     background-position: center; 
     background-repeat: no-repeat; 
-    height: 400px;
+    height: 550px;
     width: 100%;   
     margin-top: -1.5rem; 
 
@@ -2391,11 +2391,11 @@ h2 {
 
 /* Dashboard Hero Section */
 .hero-dashboard {
-    background-image: url('images2/istockphoto-1483284915-612x612.jpg'); 
-    background-size: contain;    
+    background-image: url("Service Dashboard/images2/istockphoto-1483284915-612x612.jpg"); 
+    background-size: cover;    
     background-position: center; 
     background-repeat: no-repeat; 
-    height: 400px;
+    height: 550px;
     width: 100%;   
     display: flex;         
     align-items: center; 
@@ -2421,10 +2421,12 @@ h2 {
 /* ==================================== */
 
 #our-story {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    background-color: #e6f9e6;
     text-align: center; 
-    padding: 3rem 0; 
-    max-width: 800px; 
-    margin: 0 auto; 
 }
 #our-story p {
     font-size: 1.1rem;
