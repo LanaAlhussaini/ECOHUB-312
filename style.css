@@ -2618,6 +2618,13 @@ textarea {
 /* 7. DASHBOARD SERVICE LIST STYLES     */
 /* ==================================== */
 
+.services-list-container{
+    background-color: #f8fff7;
+    background-size: cover;
+    background-position: center;
+    padding: 30px;
+    border-radius: 10px;
+}
 .services-list-container h3 {
     text-align: center;
     font-size: 2.2rem;
