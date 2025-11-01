@@ -1,595 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ECOHUP - Home</title>
-<style>
- /* إعدادات الخطوط والخلفية العامة */
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f5f2e7;
-      color: #333;
-    }
-
-    /* ضبط عرض الصفحة الكلي */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      box-sizing: border-box;
-    }
-
-    /* ====== الهيدر الثابت ====== */
-    header {
-      background-color: #4a6735;
-      color: white;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      padding: 20px 60px;
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 100;
-      box-sizing: border-box;
-    }
-
-    header .logo {
-      margin-right: 40px;
-    }
-
-    header .logo img {
-      height: 60px;
-      width: auto;
-      border-radius: 6px;
-    }
-
-    /* شريط التنقل */
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #f5f2e7;
-      font-size: 15px;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      color: #8b6b4a;
-    }
-
-
-/* ====== main SECTION ====== */
-.hero {
-  position: relative;
-  height: 100vh;
-  margin-top: 50px; /* يترك مساحة للهيدر الثابت */
-  background: url('HomeImages/home.jpeg') center/cover no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: rgb(103, 97, 76);
-  overflow: hidden;
-}/*
-
-.hero::after {
-  /* طبقة شفافة لزيادة وضوح النص 
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: 0;
-}*/
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 700px;
-  font-style: italic; /* كل النص مائل */
-}
-
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-  letter-spacing: 1.5px;
-}
-
-.hero .welcome-text {
-  font-size: 1.2rem;
-  margin-bottom: 25px;
-  color: #6a7162;
-}
-
-.hero-btn {
-  display: inline-block;
-  background-color: #f9a825;
-  color: white;
-  text-decoration: none;
-  padding: 10px 28px;
-  border-radius: 30px;
-  font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.hero-btn:hover {
-  background-color: #f57f17;
-  transform: scale(1.05);
-}
-
-/* ===== Vision Section ===== */
-.vision {
-  background-color: white;
-  padding: 80px 0;
-}
-
-.vision-container {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  flex-wrap: wrap;
- box-shadow: 0 6px 15px rgba(82, 124, 13, 0.15);
-
-}
-
-.vision-text {
-  flex: 1;
-  /* الإطار حول النص */
-  padding: 30px;
-  border-radius: 12px;
-  color: #333;
-}
-
-.vision-text h2 {
-  font-size: 1.8rem;
-  color: #4a6735;
-  margin-bottom: 25px;
-  font-style: italic;
-  text-align: center;
-
-}
-
-.vision-text p {
-  padding: 20px 0px;
-  font-style: italic;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #555;
-  text-align: center;
-}
-
-.vision-image {
-  flex: 1;
-  text-align: right;
-}
-
-.vision-image img {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 12px;
-  object-fit: cover;
-}
-
-/* ===== Responsive Design ===== */
-@media (max-width: 900px) {
-  .vision-container {
-    flex-direction: column-reverse;
-    text-align: center;
-  }
-
-  .vision-text {
-    border: 2px solid #4a6735;
-    padding: 25px;
-  }
-
-  .vision-image img {
-    max-width: 100%;
-  }
-}
-
-/* ====== Services Section ====== */
-.services {
-  position: relative;
-  text-align: center;
-  padding: 80px 0;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  background-color: white;
-}
-
-.services h2 {
-  font-size: 1.8rem;
-  color: #4a6735;
-  margin-bottom: 60px;
-}
-
-
-/* الشبكة */
-.service-grid {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
-  padding-bottom: 10px;
-}
-
-.service-box {
-  position: relative;
-  background-color: rgb(225, 245, 236);
-  border-radius: 10px;
-  text-align: center;
-  width: 280px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-  overflow: hidden;
-  height: 350px;
-  z-index: 0; /* هذا السطر يضمن أن كل بوكس ما يغطي الثاني */
-}
-
-/* لما نمر الماوس عليه */
-.service-box:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-  z-index: 2; /* البوكس النشط يطلع للأمام */
-}
-
-/* الصورة داخل الصندوق */
-.service-box img {
-  width: 100%;
-  height: 75%;
-  object-fit: cover;
-  display: block;
-  pointer-events: none; /* يمنع الصورة من التفاعل مع hover خارج الصندوق */
-}
-
-/* النصوص */
-.service-box h3 {
-  font-size: 1.1rem;
-  color: #4a6735;
-  margin: 8px 0 5px 0;
-}
-
-/* المربع الأخضر */
-.service-info {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(74, 103, 53, 0.95);
-  color: white;
-  padding: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  border-radius: 10px;
-  pointer-events: none; /* يمنع تغطية الصناديق المجاورة */
-}
-
-.service-box:hover .service-info {
-  opacity: 1;
-}
-
-/* الصندوق الأوسط نازل قليلاً */
-.center-box {
-  background-color: #c6d3b3;
-  margin-top: 25px;
-  margin-bottom: -8%; /* يخليه منخفض عن البقية */
-}
-
-
-/* ===== Green Stories Section ===== */
-.stories {
-  background-color: #f1f7ee;
-  text-align: center;
-  padding: 80px 0;
-}
-
-.stories h2 {
-  font-size: 2rem;
-  color: #4a6735;
-  margin-bottom: 10px;
-  font-style: italic;
-}
-
-.stories p {
-  color: #555;
-  font-size: 1rem;
-  max-width: 700px;
-  margin: 0 auto 50px auto;
-  line-height: 1.6;
-}
-
-/* الحاوية العامة */
-.stories-container {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-/* ===== Green Stories Section (Before/After Effect) ===== */
-.story-item {
-  position: relative;
-  width: 360px;
-  height: 240px;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.story-item:hover {
-  transform: scale(1.04);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* الصورتين داخل القصة */
-.story-item img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.7s ease;
-}
-
-/* الصورة الأولى (قبل) ظاهرة افتراضياً */
-.story-item .before-img {
-  opacity: 1;
-  z-index: 1;
-}
-
-/* الصورة الثانية (بعد) مخفية في البداية */
-.story-item .after-img {
-  opacity: 0;
-  z-index: 2;
-}
-
-/* عند تمرير الماوس: تخفي الصورة الأولى وتظهر الثانية */
-.story-item:hover .before-img {
-  opacity: 0;
-}
-
-.story-item:hover .after-img {
-  opacity: 1;
-}
-
-/* النص فوق الصور */
-.overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent 60%);
-  color: white;
-  padding: 25px;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  text-align: center;
-  z-index: 3;
-}
-
-.story-item:hover .overlay {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.overlay h3 {
-  font-size: 1.2rem;
-  color: #d8f3dc;
-  margin-bottom: 8px;
-}
-
-.overlay p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #f5f5f5;
-  max-width: 90%;
-}
-
-
-/* زر "Share Your Story" */
-.share-btn-container {
-  margin-top: 50px;
-}
-
-.share-btn {
-  background-color: #4a6735;
-  color: white;
-  padding: 12px 28px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.share-btn:hover {
-  background-color: #6da65a;
-  transform: scale(1.05);
-}
-
-/* استجابة الشاشات الصغيرة */
-@media (max-width: 900px) {
-  .story-item {
-    width: 100%;
-    max-width: 420px;
-  }
-}
-
-
-/* ====== قسم التقييمات ====== */
-.reviews {
-  padding: 60px 0;
-  background-color: #e6ecde;
-  align-items: left;
-  text-align: left;
-  color: #4a6735;
-}
-
-.reviews .container{
-  display: flex;
-  position: absolute;
-  position: 10px 700px 150px 10px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
-
-}
-.reviews h2 {
-  display: flex;
-  padding: 0%;
-  margin-bottom: 10px;
-  font-size: 1.8rem;
- 
-}
-
-.reviews p {
-  padding: 0%;
-  text-align: center;
-  margin-bottom: 10px;
-  display:flex;
-  color: #555;
-  font-size: 1rem;
-}
-
-.review-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: right;
-  margin-right: 20px;
-  align-items: center;
-  gap: 20px;
-}
-
-.review-box {
-  background-color: white;
-  padding: 3px;
-  width: 200px;
-  height: 200px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  text-align: center;
-}
-
-.stars {
-  color: #f9a825;
-  font-size: 1.3rem;
-  margin-bottom: 8px;
-}
-
-.review-box p {
-  color: #777;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.author {
-  font-weight: 600;
-  margin-top: 10px;
-  color: #4a6735;
-}
-
-.center2-box {
-  margin-top: -30px;
-  margin-bottom: 30px;
-}
-
-
-
- /* ====== الفوتر ====== */
-    footer {
-      background-color: #3e3e3e;
-      color: #f5f2e7;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      padding: 25px 40px;
-      flex-wrap: wrap;
-      width: 100%;
-      box-sizing: border-box;
-      gap: 50px;
-    }
-
-    footer div {
-      min-width: 180px;
-      margin-bottom: 15px;
-    }
-
-    footer .logo img {
-      height: 50px;
-      width: auto;
-      display: block;
-      margin-bottom: 10px;
-      border-radius: 6px;
-    }
-
-    footer small {
-      display: block;
-      margin-top: 10px;
-      font-size: 12px;
-      color: #ccc;
-    }
-
-    footer a {
-      color: #d4b996;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-      color: #c6d3b3;
-    }
-
-    h4 {
-      color: #8b6b4a;
-    }
-
-    footer p, footer p a {
-      color: #d4b996;
-    }
-
-    footer p a:hover {
-      color: #c6d3b3;
-    }
-
-    @media (max-width: 900px) {
-      .service-box, .review-box {
-        width: 45%;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .service-box, .review-box {
-        width: 90%;
-      }
-    }
-
-    body {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-</style>
-  </head>
+    <meta charset="UTF-8" />
+    <title>ECOHUP - Home</title>
+    <link rel="stylesheet" href="style.css">
+  
+</head>
   <body>
     <header>
     <div class="logo">
@@ -598,22 +13,22 @@
     <nav>
       <a href="Home.html">Home</a>
       <a href="#">About Us</a>
-      <a href="#">Customer Dashboard</a>
-      <a href="#">Services</a>
+      <a href="Customer_Dashboard.html">Customer Dashboard</a>
+      <a href="Services.html">Services</a>
       <a href="#">Service Provider</a>
-      <a href="Free -Awareness-Consultation.html">Free / Awareness & Consultation</a>
+      <a href="Free -Awareness-Consultation/Free -Awareness-Consultation.HTML">Free / Awareness & Consultation</a>
     </nav>
   </header>
-<main>
-<section class="hero">
-  <div class="hero-content">
+
+<section class="main">
+  <div class="main-content">
     <h1>Eco-Hub</h1>
     <p class="welcome-text">Welcome to a greener world</p>
-    <a href="services.html" class="hero-btn">Explore Our Services</a>
+    <a href="services.html" class="main-btn">Explore Our Services</a>
   </div>
 
 </section>
-
+<main>
 <!-- ====== Vision Section ====== -->
 <section class="vision">
   <div class="container vision-container">
@@ -632,32 +47,32 @@
 
 
 <!-- ====== Services Section ====== -->
-<section class="services" id="services">
-  <div class="container">
+<section class="services-Home" id="services-Home">
+  <div class="services-container-Home">
     <h2>Discover What We Offer</h2>
 
-    <div class="service-grid">
-      <a href="services.html" class="service-box">
-        <img src="images/workshop.jpg" alt="Green Living Workshop">
+    <div class="service-grid-Home">
+      <a href="ServicesCatagories/EnviromentalWorkshopes.html" class="service-box-Home">
+        <img src="HomeImages/Green Living Workshop[1].jpg" alt="Green Living Workshop">
         <h3>Green Living Workshop</h3>
-        <div class="service-info">
+        <div class="service-info-Home">
         <p>Learn to live sustainably with our hands-on workshops and training sessions.</p>
       </div>
       </a>
 
-      <a href="services.html" class="service-box center-box">
-        <img src="HomeImages/Plastic Recycling.jpg" alt="Plastic Recycling">
+      <a href="ServicesCatagories/RecyclingCollection.html" class="service-box-Home center-box">
+        <img src="Plastic Recycling.jpg" alt="Plastic Recycling">
         <h3>Plastic Recycling</h3>
-        <div class="service-info">
+        <div class="service-info-Home">
         <p>Join our community recycling program and help reduce plastic waste.</p>
         </div>
       </a>
 
-      <a href="services.html" class="service-box">
-        <img src="images/gardening.jpg" alt="Urban Gardening">
-        <h3>Urban Gardening</h3>
-        <div class="service-info">
-        <p>Transform your balcony into a green oasis with our urban garden kits.</p>
+      <a href="ServicesCatagories/GardenMaitenance.html" class="service-box-Home">
+        <img src="HomeImages/Garden Plant Care[1].jpg" alt="Garden plant care">
+        <h3>Garden plant care</h3>
+        <div class="service-info-Home">
+        <p>Our garden plant care service ensures your plants receive the right watering, pruning, and nutrition to maintain a lush, vibrant outdoor space.</p>
         </div>
       </a>
     </div>
@@ -666,17 +81,16 @@
 
 
     <!--Extra Section -->
-   <!-- ===== Extra Section: Green Stories ===== -->
 <section class="stories">
   <h2>From Waste to Wonder</h2>
-  <p>See how members of our community turn waste into beauty — and share their own green journeys.</p>
+  <p>See how members of our community turn waste into beauty and share their own green journeys.</p>
 
   <div class="stories-container">
   <!-- Story 1 -->
   <div class="story-item">
     <img src="HomeImages/Before- plastic bottles.png" alt="Before - plastic bottles" class="before-img">
     <img src="HomeImages/After - recycled lamps.png" alt="After - recycled lamps" class="after-img">
-    <div class="overlay">
+    <div class="overlay-story">
       <h3>From Bottles to Lamps</h3>
       <p>"I never imagined plastic waste could become something so beautiful." — <strong>Lina</strong></p>
     </div>
@@ -684,9 +98,9 @@
 
   <!-- Story 2 -->
   <div class="story-item">
-    <img src="images/story2-before.jpg" alt="Before - old tires" class="before-img">
-    <img src="images/story2-after.jpg" alt="After - colorful garden pots" class="after-img">
-    <div class="overlay">
+    <img src="HomeImages/before old tires.png" alt="Before - old tires" class="before-img">
+    <img src="HomeImages/After tires.png" alt="After - colorful garden pots" class="after-img">
+    <div class="overlay-story">
       <h3>From Tires to Garden Pots</h3>
       <p>"Recycling helped me bring more green into my neighborhood!" — <strong>Hassan</strong></p>
     </div>
@@ -694,9 +108,9 @@
 
   <!-- Story 3 -->
   <div class="story-item">
-    <img src="images/story3-before.jpg" alt="Before - metal cans" class="before-img">
-    <img src="images/story3-after.jpg" alt="After - metal art" class="after-img">
-    <div class="overlay">
+    <img src="HomeImages/Before cans.png" alt="Before - metal cans" class="before-img">
+    <img src="HomeImages/After cans.png" alt="After - metal art" class="after-img">
+    <div class="overlay-story">
       <h3>From Cans to Art</h3>
       <p>"Now my kids love crafting with old cans instead of throwing them away." — <strong>Sara</strong></p>
     </div>
@@ -705,48 +119,119 @@
 
 
   <div class="share-btn-container">
-    <a href="share-story.html" class="share-btn">Share Your Story 🌿</a>
+    <a href="#" class="share-btn">Share Your Story</a>
   </div>
 </section>
 
+<!-- Donation Section (Extra functionallty)-->
+<section class="donation">
+<div class="donation-section">
+  <h2>Support Our Green Mission</h2>
+  <p>Your contribution helps us grow more eco-friendly initiatives and community workshops.</p>
 
+  <label for="donate-toggle" class="donate-btn">Donate Now</label>
+  <input type="checkbox" id="donate-toggle" hidden>
 
-    <!-- Customer Reviews -->
-    <section class="reviews">
-    <div class="container">
-      <h2>Our Reviews</h2>
+  <div class="donation-form">
+    <form>
+      <div class="form-row-donation">
+        <div class="form-group-donation">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="First Name" required>
+        </div>
+        <div class="form-group-donation">
+          <label for="dob">DoB</label>
+          <input type="date" id="dob" required>
+        </div>
+      </div>
+
+      <div class="form-row-donation">
+        <div class="form-group-donation">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="name@example.com" required>
+        </div>
+        <div class="form-group-donation">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="05xxxxxxx" required>
+        </div>
+      </div>
+      <br>
+      <div class="form-row-donation gender-row-donation">
+        <label><strong>Gender: </strong></label>
+        <label><input type="radio" name="gender" value="female"> Female</label>
+        <label><input type="radio" name="gender" value="male"> Male</label>
+      </div>
+      <br>
+      <div class="form-group-donation">
+        <label for="category">Donation For</label>
+        <select id="category" required>
+          <option value="">Choose Donation Category...</option>
+          <option value="tree">Recycling Collection</option>
+          <option value="workshop">Environmental Workshop</option>
+          <option value="cleanup">Garden Maintenance</option>
+        </select>
+      </div>
+      <br>
+      <div class="form-row-donation">
+        <div class="form-group-donation">
+          <label for="amount">Amount</label>
+          <input type="number" id="amount" placeholder="Enter Amount" required>
+        </div>
+      </div>
+
+      <div class="form-actions-donation">
+        <button type="submit" class="donate-btn">Donate Now</button>
+        <br>
+        <label for="donate-toggle" class="cancel-btn">Cancel</label>
+      </div>
+
+      <div class="service-type">
+        <p>Interested in our services? Visit our <a href="Services.html">Services Page</a> to learn more.</p>
+  </div>
+    </form>
+  </div>
+</section>
+
+    <!-- Reviews -->
+    <section class="reviews-Home">
+
+      <div class="review-container-Home">
+
+      <div class="text-box">
+        <h2>Our Reviews</h2>
       <p>Hear from our satisfied community members:</p>
       </div>
 
-      <div class="review-container">
-        <div class="review-box">
+        <div class="review-box-Home">
           <h3>Recycling Collection</h3>
-          <div class="stars">★★★★★</div>
+          <div class="stars-Home">★★★★★</div>
              <p>“Amazing service! Made recycling so easy for our neighborhood.”</p>
-          <div class="author">By Mona</div>
+          <div class="author-Home">By Mona</div>
         </div>
 
-        <div  class="review-box center2-box">
+        <div  class="review-box-Home center2-box">
           <h3>Plastic Recycling</h3>
-          <div class="stars">★★★★★</div>
+          <div class="stars-Home">★★★★★</div>
           <p>“Loved the initiative! Friendly and professional team.”</p>
-          <div class="author">By Sara</div>
+          <div class="author-Home">By Sara</div>
         </div>
 
-        <div class="review-box">
+        <div class="review-box-Home">
           <h3>Green Workshop</h3>
-          <div class="stars">★★★★★</div>
+          <div class="stars-Home">★★★★★</div>
           <p>“Very informative and inspiring session about sustainable living.”</p>
-          <div class="author">By Ahmed</div>
+          <div class="author-Home">By Ahmed</div>
         </div>
       </div>
     
   </section>
+</main>
 
+    <!-- Footer --> 
 <footer>
     <div>
       <div class="logo">
-        <img src="../Logo.png" alt="ECOHUP Footer Logo" />
+        <img src="Logo.png" alt="ECOHUP Footer Logo" />
       </div>
       <small>All rights reserved ©️ 2025 ECOHUP</small>
     </div>
@@ -758,7 +243,7 @@
     <div>
       <h4>About</h4>
       <p><a href="#">About Us</a></p>
-      <p><a href="#">Services</a></p>
+      <p><a href="Services.html">Services</a></p>
     </div>
     <div>
       <h4>Community</h4>

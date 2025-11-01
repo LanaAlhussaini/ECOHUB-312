@@ -3,307 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer's Dashboard</title>
-    <style>
-        /* ===== إعدادات عامة ===== */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f2e7; /* بيج فاتح */
-            color: #333;
-        }
-
-        /* ===== HEADER الموحد ===== */
-        .page-header {
-            background-color: #4a6735; /* أخضر غامق */
-            color: #f5f2e7;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 40px;
-        }
-
-            .page-header .logo-box img {
-                height: 45px;
-                width: auto;
-                border-radius: 6px;
-            }
-
-        .header-nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #f5f2e7;
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-            .header-nav a:hover {
-                color: #d4b996; /* لون رملي فاتح */
-            }
-
-        /* ===== العنوان الرئيسي للوحة التحكم (Dashboard Header) ===== */
-        .dashboard-header {
-            background-color: #edf3e3; /* لون خلفية البطاقة */
-            text-align: center;
-            padding: 80px 20px;
-        }
-
-            .dashboard-header .main-title {
-                font-size: 42px;
-                margin-bottom: 10px;
-                color: #333;
-            }
-
-            .dashboard-header .subtitle {
-                font-size: 14px;
-                color: #777;
-            }
-
-        /* ===== قسم الطلبات السابقة (Requests Section) ===== */
-        .requests-section {
-            text-align: center;
-            margin: 60px auto;
-            max-width: 900px;
-            padding: 0 20px;
-        }
-
-            .requests-section .section-title {
-                font-size: 28px;
-                color: #555;
-                border-bottom: 2px solid #ccc;
-                display: inline-block;
-                margin-bottom: 40px;
-                padding-bottom: 8px;
-            }
-
-        /* ===== بطاقة الطلب (Request Card) ===== */
-        .request-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #fff;
-            border-radius: 15px;
-            padding: 20px 30px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            border: 1px solid #ddd;
-        }
-
-            .request-card .request-info {
-                text-align: left;
-                flex: 1;
-            }
-
-            .request-card .info-title {
-                color: #333;
-                margin-bottom: 8px;
-                font-size: 18px;
-            }
-
-            .request-card .info-text {
-                margin: 4px 0;
-                color: #555;
-                font-size: 14px;
-            }
-
-            .request-card .info-value {
-                color: #8b6b4a; /* بني متوسط */
-                font-weight: bold;
-            }
-
-            .request-card .request-image {
-                width: 120px;
-                height: 80px;
-                background-color: #ccc;
-                border-radius: 8px;
-                position: relative;
-            }
-
-                .request-card .request-image::before, .request-card .request-image::after {
-                    content: '';
-                    position: absolute;
-                    width: 80%;
-                    height: 2px;
-                    background: #999;
-                    top: 50%;
-                    left: 10%;
-                }
-
-                .request-card .request-image::before {
-                    transform: rotate(45deg);
-                }
-
-                .request-card .request-image::after {
-                    transform: rotate(-45deg);
-                }
-
-
-        .requests-section .more-link {
-            text-align: center;
-            color: #8b6b4a; /* بني متوسط */
-            margin-top: 10px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-        /* ===== قسم الأزرار (Actions) ===== */
-        .actions-section {
-            text-align: center;
-            margin: 60px 0 100px;
-        }
-
-            .actions-section .action-button {
-                display: block;
-                width: 250px;
-                margin: 15px auto;
-                background-color: #8b6b4a; /* بني متوسط */
-                color: #fff;
-                font-size: 18px;
-                font-weight: 600;
-                border: none;
-                border-radius: 5px;
-                padding: 12px 40px;
-                cursor: pointer;
-                transition: 0.3s;
-            }
-
-                .actions-section .action-button:hover {
-                    background-color: #4a6735; /* أخضر غامق */
-                }
-
-        /* ===== FOOTER الموحد ===== */
-        .page-footer {
-            background-color: #3e3e3e; /* رمادي غامق */
-            color: #f5f2e7;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            padding: 30px 40px;
-        }
-
-            .page-footer .footer-col {
-                width: 22%;
-                min-width: 180px;
-                margin-bottom: 15px;
-            }
-
-                .page-footer .footer-col .col-title {
-                    color: #8b6b4a; /* بني متوسط */
-                    margin-bottom: 10px;
-                }
-
-                .page-footer .footer-col a, .page-footer .footer-col p {
-                    text-decoration: none;
-                    color: #d4b996; /* لون رملي فاتح */
-                    display: block;
-                    margin: 5px 0;
-                    font-size: 14px;
-                }
-
-                    .page-footer .footer-col a:hover {
-                        color: #c6d3b3;
-                        text-decoration: underline;
-                    }
-
-            .page-footer .footer-branding img {
-                height: 50px;
-                width: auto;
-                border-radius: 6px;
-                margin-bottom: 10px;
-            }
-
-            .page-footer .footer-branding .copyright {
-                font-size: 12px;
-                color: #ccc;
-            }
-    </style>
+    <title>ECOHUB - Customer Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="page-header">
-        <div class="logo-box">
-            <img src="your-logo.png" alt="Logo">
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="logo">
+            <img src="Logo.png" alt="ECOHUB Logo">
         </div>
-        <nav class="header-nav">
-            <a href="#">Home</a>
+        <nav>
+            <a href="Home.html">Home</a>
             <a href="#">About Us</a>
-            <a href="#">Customer Dashboard</a>
-            <a href="#">Services</a>
+            <a href="Customer_Dashboard.html">Customer Dashboard</a>
+            <a href="Services.html">Services</a>
             <a href="#">Service Provider</a>
-            <a href="#">Free / Awareness & Consultation</a>
+            <a href="Free -Awareness-Consultation/Free -Awareness-Consultation.HTML">Free / Awareness & Consultation</a>
         </nav>
     </header>
 
-    <section class="dashboard-header">
-        <h1 class="main-title">Customer’s Dashboard</h1>
-        <p class="subtitle">View your previous requests and manage your services</p>
-    </section>
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="container">
+        <div class="dashboard-box">
+            <section class="dashboard-top-box">
+                <!-- Page Title -->
+                <h1 class="main-title">Customer’s Dashboard</h1>
 
-    <section class="requests-section">
-        <h2 class="section-title">Previous Requests</h2>
+                <!-- Welcome Box -->
+                <section class="dashboard-hero-new">
+                    <h2>Welcome Back!</h2>
+                    <p>You currently have <strong>2 active requests</strong> being processed. Use the button below to submit a new service request or check your past requests.</p>
+                    <a href="Request_Service.html" class="primary-btn" style="width:300px; margin:20px auto 0;">Request New Service</a>
+                </section>
+            </section>
 
-        <div class="request-card">
-            <div class="request-info">
-                <h3 class="info-title">Recycling Paper Collection</h3>
-                <p class="info-text">Status: <span class="info-value" style="color: green;">Completed</span></p>
-                <p class="info-text">Price: <span class="info-value">50 JD</span></p>
-                <p class="info-text">Date of Request: <span class="info-value">2025-10-10</span></p>
-            </div>
-            <div class="request-image"></div>
+            <section class="dashboard-Summary-box">
+                <!-- Request Summary Counter -->
+                <section class="request-summary" style="margin-bottom:60px;">
+                    <div class="summary-grid">
+                        <div class="summary-card total">
+                            <h4>Total Requests</h4>
+                            <p class="count">24</p>
+                        </div>
+                        <div class="summary-card completed">
+                            <h4>Completed</h4>
+                            <p class="count">20</p>
+                        </div>
+                        <div class="summary-card pending">
+                            <h4>Pending</h4>
+                            <p class="count">4</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <section class="dashboard-Requests-box">
+                <!-- Previous Requests Title -->
+                <h2 class="section-title" style="text-align:center; border:none;">Previous Requests</h2>
+
+                <!-- Previous Requests Cards -->
+                <section class="request-list">
+
+                    <div class="status-completed">
+                        <div class="request-card">
+                            <img src="Tree Trimming.jpg" alt="Tree Trimming">
+                            <div class="request-details">
+                                <p class="request-title">Tree Trimming</p> <p class="request-meta">Status: <strong class="status-text-completed">Completed</strong></p>
+                                <p class="request-meta">Price: <strong>$70</strong></p>
+                                <p class="request-meta">Date: Oct 20, 2025</p>
+                                <a href="#" class="status-details-link">Details...</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="status-pending">
+                        <div class="request-card">
+                            <img src="Eco crafts workshope.jpg" alt="Eco crafts workshope">
+                            <div class="request-details">
+                                <p class="request-title">Eco Crafts Workshop</p> <p class="request-meta">Status: <strong class="status-text-pending">Pending</strong></p>
+                                <p class="request-meta">Price: <strong>$40</strong></p>
+                                <p class="request-meta">Date: Oct 25, 2025</p>
+                                <a href="#" class="status-details-link">Details...</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="status-completed">
+                        <div class="request-card">
+                            <img src="ServicesImage/Garden.jpg" alt="Garden Maintenance">
+                            <div class="request-details">
+                                <p class="request-title">Garden Landscaping</p> <p class="request-meta">Status: <strong class="status-text-completed">Completed</strong></p>
+                                <p class="request-meta">Price: <strong>$120</strong></p>
+                                <p class="request-meta">Date: Sep 15, 2025</p>
+                                <a href="#" class="status-details-link">Details...</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+            </section>
+
+            <!-- Buttons -->
+            <section class="dashboard-buttons-box">
+                <div style="text-align:center; margin-top:50px;">
+                    <a href="Request_Service.html" class="primary-btn" style="width:250px; margin:15px;">Request A Service</a>
+                    <a href="Evaluate_Service.html" class="primary-btn" style="width:250px; margin:15px;">Evaluate A Service</a>
+                </div>
+                </section>
         </div>
+        </section>
+    </main>
 
-        <div class="request-card">
-            <div class="request-info">
-                <h3 class="info-title">Environmental Consultation</h3>
-                <p class="info-text">Status: <span class="info-value" style="color: orange;">In Progress</span></p>
-                <p class="info-text">Price: <span class="info-value">120 JD</span></p>
-                <p class="info-text">Date of Request: <span class="info-value">2025-09-22</span></p>
-            </div>
-            <div class="request-image"></div>
-        </div>
-
-        <div class="request-card">
-            <div class="request-info">
-                <h3 class="info-title">Recycling Glass Collection</h3>
-                <p class="info-text">Status: <span class="info-value" style="color: red;">Pending</span></p>
-                <p class="info-text">Price: <span class="info-value">25 JD</span></p>
-                <p class="info-text">Date of Request: <span class="info-value">2025-08-14</span></p>
-            </div>
-            <div class="request-image"></div>
-        </div>
-
-        <div class="more-link">more...</div>
-    </section>
-
-    <div class="actions-section">
-        <button class="action-button">Request A Service</button>
-        <button class="action-button">Evaluate A Service</button>
+ <footer>
+    <div>
+      <div class="logo">
+        <img src="Logo.png" alt="ECOHUP Footer Logo" />
+      </div>
+      <small>All rights reserved ©️ 2025 ECOHUP</small>
     </div>
-
-    <footer class="page-footer">
-        <div class="footer-col footer-branding">
-            <img src="your-logo.png" alt="Footer Logo">
-            <small class="copyright">All rights reserved © 2025 WebsiteName</small>
+    <div>
+      <h4>Contact Us</h4>
+      <p>Email: <a href="mailto:info@ecohub.com">info@ecohub.com</a></p>
+      <p>Phone: 0100-200-300</p>
+    </div>
+    <div>
+      <h4>About</h4>
+      <p><a href="#">About Us</a></p>
+      <p><a href="Services.html">Services</a></p>
+    </div>
+    <div>
+      <h4>Community</h4>
+      <p><a href="#">LinkedIn</a></p>
+      <p><a href="#">Instagram</a></p>
+    </div>
+  </footer>
+<!--
+    <footer>
+        <div class="logo">
+            <img src="https://placehold.co/50x50/3e3e3e/d4b996?text=Eco" alt="EcoCycle Logo">
+            <small>&copy; 2025 Eco Solutions</small>
         </div>
-
-        <div class="footer-col">
-            <h4 class="col-title">Contact Us</h4>
-            <p>Call: +1 (234) 567-8900</p>
-            <p>Email: info@example.com</p>
+        <div>
+            <h4>Quick Links</h4>
+            <p><a href="index.html">Home</a></p>
+            <p><a href="simple_dashboard.html">Dashboard</a></p>
+            <p><a href="simple_request_service.html">Request</a></p>
         </div>
-
-        <div class="footer-col">
-            <h4 class="col-title">About</h4>
-            <a href="#">About Us</a>
-            <a href="#">Careers</a>
-        </div>
-
-        <div class="footer-col">
-            <h4 class="col-title">Community</h4>
-            <a href="#">Forums</a>
-            <a href="#">Bloggers</a>
+        <div>
+            <h4>Contact Info</h4>
+            <p>Email: <a href="mailto:info@eco.com">info@eco.com</a></p>
+            <p>Phone: +1 (555) 123-4567</p>
         </div>
     </footer>
 
+-->
+</body>
+</html>
 </body>
 </html>

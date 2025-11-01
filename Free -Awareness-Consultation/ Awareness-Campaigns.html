@@ -1,277 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ECOHUP - Awareness Campaigns</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f5f2e7;
-      color: #333;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      box-sizing: border-box;
-    }
-
-    /* ====== الهيدر ====== */
-    header {
-      background-color: #4a6735;
-      color: white;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      padding: 20px 60px;
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 100;
-      box-sizing: border-box;
-    }
-
-    header .logo {
-      margin-right: 40px;
-    }
-
-    header .logo img {
-      height: 60px;
-      width: auto;
-      border-radius: 6px;
-    }
-
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #f5f2e7;
-      font-size: 15px;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      color: #8b6b4a;
-    }
-
-    /* ====== القسم الرئيسي ====== */
-    .hero {
-      margin-top: 110px;
-      padding: 60px 20px;
-    }
-
-    .campaign-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      background-color: #edf3e3;
-      border-radius: 12px;
-      padding: 40px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .campaign-image {
-      flex: 1 1 45%;
-      text-align: center;
-    }
-
-    .campaign-image img {
-      width: 100%;
-      max-width: 500px;
-      height: auto;
-      border-radius: 10px;
-      object-fit: cover;
-    }
-
-    .campaign-text {
-      flex: 1 1 45%;
-      text-align: left;
-      color: #4a6735;
-    }
-
-    .campaign-text h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-
-    .stars {
-      color: #f9a825;
-      font-size: 1.2rem;
-      margin-bottom: 8px;
-    }
-
-    .reviews-count {
-      color: #777;
-      font-size: 0.9rem;
-      margin-left: 6px;
-    }
-
-    .campaign-text p {
-      color: #555;
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-top: 15px;
-      margin-bottom: 20px;
-    }
-
-    .campaign-text button {
-      background-color: #f9a825;
-      color: white;
-      border: none;
-      padding: 10px 25px;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .campaign-text button:hover {
-      background-color: #f57f17;
-    }
-
-    /* ====== الفوتر ====== */
-    footer {
-      background-color: #3e3e3e;
-      color: #f5f2e7;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      padding: 25px 40px;
-      flex-wrap: wrap;
-      width: 100%;
-      box-sizing: border-box;
-      gap: 50px;
-      margin-top: 60px;
-    }
-
-    footer div {
-      min-width: 180px;
-      margin-bottom: 15px;
-    }
-
-    footer .logo img {
-      height: 50px;
-      width: auto;
-      display: block;
-      margin-bottom: 10px;
-      border-radius: 6px;
-    }
-
-    footer small {
-      display: block;
-      margin-top: 10px;
-      font-size: 12px;
-      color: #ccc;
-    }
-
-    footer a {
-      color: #d4b996;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-      color: #c6d3b3;
-    }
-
-    h4 {
-      color: #8b6b4a;
-    }
-
-    footer p, footer p a {
-      color: #d4b996;
-    }
-
-    footer p a:hover {
-      color: #c6d3b3;
-    }
-
-    @media (max-width: 800px) {
-      .campaign-content {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .campaign-text {
-        text-align: center;
-      }
-    }
-  </style>
+    <title>ECOHUP - Awareness Campaigns</title>
+    <link rel="stylesheet" href="../style.css">
+    
 </head>
 
 <body>
 
-  <!-- ====== الهيدر ====== -->
+  <!-- ===== HEADER SECTION ===== -->
   <header>
     <div class="logo">
       <img src="../Logo.png" alt="ECOHUP Logo" />
     </div>
     <nav>
-      <a href="#">Home</a>
+      <a href="../Home.html">Home</a>
       <a href="#">About Us</a>
-      <a href="#">Customer Dashboard</a>
-      <a href="#">Services</a>
+      <a href="../Customer_Dashboard.html">Customer Dashboard</a>
+      <a href="../Services.html">Services</a>
       <a href="#">Service Provider</a>
       <a href="Free -Awareness-Consultation.html">Free / Awareness & Consultation</a>
     </nav>
   </header>
 
-  <!-- ====== القسم الرئيسي ====== -->
+  <!-- ===== MAIN HERO SECTION ===== -->
   <section class="hero">
-    <div class="container">
-      <div class="campaign-content">
-        <div class="campaign-image">
-          <img src="../Awareness Campaigns.JPEG" alt="Awareness Campaign Image">
-        </div>
+    <div class="campaign-content">
+      <!-- Campaign image -->
+      <div class="campaign-image">
+        <img src="../Awareness Campaigns.JPEG" alt="Awareness Campaign">
+      </div>
 
-        <div class="campaign-text">
-          <h1>Awareness Campaigns</h1>
-          <div class="stars">
-            ★★★★★ <span class="reviews-count">482 Reviews</span>
-          </div>
-          <p>
-            Join our eco-awareness campaigns and be part of the positive change. 
-            Together, we can spread knowledge about recycling, energy conservation, 
-            and sustainable living for a cleaner planet.
-          </p>
-          <button>Join</button>
+      <!-- Campaign text content -->
+      <div class="campaign-text">
+        <h1>Awareness Campaigns</h1>
+        <div class="stars">
+          ★★★★★ <span class="reviews-count">482 Reviews</span>
         </div>
+        <p>
+          Join our eco-awareness campaigns and be part of the positive change.
+          Together, we can spread knowledge about recycling, energy conservation,
+          and sustainable living for a cleaner planet.
+        </p>
+        <button>Join</button>
       </div>
     </div>
   </section>
 
-  <!-- ====== الفوتر ====== -->
+  <!-- ===== FOOTER SECTION ===== -->
   <footer>
+    <!-- Logo and rights -->
     <div>
       <div class="logo">
         <img src="../Logo.png" alt="ECOHUP Footer Logo" />
       </div>
       <small>All rights reserved ©️ 2025 ECOHUP</small>
     </div>
+
+    <!-- Contact info -->
     <div>
       <h4>Contact Us</h4>
       <p>Email: <a href="mailto:info@ecohub.com">info@ecohub.com</a></p>
       <p>Phone: 0100-200-300</p>
     </div>
+
+    <!-- About section -->
     <div>
       <h4>About</h4>
       <p><a href="#">About Us</a></p>
-      <p><a href="#">Services</a></p>
+      <p><a href="../Services.html">Services</a></p>
     </div>
+
+    <!-- Community links -->
     <div>
       <h4>Community</h4>
       <p><a href="#">LinkedIn</a></p>

@@ -1,324 +1,119 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request A Service</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* ===== إعدادات عامة ===== */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f2e7; /* بيج فاتح */
-            color: #333;
-        }
-
-        /* ===== HEADER الموحد (الروابط لليسار) ===== */
-        .page-header {
-            background-color: #4a6735; /* أخضر غامق */
-            color: #f5f2e7;
-            display: flex;
-            flex-direction: row-reverse; /* عكس الترتيب: الشعار يمين والروابط يسار */
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 40px;
-        }
-
-            .page-header .logo-box img {
-                height: 45px;
-                width: auto;
-                border-radius: 6px;
-            }
-
-        .header-nav {
-            display: flex;
-            justify-content: flex-end; /* لدفع الروابط لليسار (بجوار الشعار) */
-            flex-grow: 1;
-        }
-
-            .header-nav a {
-                margin-right: 20px; /* التباعد بين الروابط */
-                margin-left: 0;
-                text-decoration: none;
-                color: #f5f2e7;
-                font-size: 15px;
-                font-weight: 500;
-            }
-
-                .header-nav a:hover {
-                    color: #d4b996; /* لون رملي فاتح */
-                }
-
-        /* ===== العنوان الرئيسي للطلب (Main Title) ===== */
-        .main-title-section {
-            text-align: center;
-            padding: 50px 20px 20px;
-        }
-
-            .main-title-section .main-heading {
-                font-size: 48px;
-                color: #333;
-                font-weight: normal;
-                margin: 0;
-            }
-
-        /* ===== حاوية نموذج الطلب (Request Container) ===== */
-        .request-container {
-            max-width: 750px;
-            margin: 30px auto 80px;
-            background-color: #fff;
-            border-radius: 25px;
-            padding: 40px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        /* ===== صفوف معلومات المستخدم (User Info Row) ===== */
-        .user-info-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-        }
-
-            .user-info-row .info-group {
-                width: 48%;
-                font-size: 18px;
-                font-weight: bold;
-                color: #333;
-            }
-
-                .user-info-row .info-group .placeholder-box,
-                .request-container .description-group .placeholder-box {
-                    background-color: #e8e4d9; /* لون خلفية البطاقة */
-                    padding: 10px 15px;
-                    border-radius: 8px;
-                    margin-top: 5px;
-                    font-weight: normal;
-                    font-size: 16px;
-                    color: #555;
-                    border: 1px solid #ccc;
-                }
-
-        .request-container .description-group {
-            width: 100%;
-            margin-bottom: 40px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        /* ===== مجموعة اختيار الخدمة (Service Selection Group) ===== */
-        .service-selection-group {
-            background-color: #e8e4d9; /* لون خلفية البطاقة */
-            border-radius: 30px;
-            padding: 20px 40px;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-            .service-selection-group .group-label {
-                font-size: 18px;
-                font-weight: bold;
-                color: #333;
-                width: 30%;
-            }
-
-            .service-selection-group .service-dropdown {
-                width: 65%;
-                position: relative;
-            }
-
-            .service-selection-group .select-header {
-                background-color: #f2f2f2; /* رمادي فاتح للخلفية */
-                padding: 12px;
-                border-radius: 8px;
-                border: 1px solid #ccc;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                font-size: 16px;
-                color: #555;
-            }
-
-            .service-selection-group .service-options .option-item {
-                padding: 10px;
-                background-color: #fff;
-                border-bottom: 1px solid #eee;
-                font-size: 15px;
-                cursor: default;
-            }
-
-        /* ===== زر التأكيد (Confirm Button) ===== */
-        .confirm-section {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-            .confirm-section .confirm-button {
-                background-color: #8b6b4a; /* بني متوسط */
-                color: #fff;
-                font-size: 18px;
-                font-weight: 600;
-                border: none;
-                border-radius: 5px;
-                padding: 12px 60px;
-                cursor: pointer;
-                transition: 0.3s;
-                box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-            }
-
-                .confirm-section .confirm-button:hover {
-                    background-color: #4a6735; /* أخضر غامق */
-                }
-
-        /* ===== FOOTER الموحد ===== */
-        .page-footer {
-            background-color: #3e3e3e; /* رمادي غامق */
-            color: #f5f2e7;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            padding: 30px 40px;
-            margin-top: 50px;
-        }
-
-            .page-footer .footer-col {
-                width: 22%;
-                min-width: 180px;
-                margin-bottom: 15px;
-            }
-
-                .page-footer .footer-col .col-title {
-                    color: #8b6b4a; /* بني متوسط */
-                    margin-bottom: 10px;
-                }
-
-                .page-footer .footer-col a, .page-footer .footer-col p {
-                    text-decoration: none;
-                    color: #d4b996; /* لون رملي فاتح */
-                    display: block;
-                    margin: 5px 0;
-                    font-size: 14px;
-                }
-
-                    .page-footer .footer-col a:hover {
-                        color: #c6d3b3;
-                        text-decoration: underline;
-                    }
-
-            .page-footer .footer-branding img {
-                height: 50px;
-                width: auto;
-                border-radius: 6px;
-                margin-bottom: 10px;
-            }
-
-            .page-footer .footer-branding .copyright {
-                font-size: 12px;
-                color: #ccc;
-            }
-    </style>
+    <title>ECOHUP-Request a Service</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="page-header">
-        <nav class="header-nav">
-            <a href="#">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Customer Dashboard</a>
-            <a href="#">Services</a>
-            <a href="#">Service Provider</a>
-            <a href="#">Free / Awareness & Consultation</a>
-        </nav>
-        <div class="logo-box">
-            <img src="your-logo.png" alt="Logo">
+    <header>
+        <div class="logo">
+            <img src="Logo.png" alt="ECOHUP Logo" />
         </div>
+        <nav>
+            <a href="Home.html">Home</a>
+            <a href="#">About Us</a>
+            <a href="Customer_Dashboard.html">Customer Dashboard</a>
+            <a href="Services.html">Services</a>
+            <a href="#">Service Provider</a>
+            <a href="Free -Awareness-Consultation/Free -Awareness-Consultation.HTML">Free / Awareness & Consultation</a>
+        </nav>
     </header>
 
-    <section class="main-title-section">
-        <h1 class="main-heading">Request A Service</h1>
-    </section>
+    <main class="container">
 
-    <div class="request-container">
+        <section class="RequestService-box">
+            <!-- Page Title -->
+            <h1 class="main-title">Request a Service</h1>
+            <h2>Submit a New Service Request</h2>
+            <p>We’re excited to help! Tell us what service you need, and we’ll handle the rest.</p>
+        </section>
 
-        <div class="user-info-row">
-            <div class="info-group">
-                Customer Name :
-                <div class="placeholder-box">dummy dummy dummy</div>
+
+        <section class="RequestService-form">
+            <div class="form-card">
+                <form>
+                    <div class="form-group service-selection-group">
+                        <label for="serviceType" class="form-label">Select Service Type</label>
+                        <select id="serviceType" class="form-select" required>
+                            <option value="">-- Choose a Service --</option>
+
+                            <optgroup label="Recycling Collection">
+                                <option value="paper-recycling">Paper Recycling</option>
+                                <option value="plastic-recycling">Plastic Recycling</option>
+                                <option value="glass-recycling">Glass Recycling</option>
+                               <!-- <option value="metal-recycling">Metal Recycling</option> 
+                                <option value="electronics-disposal">Electronics Disposal</option> -->
+                            </optgroup>
+
+                            <optgroup label="Environmental Workshops">
+                                <option value="eco-crafts-workshop">Eco-Crafts Workshop</option>
+                                <option value="green-living-workshop">Green Living Workshop</option>
+                                <option value="garden-care-workshop">Garden Care Basics Workshop</option>
+                            </optgroup>
+
+                            <optgroup label="Garden Maintenance">
+                                <option value="tree-trimming">Tree Trimming</option>
+                                <option value="garden-plant-care">Garden Plant Care</option>
+                                <option value="garden-landscaping">Garden Landscaping</option>
+                            </optgroup>
+
+                        </select>
+                    </div>
+
+                    <h2 class="section-title" style="margin: 0 0 20px 0;">Contact & Location</h2>
+
+                    <div class="form-group">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input type="text" id="fullName" class="form-input" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address" class="form-label">Service Address</label>
+                        <input type="text" id="address" class="form-input" placeholder="123 Green St, Anytown" required>
+                    </div>
+
+                    <h2 class="section-title" style="margin: 40px 0 20px 0;">Scheduling Preferences</h2>
+
+                    <div class="form-group">
+                        <label for="preferredDate" class="form-label">Preferred Date for Service</label>
+                        <input type="date" id="preferredDate" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes" class="form-label">Notes & Specific Instructions (e.g., location of bins)</label>
+                        <textarea id="notes" class="form-textarea" rows="4" placeholder="Bins are located next to the back gate..."></textarea>
+                    </div>
+
+                    <button type="submit" class="primary-btn">Submit Service Request</button>
+                </form>
             </div>
-            <div class="info-group">
-                Duo Date :
-                <div class="placeholder-box">dummy dummy dummy</div>
-            </div>
-        </div>
+        </section>
+    </main>
 
-        <div class="description-group">
-            Description:
-            <div class="placeholder-box">dummy dummy dummy</div>
-        </div>
-
-        <div class="service-selection-group">
-            <div class="group-label">Recycling Collection</div>
-            <div class="service-dropdown">
-                <div class="service-options">
-                    <div class="option-item" style="background-color: #e8e4d9; font-weight: bold;">Choose the service .........</div>
-                    <div class="option-item">Recycling Paper</div>
-                    <div class="option-item">Recycling Plastic</div>
-                    <div class="option-item">Recycling Glass</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="service-selection-group">
-            <div class="group-label">Environmental Workshops</div>
-            <div class="service-dropdown">
-                <div class="select-header">
-                    Choose the service ......... <i class="fas fa-caret-down"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="service-selection-group">
-            <div class="group-label">Recycling Collection</div>
-            <div class="service-dropdown">
-                <div class="select-header">
-                    Choose the service ......... <i class="fas fa-caret-down"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="confirm-section">
-            <button class="confirm-button">Confirm</button>
-        </div>
-
+<footer>
+    <div>
+      <div class="logo">
+        <img src="Logo.png" alt="ECOHUP Footer Logo" />
+      </div>
+      <small>All rights reserved ©️ 2025 ECOHUP</small>
     </div>
-
-    <footer class="page-footer">
-        <div class="footer-col footer-branding">
-            <img src="your-logo.png" alt="Footer Logo">
-            <small class="copyright">All rights reserved © 2025 WebsiteName</small>
-        </div>
-
-        <div class="footer-col">
-            <h4 class="col-title">Contact Us</h4>
-            <p>Call: +1 (234) 567-8900</p>
-            <p>Email: info@example.com</p>
-        </div>
-
-        <div class="footer-col">
-            <h4 class="col-title">About</h4>
-            <a href="#">About Us</a>
-            <a href="#">Careers</a>
-        </div>
-
-        <div class="footer-col">
-            <h4 class="col-title">Community</h4>
-            <a href="#">Forums</a>
-            <a href="#">Bloggers</a>
-        </div>
-    </footer>
+    <div>
+      <h4>Contact Us</h4>
+      <p>Email: <a href="mailto:info@ecohub.com">info@ecohub.com</a></p>
+      <p>Phone: 0100-200-300</p>
+    </div>
+    <div>
+      <h4>About</h4>
+      <p><a href="#">About Us</a></p>
+      <p><a href="Services.html">Services</a></p>
+    </div>
+    <div>
+      <h4>Community</h4>
+      <p><a href="#">LinkedIn</a></p>
+      <p><a href="#">Instagram</a></p>
+    </div>
+  </footer>
 
 </body>
 </html>

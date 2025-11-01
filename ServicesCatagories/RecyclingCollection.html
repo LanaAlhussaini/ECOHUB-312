@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ECOHUP Services</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../Logo.png" alt="ECOHUP Logo" />
+        </div>
+        <nav>
+            <a href="../Home.html">Home</a>
+            <a href="#">About Us</a>
+            <a href="../Customer_Dashboard.html">Customer Dashboard</a>
+            <a href="../Services.html">Services</a>
+            <a href="#">Service Provider</a>
+            <a href="../Free -Awareness-Consultation/Free -Awareness-Consultation.HTML">Free / Awareness & Consultation</a>
+        </nav>
+    </header>
+    <main class="ECOHUP-Services">
+
+        <div class="service-info">
+            <h2>Recycling Collection</h2>
+
+            <!-- Sorting  -->
+            <div class="sort-container">
+                <label for="sort-select" class="visually-hidden">Sort services</label>
+                <select id="sort-select" aria-label="Sort services">
+                    <option value="default" selected>Sort by</option>
+
+                    <optgroup label="Price">
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                    </optgroup>
+
+                    <optgroup label="Name">
+                        <option value="name-asc">Name: A → Z</option>
+                        <option value="name-desc">Name: Z → A</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class='service-container' data-name="Paper Recycling" data-price="30">
+                <img src="../paper.jpeg" alt="paper recycling" style="float:left; width:200px; height:130px; margin:10px;">
+                <h3>Paper Recycling</h3>
+                <spam class="price"><p><strong>Price = </strong>30$</p></spam>
+                <p>We collect and recycle paper products including newspapers, magazines, cardboard, and office paper. Help reduce deforestation by ensuring your paper waste is properly recycled.</p>
+            </div>
+
+            <div class='service-container' data-name="Plastic Recycling" data-price="30">
+                <img src="../Plastic Recycling.jpg" alt="plastic recycling" style="float:left; width:200px; height:130px; margin:10px;">
+                <h3>Plastic Recycling</h3>
+                <spam class="price"><p><strong>Price = </strong>30$</p></spam>
+                <p>Our plastic recycling service accepts various types of plastics such as bottles, containers, and packaging materials. By recycling plastics, we help decrease pollution and conserve resources.</p>
+            </div>
+
+            <div class='service-container' data-name="Glass Recycling" data-price="40">
+                <img src="../glass.jpeg" alt="glass recycling" style="float:left; width:200px; height:130px; margin:10px;">
+                <h3>Glass Recycling</h3>
+                <spam class="price"><p><strong>Price = </strong>40$</p></spam>
+                <p>We collect glass items including bottles and jars for recycling. Recycling glass reduces energy consumption and lowers greenhouse gas emissions.</p>
+            </div>
+
+            <div style="text-align: left; ">
+                <h3>How It Works:</h3>
+                <p>1. Request Recycling Collection service through <a href="../Customer_Dashboard.html">Customer Dashboard</a>.</p>
+                <p>2. Choose a pickup schedule that suits you, and our team will handle the rest. We provide clear guidelines on how to prepare your recyclables for collection to ensure maximum efficiency and effectiveness.</p>
+                <p>3. On the scheduled day, our team will collect your recyclables and ensure they are transported to the appropriate recycling facilities.</p>
+            </div>
+
+        </div>
+    </main>
+    <footer>
+        <div>
+            <div class="logo">
+                <img src="../Logo.png" alt="ECOHUP Footer Logo" />
+            </div>
+            <small>All rights reserved ©️ 2025 ECOHUP</small>
+        </div>
+        <div>
+            <h4>Contact Us</h4>
+            <p>Email: <a href="mailto:info@ecohub.com">info@ecohub.com</a></p>
+            <p>Phone: 0100-200-300</p>
+        </div>
+        <div>
+            <h4>About</h4>
+            <p><a href="#">About Us</a></p>
+            <p><a href="../Services.html">Services</a></p>
+        </div>
+        <div>
+            <h4>Community</h4>
+            <p><a href="#">LinkedIn</a></p>
+            <p><a href="#">Instagram</a></p>
+        </div>
+    </footer>
+</body>
+</html>
