@@ -2308,22 +2308,7 @@ footer {
 /* ==================================== */
 /* 1. GLOBAL & TYPOGRAPHY RESETS        */
 /* ==================================== */
-/*
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #f4f4f4; 
-}
 
-main {
-    width: 90%;
-    max-width: 1500px; 
-    margin: 1.5rem auto; 
-    padding: 1.5rem;   
-    border-radius: 8px;
-    box-sizing: border-box;
-}
-*/
 hr {
     border: 0;
     height: 1px;
@@ -2335,13 +2320,11 @@ h2 {
     text-align: center; 
     font-size: 2.2rem;
     margin-bottom: 1rem;
-    font-family: "Noto Sans", sans-serif;
 }
 
 /* Page titles for management/forms pages */
 .main-title, .form-title {
     text-align: center;
-    font-family: 'Times New Roman', Times, serif; 
     font-weight: 300;
     color: #333;
 }
@@ -2350,6 +2333,7 @@ h2 {
 
 /* Content wrapper used for centering on profile page */
 .page-content-wrapper {
+    
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -2464,7 +2448,6 @@ h2 {
     margin-top: 2rem;
     font-weight: bold;
     font-size: 3.5rem;
-    font-family: "Noto Sans", sans-serif;
     color: #333;
     text-decoration: none;
 }
@@ -2529,6 +2512,14 @@ textarea:focus {
 }
 
 /* Input Overrides for Join Form / Add Service Form (light green input background) */
+.form-container{
+    background-color: #f7fcf6a3; 
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+}
 .form-container-styled input,
 .form-container-styled select,
 .form-container-styled textarea,
