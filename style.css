@@ -139,10 +139,13 @@ footer {
  /*  main SECTION */
         .main {
             position: relative;
-            height: 100vh;
-            max-width: 100%;
+            height: 700px;
+            width: 100%;
             margin-top: 6px;
-            background: url('HomeImages/home.jpeg') center/cover no-repeat scroll;
+            background-image: url('HomeImages/home.jpeg') ;
+            background-size: cover;       
+            background-position: center;  
+            background-repeat: no-repeat;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -263,7 +266,7 @@ footer {
             padding: 80px 0;
             overflow: hidden;
             transition: transform 0.3s ease;
-            background-color: white;
+            background-color:#f3f8ef/* #f7fff8;*/
         }
 
             .services-Home h2 {
@@ -349,7 +352,7 @@ footer {
 
         /* ===== Green Stories Section ===== */
         .stories {
-            background-color: #f1f7ee;
+            background-color: #fcfff9;
             text-align: center;
             padding: 80px 0;
         }
@@ -485,14 +488,13 @@ footer {
 
         /* ===== Donation Section ===== */
         .donation {
-            background-color: #fbfffa;
+            background-color:#f3f8ef;
             padding: 10px 0;
         }
 
         .donation-section {
             background-image: url(HomeImages/donation.jpeg);
             background-size: cover;
-            background-color: #f4ffeb;
             border-radius: 12px;
             padding: 60px 40px;
             margin: 80px auto;
@@ -1402,7 +1404,7 @@ footer {
                 color: #4a6735;
                 text-align: center;
                 padding: 110px 20px;
-                margin-top: 90px;
+               /* margin-top: 90px;*/
             }
 
                 .hero h1 {
@@ -1574,7 +1576,7 @@ footer {
 
                 /* ====== MAIN SECTION ====== */
                 .hero {
-                    margin-top: 110px; /* Adds space below fixed header */
+                   /* margin-top: 110px; */
                     padding: 60px 20px;
                 }
 
@@ -1696,7 +1698,7 @@ footer {
 /*---------------------------------------------------------*/
                 /* ====== MAIN HERO SECTION ====== */
                 .hero {
-                    margin-top: 110px; /* space below fixed header */
+                   /* margin-top: 110px; */
                     padding: 60px 20px 20px;
                     text-align: center;
                     color: #4a6735;
@@ -1814,7 +1816,7 @@ footer {
                 color: #4a6735;
                 text-align: center;
                 padding: 120px 20px 70px;
-                margin-top: 90px;
+              /*  margin-top: 90px;*/
             }
 
                 .hero h1 {
@@ -1988,7 +1990,7 @@ footer {
 /*----------------------------*/
                 /* ====== MAIN SECTION ====== */
                 .hero {
-                    margin-top: 110px;
+                  /*  margin-top: 110px;*/
                     padding: 60px 20px;
                 }
 
