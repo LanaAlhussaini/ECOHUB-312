@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Request Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="Logo.png" alt="ECOHUP Logo" />
+        </div>
+        <nav>
+            <a href="Home.html">Home</a>
+            <a href="about us/about_us.html">About Us</a>
+            <a href="Customer_Dashboard.html">Customer Dashboard</a>
+            <a href="Services.html">Services</a>
+            <a href="Service Dashboard/Dashboard.html">Service Provider</a>
+            <a href="Free -Awareness-Consultation/Free -Awareness-Consultation.HTML">Free / Awareness & Consultation</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 class="main-title">Request Details</h1>
+
+        <div id="detailsBox" class="form-card details-box"></div>
+    </main>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const requestId = params.get("id");
+
+        const requests = JSON.parse(
+            decodeURIComponent(localStorage.getItem("ecohub_requests") || "[]")
+        );
+
+        const request = requests.find(r => r.id == requestId);
+        const box = document.getElementById("detailsBox");
+
+        if (request) {
+            box.innerHTML = `
+        <h2>${request.service}</h2>
+        <p><strong>Name:</strong> ${request.name}</p>
+        <p><strong>Address:</strong> ${request.address}</p>
+        <p><strong>Date:</strong> ${request.date}</p>
+        <p><strong>Status:</strong> ${request.status}</p>
+        <p><strong>Price:</strong> $${request.price}</p>
+        <p><strong>Notes:</strong> ${request.notes || "None"}</p>
+      `;
+        } else {
+            box.innerHTML = "<p>Request not found.</p>";
+        }
+    </script>
+
+</body>
+</html>
+
