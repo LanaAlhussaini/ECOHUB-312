@@ -12,14 +12,17 @@ if (toggle) {
 
         if (document.body.classList.contains("dark-mode")) {
             localStorage.setItem("theme", "dark");
-            toggle.textContent = "Light Mode";
+            toggle.textContent = "☀";
         } else {
             localStorage.setItem("theme", "light");
-            toggle.textContent = "Dark Mode";
+            toggle.textContent = "☾";
         }
     });
 
+    // Update icon on refresh
     if (localStorage.getItem("theme") === "dark") {
-        toggle.textContent = "Light Mode";
+        toggle.textContent = "☀";
+    } else {
+        toggle.textContent = "☾";
     }
 }
