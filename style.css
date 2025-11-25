@@ -633,7 +633,7 @@ footer {
 
 
         /* Reviews section */
-        .reviews-Home {
+        /*.reviews-Home {
             padding: 30px 0;
             background-color: #e6ecde;
             background: cover;
@@ -710,7 +710,8 @@ footer {
         .center2-box {
             margin-top: -30px;
             margin-bottom: 30px;
-        }
+        }*/
+
         
 /* ====== RESPONSIVE DESIGN ADDITIONS ====== */
 
@@ -3175,7 +3176,7 @@ textarea {
     color: #e5e5e5;
 }
 
-/* Reviews */
+/* Reviews *//*
 .dark-mode .reviews-Home {
     background-color: #292929;
     color: #dcdcdc;
@@ -3208,7 +3209,7 @@ textarea {
     color: #ffd04a !important;
 }
 
-/* Center rating box (optional) */
+/* Center rating box (optional) 
 .dark-mode .center2-box {
     background-color: #333 !important;
 }
@@ -3217,7 +3218,7 @@ textarea {
 }
 .dark-mode label {
     color: #ffffff;
-}
+}*/
 
 
 
@@ -3610,4 +3611,34 @@ textarea {
 .dark-mode .rating-stars label:hover ~ label {
     color: #ffd04a !important;
 }
+
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #4a6735;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  cursor: pointer;
+  display: none; 
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: 0.3s;
+}
+
+#backToTop:hover {
+  background-color: #6da65a;
+}
+
+#clock {
+  color: #d4b996;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
 
