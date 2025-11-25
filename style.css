@@ -60,7 +60,7 @@ body {
                 color: #8b6b4a;
             }
 
-    /* ====== FOOTER SECTION ====== */
+    
 /* ====== FOOTER SECTION ====== */
 footer {
     background-color: #3e3e3e; /* Dark grey */
@@ -803,6 +803,79 @@ th, td {
     /* Donation form */
     .form-row-donation {
         flex-direction: column;
+    }
+}
+
+/* Screens <= 500px */
+@media (max-width: 500px) {
+    /* Header / Navigation */
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    header .logo img {
+        height: 50px;
+        margin-bottom: 10px;
+    }
+
+    /* Main Section */
+    .main h1 {
+        font-size: 2.2rem;
+        margin-top: 20px;
+    }
+
+    .main-btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+        margin-top: 50px;
+    }
+
+    /* Services Section */
+    .service-box-Home {
+        width: 100%;
+        height: auto;
+    }
+
+        .service-box-Home img {
+            height: auto;
+        }
+
+    /* Stories Section */
+    .story-item {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Donation Section */
+    .donation-section {
+        padding: 30px 15px;
+    }
+
+    .donate-btn {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 15px;
+        gap: 15px;
+    }
+
+        footer div {
+            min-width: auto;
+            text-align: center;
+        }
+
+    /* Tables */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
     }
 }
 
@@ -2874,7 +2947,9 @@ textarea {
 }
 
 
+/* ============================================= */
 /* ================= DARK MODE ================= */
+/* ============================================= */
 .dark-mode {
     background-color: #1f1f1f;
     color: #e5e5e5;

@@ -40,19 +40,20 @@
 
         if (request) {
             box.innerHTML = `
-        <h2>${request.service}</h2>
-        <p><strong>Name:</strong> ${request.name}</p>
-        <p><strong>Address:</strong> ${request.address}</p>
-        <p><strong>Date:</strong> ${request.date}</p>
-        <p><strong>Status:</strong> ${request.status}</p>
-        <p><strong>Price:</strong> $${request.price}</p>
-        <p><strong>Notes:</strong> ${request.notes || "None"}</p>
-      `;
+            <h2>${request.service}</h2>
+            <p><strong>Name:</strong> ${request.name}</p>
+            <p><strong>Address:</strong> ${request.address}</p>
+            <p><strong>Date:</strong> ${request.date}</p>
+            <p><strong>Status:</strong> ${request.status}</p>
+            <p><strong>Price:</strong> $${request.price}</p>
+            <p><strong>Notes:</strong> ${request.notes || "None"}</p>
+          `;
         } else {
             box.innerHTML = "<p>Request not found.</p>";
         }
     </script>
 
+    <script src="Script.js"></script>
 </body>
 </html>
 
