@@ -26,15 +26,18 @@
         <h2>Enviromental Workshopes</h2>
         <!-- Sorting  -->
         <div class="sort-container">
-            <label for="sort-select">Sort by:</label>
-            <select id="sort-select">
+            <label for="sort-select" class="visually-hidden">Sort services</label>
+            <select id="sort-select" aria-label="Sort services">
+                <option value="default" selected>Sort by</option>
+
                 <optgroup label="Price">
-                    <option value="price-asc">Low to High</option>
-                    <option value="price-desc">High to Low</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
                 </optgroup>
+
                 <optgroup label="Name">
-                    <option value="name-asc">A → Z</option>
-                    <option value="name-desc">Z → A</option>
+                    <option value="name-asc">Name: A → Z</option>
+                    <option value="name-desc">Name: Z → A</option>
                 </optgroup>
             </select>
         </div>

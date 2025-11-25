@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+/*document.addEventListener("DOMContentLoaded", function () {
 
     // APPLY SAVED THEME
     if (localStorage.getItem("theme") === "dark") {
@@ -29,31 +29,39 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-});
+});*/
 // BACK TO TOP BUTTON
 const backToTop = document.getElementById("backToTop");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTop.style.display = "flex";
-  } else {
-    backToTop.style.display = "none";
-  }
-});
+if (backToTop) {
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            backToTop.style.display = "flex";
+        } else {
+            backToTop.style.display = "none";
+        }
+    });
 
-backToTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+    backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+}
+
 
 // CLOCK FUNCTIONALITY
 function updateClock() {
   const now = new Date();
   const time = now.toLocaleTimeString();
-  document.getElementById("clock").textContent = "Current Time: " + time;
+
+  const clockElement = document.getElementById("clock");
+  if (clockElement) {
+    clockElement.textContent = "Current Time: " + time;
+  }
 }
 
 setInterval(updateClock, 1000);
 updateClock();
+
 
 // SORTING FUNCTIONALITY
 document.addEventListener("DOMContentLoaded", () => {
