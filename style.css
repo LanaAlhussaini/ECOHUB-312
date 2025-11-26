@@ -228,12 +228,15 @@ footer {
                 text-align: center;
             }
 
-        .vision-image {
+        #vision-image {
             flex: 1;
             text-align: right;
         }
+        .vision-dark {
+            display: none;
+        }
 
-            .vision-image img {
+            #vision-image img {
                 width: 100%;
                 max-width: 500px;
                 border-radius: 12px;
@@ -251,7 +254,7 @@ footer {
                 padding: 25px;
             }
 
-            .vision-image img {
+            #vision-image img {
                 max-width: 100%;
             }
         }
@@ -382,6 +385,7 @@ footer {
             width: 360px;
             height: 240px;
             border-radius: 15px;
+            border-color: #112915;
             overflow: hidden;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
             cursor: pointer;
@@ -444,7 +448,7 @@ footer {
 
         .overlay-story h3 {
             font-size: 1.2rem;
-            color: #112915;
+            color: #fefff8;
             margin-bottom: 8px;
         }
 
@@ -493,6 +497,7 @@ footer {
             background-image: url(HomeImages/donation.jpeg);
             background-size: cover;
             border-radius: 12px;
+            border-color: #014f18;
             padding: 60px 40px;
             margin: 80px auto;
             max-width: 800px;
@@ -2276,13 +2281,13 @@ th, td {
 
 
 /*----------------------------*/
-/*------ECOHUP Services-------*/
+/*------ECOHUP Services-------*/خخ
 /*----------------------------*/
 
  .ECOHUP-Services {
     position: relative;
     width: 100%;
-    /*min-height: 100vh; /* makes it cover full viewport height */
+    min-height: 100vh; /* makes it cover full viewport height */
     height: 1000px;
     margin: 0;
     background-color: #e4eed9; /* soft green background */
@@ -2327,8 +2332,9 @@ th, td {
 
 /* ======== SERVICE CARDS ========= */
 .service-info {
-    margin-top: 50px;
     padding: 20px;
+    background-color: #f4faec;
+    color: #304d0e;
 }
 
 .service-container {
@@ -2915,9 +2921,10 @@ textarea {
 
 /* MAIN SECTION (hero) */
 .dark-mode .main {
+   background-image: url(HomeImages/Home3.png);
     color: #d9d9d9;
     background-blend-mode: multiply;
-    background-color: #1a1a1a;
+    /*background-color: #444444;*/
 }
 
 .dark-mode .main .welcome-text {
@@ -2925,7 +2932,7 @@ textarea {
 }
 
 .dark-mode .main-btn {
-    background-color: #3a3a3a;
+    background-color: #292b29;
     color: #eaeaea;
 }
 
@@ -2935,12 +2942,12 @@ textarea {
 
 /* Vision Section */
 .dark-mode .vision {
-    background-color: #262626;
+    background-color: #212121;
 }
 
 .dark-mode .vision-container {
-    background-color: #2f2f2f;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    background-color: #1a1a1a;
+    box-shadow: 0 6px 15px rgba(32, 44, 41, 0.578);
 }
 
 .dark-mode .vision-text {
@@ -2955,18 +2962,35 @@ textarea {
     color: #c4c4c4;
 }
 
-.dark-mode .vision-image img {
+.dark-mode .vision-light {
+    display: none;
+}
+
+.dark-mode .vision-dark {
+    display: block;
+}
+
+.dark-mode #vision-image img {
     filter: brightness(0.8);
 }
 
 /* Services Section */
 .dark-mode .services-Home {
-    background-color: #1f1f1f;
+    background-color: #212121;
+}
+
+.dark-mode .services-Home h2 {
+    color: #e5e5e5;
 }
 
 .dark-mode .service-box-Home {
-    background-color: #2b2b2b;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    background-color: #252625;
+    box-shadow:0 6px 15px rgba(32, 44, 41, 0.578);
+    
+}
+
+.dark-mode .service-box-Home img {
+filter: brightness(0.55);
 }
 
 .dark-mode .service-box-Home h3 {
@@ -2979,7 +3003,7 @@ textarea {
 
 /* Center box */
 .dark-mode .center-box {
-    background-color: #333;
+    background-color: #2d2d2c;
 }
 
 
@@ -3009,11 +3033,11 @@ textarea {
 }
 
 .dark-mode .story-item {
-    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    box-shadow: 0 6px 15px rgba(20, 28, 26, 0.578);
 }
 
 .dark-mode .story-item img {
-    filter: brightness(0.75);
+    filter: brightness(0.55);
 }
 
 .dark-mode .overlay-story {
@@ -3044,9 +3068,9 @@ textarea {
 }
 
 .dark-mode .donation-section {
-    background-color: #2d2d2d;
+    background-color: #383838;
     background-blend-mode: multiply;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 15px rgba(27, 94, 29, 0.3);
 }
 
 .dark-mode .donation-section h2 {
@@ -3058,7 +3082,7 @@ textarea {
 }
 
 .dark-mode .donate-btn {
-    background-color: #3a3a3a;
+    background-color: #252525;
     color: #f0f0f0;
 }
 
@@ -3094,52 +3118,6 @@ textarea {
 .dark-mode .cancel-btn-donation:hover {
     color: #e5e5e5;
 }
-
-/* Reviews *//*
-.dark-mode .reviews-Home {
-    background-color: #292929;
-    color: #dcdcdc;
-}
-
-.dark-mode .text-box h2 {
-    color: #e5e5e5;
-}
-
-.dark-mode .text-box p {
-    color: #bfbfbf;
-}
-
-
-
-.dark-mode .review-box-Home {
-    background-color: #333333 !important;  
-    color: #e6e6e6 !important;
-}
-
-.dark-mode .review-box-Home p {
-    color: #c2c2c2 !important;
-}
-
-.dark-mode .author-Home {
-    color: #e6e6e6 !important;
-}
-
-.dark-mode .stars-Home {
-    color: #ffd04a !important;
-}
-
-/* Center rating box (optional) 
-.dark-mode .center2-box {
-    background-color: #333 !important;
-}
-.dark-mode h2 {
-    color: #ffffff;
-}
-.dark-mode label {
-    color: #ffffff;
-}*/
-
-
 
 
 /* ================= HERO ================= */
@@ -3221,7 +3199,7 @@ textarea {
     color: #eaeaea;
 }
 
-/* Stars (تبقى ذهبية) */
+/* Stars  */
 .dark-mode .stars {
     color: #ffd04a;
 }
@@ -3531,6 +3509,7 @@ textarea {
     color: #ffd04a !important;
 }
 
+/*back to top button*/
 #backToTop {
   position: fixed;
   bottom: 30px;
@@ -3554,10 +3533,111 @@ textarea {
   background-color: #6da65a;
 }
 
+/*clock style*/
 #clock {
   color: #d4b996;
   font-size: 14px;
   margin-top: 10px;
+}
+
+/*SERVICE PAGE Dark-mode*/
+
+.dark-mode .mainService {
+    background-color: #383838;
+    color: #d8e8d8;
+}
+
+.dark-mode .mainService h1 {
+    color: #e5f0e2;
+}
+
+.dark-mode .mainService .Service-text {
+    color: #becdba;
+}
+
+.dark-mode .mainService::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 0;
+}
+
+.dark-mode .servicesCatagories {
+    background-color: #222222;
+    color: #e0e8e0;
+}
+
+.dark-mode .services-box {
+    background-color: #242726;
+    border: 3px solid #47574c;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.dark-mode .services-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 18px 25px rgba(0,0,0,0.55);
+}
+
+.dark-mode .services-box h3 {
+    color: #b4d5b4;
+}
+
+.dark-mode .services-box p {
+    color: #d2ded2;
+}
+
+.dark-mode .services-box img {
+    filter: brightness(0.9);
+    border: 2px solid #3a5f46;
+}
+/* SERVICE LIST PAGE */
+
+.dark-mode .ECOHUP-Services {
+    color: #e4eed9;
+}
+
+.dark-mode .sort-container label {
+    color: #cfe8c8;
+}
+
+.dark-mode .sort-container select {
+    background-color: #2a2d2a;
+    border: 1px solid #527255;
+    color: #eaeaea;
+}
+
+.dark-mode .sort-container select:hover {
+    border-color: #6ea37a;
+    box-shadow: 0 0 5px rgba(110, 163, 122, 0.4);
+}
+
+.dark-mode .service-info {
+    background-color: #222;
+    border-top: 3px solid #4a6b4a;
+   
+}
+
+.dark-mode .service-container {
+    background-color: #242726;
+    border-color: #263326;
+}
+
+.dark-mode .service-container img {
+    border-color: #262b26;
+    filter: brightness(0.85);
+}
+
+.dark-mode .service-container h3 {
+    color: #AAC8A7;
+}
+
+.dark-mode .service-container .price {
+    color: #1f2d1f;
+}
+
+.dark-mode .service-container p {
+    color: #c3d2c0;
 }
 
 
