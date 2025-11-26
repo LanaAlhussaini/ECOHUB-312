@@ -1,4 +1,4 @@
-/*document.addEventListener("DOMContentLoaded", function () {
+/*document.addEventListener("DOMContentLoaded", function () {*/
 
     // APPLY SAVED THEME
     if (localStorage.getItem("theme") === "dark") {
@@ -29,7 +29,6 @@
         }
     }
 
-});*/
 // BACK TO TOP BUTTON
 const backToTop = document.getElementById("backToTop");
 
@@ -100,4 +99,48 @@ document.addEventListener("DOMContentLoaded", () => {
         sorted.forEach(service => parent.appendChild(service));
     });
 });
+
+// DONATION FORM (Extra Functionality)
+document.addEventListener("DOMContentLoaded", function () {
+
+    const donationForm = document.querySelector(".donation-form form");
+
+    if (!donationForm) return; 
+
+    donationForm.addEventListener("submit", function (e) {
+        e.preventDefault(); 
+
+        let name = document.getElementById("name").value.trim();
+        let dob = document.getElementById("dob").value;
+        let email = document.getElementById("email").value.trim();
+        let phone = document.getElementById("phone").value.trim();
+        let gender = document.querySelector("input[name='gender']:checked");
+        let category = document.getElementById("category").value;
+        let amount = document.getElementById("amount").value.trim();
+
+        let errorMessage = "";
+        
+        if (name === "") errorMessage = "Please enter your name.";
+        else if (dob === "") errorMessage = "Please enter your date of birth.";
+        else if (!email.includes("@") || !email.includes("."))  errorMessage = "Please enter a valid email.";
+        else if (phone.length < 8) errorMessage = "Please enter a valid phone number.";
+        else if (!gender) errorMessage = "Please select your gender.";
+        else if (category === "") errorMessage = "Please choose a donation category.";
+        else if (amount === "" || amount <= 0) errorMessage = "Please enter a valid amount.";
+
+        if (errorMessage !== "") {
+            alert(errorMessage);
+            return;
+        }
+
+        // SUCCESS MESSAGE
+        alert("Thank you for your donation! Your support means a lot ❤️");
+
+        donationForm.reset();
+
+        const toggle = document.getElementById("donate-toggle");
+        toggle.checked = false;
+    });
+});
+
 
