@@ -143,4 +143,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+
+  
+    const joinBtn = document.querySelector(".join-btn");
+    if (joinBtn) {
+        joinBtn.onclick = function() {
+            alert("Thank you for joining our campaign!");
+        };
+    }
+
+  
+    const consultationForm = document.querySelector(".consultation-form");
+    if (consultationForm) {
+        consultationForm.onsubmit = function(e) {
+            e.preventDefault();
+            alert("Your question has been sent successfully!");
+        };
+    }
+
+});
+
+
+
+ 
+
+
 

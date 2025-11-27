@@ -48,12 +48,15 @@
           </p>
 
           <!-- Simple text form for users to submit questions -->
-          <form class="consultation-form">
-            <label for="question">Type your question here</label>
-            <input type="text" id="question" name="question" placeholder="Type your question here">
-            <br>
-            <button type="submit">Send</button>
-          </form>
+        <form class="consultation-form">
+
+    <label for="question">Type your question here</label>
+    <input type="text" id="question" name="question" placeholder="Type your question here">
+    <br>
+   <button type="submit" class="send-btn">Send</button>
+
+</form>
+
         </div>
       </div>
     </div>
@@ -89,12 +92,7 @@
       <p><a href="#">Instagram</a></p>
     </div>
   </footer>
-<script>
-document.querySelector(".consultation-form").onsubmit = function(e) {
-  e.preventDefault();
-  alert("Your question has been sent successfully!");
-}
-</script>
 <script src="../Script.js"></script>
 </body>
+
 </html>
