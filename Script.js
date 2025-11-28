@@ -166,7 +166,261 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
- 
+// ================================================
+//  REQUESTS A SERVICE [ FORM VALIDATION +STAY MOD ]
+// ================================================
 
+let tempRequests = []; // Requests stay temporarily until page reload
+
+// ===== Get display name from select option =====
+function getServiceName(serviceValue) {
+    const select = document.getElementById("serviceType");
+    if (select) {
+        for (let i = 0; i < select.options.length; i++) {
+            if (select.options[i].value === serviceValue) {
+                return select.options[i].textContent;
+            }
+        }
+    }
+    return serviceValue;
+}
+
+// =====  Get service image based on selection =====
+function getServiceImage(serviceValue) {
+    switch (serviceValue) {
+        // Recycling Collection
+        case "paper-recycling": return "paper.jpeg";
+        case "plastic-recycling": return "Plastic Recycling.jpg";
+        case "glass-recycling": return "glass.jpeg";
+
+        // Environmental Workshops
+        case "eco-crafts-workshop": return "Eco Crafts Workshop.jpg";
+        case "green-living-workshop": return "/HomeImages/Green Living Workshop[1].jpg";
+        case "garden-care-workshop": return "/Garden Care Basics Workshop[1].jpg";
+
+        // Garden Maintenance
+        case "tree-trimming": return "Tree Trimming.jpg";
+        case "garden-plant-care": return "/HomeImages/Garden Plant Care[1].jpg";
+        case "garden-landscaping": return "Garden Landscaping.jpg";
+
+        // Default
+        default: return "../ServicesImage/default.jpg";
+    }
+}
+
+// ===== Display temporary requests stay mod =====
+function showTempRequests(displayBox, form) {
+    const temporaryDisplay = document.getElementById("temporary-requests-display");
+
+    if (tempRequests.length === 0) {
+        if (temporaryDisplay) temporaryDisplay.style.display = 'none';
+        return;
+    }
+
+    if (temporaryDisplay) temporaryDisplay.style.display = 'block';
+    displayBox.innerHTML = "";
+
+    tempRequests.forEach((req, index) => {
+        let imgPath = getServiceImage(req.service);
+        displayBox.innerHTML += `
+            <div class="status-pending">
+                <div class="request-card new-request-card" style="border: 2px solid #5aa53e; background-color: #f0fdf4; margin-bottom: 15px;">
+                    <img src="${imgPath}" alt="${getServiceName(req.service)} Image" style="width:100%; height:150px; object-fit:cover; border-bottom:1px solid #ccc;">
+                    <div class="request-details" style="padding: 10px;">
+                        <p class="request-title" style="color:#222; font-weight: bold;">New Request #${index + 1}: ${getServiceName(req.service)}</p>
+                        <p class="request-meta">Customer: ${req.name}</p>
+                        <p class="request-meta">Due Date: ${req.date}</p>
+                        <p class="request-meta">Status: <strong class="status-text-pending">New - Awaiting Review</strong></p>
+                        <p class="request-meta">Description: ${req.desc.substring(0, 70)}...</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    form.reset();
+}
+
+// ===== Save request to localStorage =====
+function saveRequestToLocalStorage(requestObj) {
+    let stored = JSON.parse(localStorage.getItem("requests")) || [];
+    stored.push({
+        service: requestObj.service,
+        name: requestObj.name,
+        date: requestObj.date,
+        desc: requestObj.desc,
+        status: "Pending"
+    });
+    localStorage.setItem("requests", JSON.stringify(stored));
+}
+
+// ===== Validate service request form =====
+function validateRequestForm(e) {
+    e.preventDefault();
+
+    let form = e.target;
+    let service = document.getElementById("serviceType").value;
+    let name = document.getElementById("fullName").value.trim();
+    let date = document.getElementById("preferredDate").value;
+    let desc = document.getElementById("notes").value.trim();
+    let displayBox = document.getElementById("new-requests-container");
+
+    let errorMessage = "";
+
+    // Service validation
+    if (service === "") errorMessage += "• Please select a service type.\n";
+
+    // Name validation: exactly 2 words, letters only
+    const nameRegex = /^[A-Za-z]+\s[A-Za-z]+$/;
+    let badChars = /[0-9!?@]/;
+    if (name === "") errorMessage += "• Full Name is required.\n";
+    else if (!nameRegex.test(name) || badChars.test(name))
+        errorMessage += "• Full name must contain two words (letters only, no numbers or ! ? @).\n";
+
+    // Date validation: at least 3 days from today
+    if (date === "") errorMessage += "• Please select a preferred date (Due date).\n";
+    else {
+        let selected = new Date(date);
+        let today = new Date();
+        selected.setHours(0, 0, 0, 0);
+        today.setHours(0, 0, 0, 0);
+        let minDate = new Date(today);
+        minDate.setDate(today.getDate() + 3);
+        if (selected < minDate) errorMessage += "• Due date must be at least 3 days from today.\n";
+    }
+
+    // Description validation
+    if (desc.length < 100) errorMessage += `• Request description must be at least 100 characters (currently ${desc.length}).\n`;
+
+    if (errorMessage !== "") {
+        alert("Please fix the following before submitting:\n\n" + errorMessage);
+        return;
+    }
+
+    const confirmMessage = "Your service request has been sent successfully!\n\nDo you want to stay on this page to add another service (OK), or return to the dashboard (Cancel)?";
+    let stay = confirm(confirmMessage);
+
+    let requestObj = { service, name, date, desc };
+
+    if (stay) {
+        tempRequests.push(requestObj);
+        showTempRequests(displayBox, form);
+    } else {
+        saveRequestToLocalStorage(requestObj);
+        window.location.href = "Customer_Dashboard.html";
+    }
+}
+
+// ================================================
+// SERVICE EVALUATION [FORM VALIDATION]
+// ================================================
+function validateEvaluationForm() {
+    let service = document.getElementById("serviceType").value;
+    let rating = document.querySelector("input[name='rating']:checked");
+    let feedback = document.getElementById("feedback").value.trim();
+
+    // Validation
+    if (service === "") {
+        alert("Please select a service.");
+        return false;
+    }
+    if (!rating) {
+        alert("Please select a rating.");
+        return false;
+    }
+    if (feedback.length === 0) {
+        alert("Please write your feedback.");
+        return false;
+    }
+
+    // Feedback message
+    if (parseInt(rating.value) >= 4) alert("Thank you for your positive feedback.");
+    else alert("We apologize for the inconvenience.");
+
+    // Redirect to dashboard
+    window.location.href = "Customer_Dashboard.html";
+    return false;
+}
+
+// ===== Event Listener for Evaluation Form =====
+document.addEventListener("DOMContentLoaded", function () {
+    const evalForm = document.getElementById("serviceEvaluationForm");
+    if (evalForm) evalForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        validateEvaluationForm();
+    });
+});
+
+
+// ================================================
+// Customer DASHBOARD FUNCTIONS
+// ================================================
+function updateRequestStatus() {
+    let requests = JSON.parse(localStorage.getItem("requests")) || [];
+    let today = new Date(); today.setHours(0, 0, 0, 0);
+    requests.forEach(req => {
+        let serviceDate = new Date(req.date); serviceDate.setHours(0, 0, 0, 0);
+        req.status = serviceDate <= today ? "Completed" : "Pending";
+    });
+    localStorage.setItem("requests", JSON.stringify(requests));
+}
+
+function loadDashboardRequests() {
+    updateRequestStatus();
+    let requests = JSON.parse(localStorage.getItem("requests")) || [];
+    let totalCount = document.querySelector(".summary-card.total .count");
+    let pendingCount = document.querySelector(".summary-card.pending .count");
+    let completedCount = document.querySelector(".summary-card.completed .count");
+    let requestList = document.querySelector(".request-list");
+    if (!requestList) return;
+
+    let pending = requests.filter(r => r.status === "Pending").length;
+    let completed = requests.filter(r => r.status === "Completed").length;
+
+    if (totalCount) totalCount.textContent = requests.length;
+    if (pendingCount) pendingCount.textContent = pending;
+    if (completedCount) completedCount.textContent = completed;
+
+    requestList.innerHTML = "";
+    if (requests.length === 0) {
+        requestList.innerHTML = `<p style="text-align:center; color:#5aa53e; margin-top:50px;">No stored service requests yet.</p>`;
+        return;
+    }
+
+    requests.forEach(req => {
+        let imgPath = getServiceImage(req.service);
+        let statusClass = req.status === "Completed" ? "status-completed" : "status-pending";
+        let statusTextClass = req.status === "Completed" ? "status-text-completed" : "status-text-pending";
+
+        requestList.innerHTML += `
+            <div class="${statusClass}">
+                <div class="request-card">
+                    <img src="${imgPath}" alt="${getServiceName(req.service)} Image" style="width:100%; height:150px; object-fit:cover; border-bottom:1px solid #ccc;">
+                    <div class="request-details">
+                        <p class="request-title">${getServiceName(req.service)}</p>
+                        <p class="request-meta">Status: <strong class="${statusTextClass}">${req.status}</strong></p>
+                        <p class="request-meta">Date: ${req.date}</p>
+                        <p class="request-meta">Name: ${req.name}</p>
+                        <p class="request-meta details-text">Description: ${req.desc.substring(0, 50)}...</p>
+                        <a href="#" class="status-details-link">Details...</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+}
+
+// ================================================
+// EVENT LISTENERS
+// ================================================
+document.addEventListener("DOMContentLoaded", function () {
+    const requestForm = document.getElementById("requestServiceForm");
+    if (requestForm) requestForm.addEventListener("submit", validateRequestForm);
+
+    const evaluateForm = document.getElementById("evaluateServiceForm");
+    if (evaluateForm) evaluateForm.addEventListener("submit", validateEvaluationForm);
+
+    if (document.title.includes("Customer Dashboard")) loadDashboardRequests();
+});
 
 

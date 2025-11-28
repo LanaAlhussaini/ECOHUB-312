@@ -33,7 +33,7 @@
 
         <section class="RequestService-form">
             <div class="form-card">
-                <form>
+                <form id="requestForm" onsubmit="return validateRequestForm()">
                     <div class="form-group service-selection-group">
                         <label for="serviceType" class="form-label">Select Service Type</label>
                         <select id="serviceType" class="form-select" required>
@@ -43,8 +43,7 @@
                                 <option value="paper-recycling">Paper Recycling</option>
                                 <option value="plastic-recycling">Plastic Recycling</option>
                                 <option value="glass-recycling">Glass Recycling</option>
-                                <!-- <option value="metal-recycling">Metal Recycling</option>
-                                 <option value="electronics-disposal">Electronics Disposal</option> -->
+                               
                             </optgroup>
 
                             <optgroup label="Environmental Workshops">
@@ -87,7 +86,8 @@
                     </div>
 
                     <button type="submit" class="primary-btn">Submit Service Request</button>
-                </form>
+                </form> <div id="requestDisplay"></div>
+
             </div>
         </section>
     </main>

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿You said:
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,32 +29,62 @@
     </main>
 
     <script>
+        // Get ID from URL
         const params = new URLSearchParams(window.location.search);
         const requestId = params.get("id");
 
-        const requests = JSON.parse(
-            decodeURIComponent(localStorage.getItem("ecohub_requests") || "[]")
-        );
+        // Load requests from localStorage
+        const requests = JSON.parse(localStorage.getItem("requests") || "[]");
 
+        // Find matching request
         const request = requests.find(r => r.id == requestId);
+
         const box = document.getElementById("detailsBox");
 
         if (request) {
-            box.innerHTML = `
-            <h2>${request.service}</h2>
-            <p><strong>Name:</strong> ${request.name}</p>
-            <p><strong>Address:</strong> ${request.address}</p>
-            <p><strong>Date:</strong> ${request.date}</p>
-            <p><strong>Status:</strong> ${request.status}</p>
-            <p><strong>Price:</strong> $${request.price}</p>
-            <p><strong>Notes:</strong> ${request.notes || "None"}</p>
-          `;
-        } else {
+
+            // Handle optional fields
+            let address = request.address || "Not provided";
+            let notes = request.desc || request.notes || "No description";
+
+            box.innerHTML =
+                <h2>${request.service}</h2>
+                <p><strong>Name:</strong> ${request.name}</p>
+                <p><strong>Address:</strong> ${address}</p>
+                <p><strong>Date:</strong> ${request.date}</p>
+                <p><strong>Status:</strong> ${request.status}</p>
+                <p><strong>Description:</strong> ${notes}</p>
+                ;
+        }
+        else {
             box.innerHTML = "<p>Request not found.</p>";
         }
     </script>
 
+    <footer>
+        <div>
+            <div class="logo">
+                <img src="Logo.png" alt="ECOHUP Footer Logo" />
+            </div>
+            <small>All rights reserved ©️ 2025 ECOHUP</small>
+        </div>
+        <div>
+            <h4>Contact Us</h4>
+            <p>Email: <a href="mailto:info@ecohub.com">info@ecohub.com</a></p>
+            <p>Phone: 0100-200-300</p>
+        </div>
+        <div>
+            <h4>About</h4>
+            <p><a href="about us/about_us.html">About Us</a></p>
+            <p><a href="Services.html">Services</a></p>
+        </div>
+        <div>
+            <h4>Community</h4>
+            <p><a href="#">LinkedIn</a></p>
+            <p><a href="#">Instagram</a></p>
+        </div>
+    </footer>
+
     <script src="Script.js"></script>
 </body>
 </html>
-
