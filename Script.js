@@ -49,23 +49,30 @@ if (backToTop) {
 
 // CLOCK FUNCTIONALITY
 function updateClock() {
+  const clockElement = document.getElementById("clock");
+
+  if (!clockElement) return;
+
   const now = new Date();
   const time = now.toLocaleTimeString();
-
-  const clockElement = document.getElementById("clock");
-  if (clockElement) {
-    clockElement.textContent = "Current Time: " + time;
-  }
+  clockElement.textContent = "Current Time: " + time;
 }
 
-setInterval(updateClock, 1000);
-updateClock();
+if (document.getElementById("clock")) {
+  setInterval(updateClock, 1000);
+  updateClock();
+}
 
 
 // SORTING FUNCTIONALITY
 document.addEventListener("DOMContentLoaded", () => {
     const sortSelect = document.getElementById("sort-select");
     const parent = document.getElementById("services-list");
+
+    if (!sortSelect || !parent) {
+    return;
+}
+
     let services = Array.from(document.querySelectorAll("#services-list .service-container"));
 
     function shuffle(array) {
