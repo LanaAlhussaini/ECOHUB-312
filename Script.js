@@ -201,13 +201,13 @@ function getServiceImage(serviceValue) {
         case "glass-recycling": return "glass.jpeg";
 
         // Environmental Workshops
-        case "eco-crafts-workshop": return "Eco Crafts Workshop.jpg";
-        case "green-living-workshop": return "HomeImages/Green Living Workshop[1].jpg";
-        case "garden-care-workshop": return "Garden Care Basics Workshop[1].jpg";
+        case "eco-crafts-workshop": return "Eco crafts workshope.jpg";
+        case "green-living-workshop": return "Green Living Workshop.jpg";
+        case "garden-care-workshop": return "Garden Care Basics Workshop.jpg";
 
         // Garden Maintenance
         case "tree-trimming": return "Tree Trimming.jpg";
-        case "garden-plant-care": return "HomeImages/Garden Plant Care[1].jpg";
+        case "garden-plant-care": return "Garden Plant Care.jpg";
         case "garden-landscaping": return "Garden Landscaping.jpg";
 
         // Default
@@ -217,6 +217,7 @@ function getServiceImage(serviceValue) {
 
 // ===== Display temporary requests stay mod =====
 function showTempRequests(displayBox, form) {
+    const temporaryDisplay = document.getElementById("temporary-requests-display");
 
     if (tempRequests.length === 0) {
         if (temporaryDisplay) temporaryDisplay.style.display = 'none';
@@ -228,20 +229,23 @@ function showTempRequests(displayBox, form) {
 
     tempRequests.forEach((req, index) => {
         let imgPath = getServiceImage(req.service);
+       
+        let shortDesc = req.desc.length > 100 ? req.desc.substring(0, 100) + "..." : req.desc;
+
         displayBox.innerHTML += `
-            <div class="status-pending">
-                <div class="request-card new-request-card" style="border: 2px solid #5aa53e; background-color: #f0fdf4; margin-bottom: 15px;">
-                    <img src="${imgPath}" alt="${getServiceName(req.service)} Image" style="width:100%; height:150px; object-fit:cover; border-bottom:1px solid #ccc;">
-                    <div class="request-details" style="padding: 10px;">
-                        <p class="request-title" style="color:#222; font-weight: bold;">New Request #${index + 1}: ${getServiceName(req.service)}</p>
-                        <p class="request-meta">Customer: ${req.name}</p>
-                        <p class="request-meta">Due Date: ${req.date}</p>
-                        <p class="request-meta">Status: <strong class="status-text-pending">New - Awaiting Review</strong></p>
-                        <p class="request-meta">Description: ${req.desc.substring(0, 70)}...</p>
-                        <button class="delete-temp-btn" data-index="${index}" style="margin-top:10px;">Delete</button>
+                <div class="status-pending">
+                    <div class="request-card-stay">
+                        <img src="${imgPath}" alt="${getServiceName(req.service)} Image" width="200">
+                        <div class="request-details">
+                            <p class="request-title">New Request #${index + 1}: ${getServiceName(req.service)}</p>
+                            <p class="request-meta">Customer: ${req.name}</p>
+                            <p class="request-meta">Due Date: ${req.date}</p>
+                            <p class="request-meta">Status: <strong class="status-text-pending">New - Awaiting Review</strong></p>
+                            <p class="request-meta request-desc-text">${shortDesc}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+          
         `;
     });
 
@@ -424,18 +428,20 @@ function loadDashboardRequests() {
         let statusClass = req.status === "Completed" ? "status-completed" : "status-pending";
         let statusTextClass = req.status === "Completed" ? "status-text-completed" : "status-text-pending";
 
+        // قص الوصف لـ 80 حرف فقط
+        let shortDesc = req.desc.length > 80 ? req.desc.substring(0, 80) + "..." : req.desc;
+
         requestList.innerHTML += `
             <div class="${statusClass}">
                 <div class="request-card">
-                    <img src="${imgPath}" alt="${getServiceName(req.service)} Image" style="width:100%; height:150px; object-fit:cover; border-bottom:1px solid #ccc;">
+                    <img src="${imgPath}" alt="${getServiceName(req.service)} Image">
                     <div class="request-details">
                         <p class="request-title">${getServiceName(req.service)}</p>
                         <p class="request-meta">Status: <strong class="${statusTextClass}">${req.status}</strong></p>
                         <p class="request-meta">Date: ${req.date}</p>
                         <p class="request-meta">Name: ${req.name}</p>
-                        <p class="request-meta details-text">Description: ${req.desc.substring(0, 50)}...</p>
-                        <a href="requestDetails.html?id=${req.id}" class="status-details-link">Details...</a>
-                        <button class="delete-btn" data-id="${req.id}" style="margin-top:10px;">Delete</button>
+                        <p class="request-meta request-desc-text">${shortDesc}</p>
+                        <button class="delete-btn" data-id="${req.id}">Delete</button>
                     </div>
                 </div>
             </div>
