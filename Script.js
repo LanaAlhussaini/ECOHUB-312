@@ -217,7 +217,6 @@ function getServiceImage(serviceValue) {
 
 // ===== Display temporary requests stay mod =====
 function showTempRequests(displayBox, form) {
-    const temporaryDisplay = document.getElementById("temporary-requests-display");
 
     if (tempRequests.length === 0) {
         if (temporaryDisplay) temporaryDisplay.style.display = 'none';
