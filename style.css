@@ -486,6 +486,85 @@ footer {
             }
         }
 
+                /* Popup background */
+        .story-popup {
+            display: none; 
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        /* Popup content */
+        .story-popup-content {
+            background: white;
+            width: 400px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Close button */
+        .close-popup {
+            float: right;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* Inputs */
+        #storyForm input, #storyForm textarea {
+            width: 100%;
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #aaa;
+            box-sizing: border-box;
+        }
+
+        /* Submit button */
+        .submit-story-btn {
+            background-color: #4a6735;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .submit-story-btn:hover {
+            background-color: #395229;
+        }
+
+                .delete-story-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #d9534f;
+            color: white;
+            border: none;
+            padding: 5px 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            z-index: 5;
+        }
+
+        .delete-story-btn:hover {
+            background: #c9302c;
+        }
+
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: scale(0.9);}
+            to   {opacity: 1; transform: scale(1);}
+        }
+
+
 
         /* ===== Donation Section ===== */
         .donation {
@@ -2305,16 +2384,16 @@ th, td {
  .ECOHUP-Services {
     position: relative;
     width: 100%;
-    min-height: 100vh; /* makes it cover full viewport height */
+    min-height: 100vh; 
     height: 1000px;
     margin: 0;
-    background-color: #e4eed9; /* soft green background */
+    background-color: #e4eed9; 
     display: flex;
     flex-direction: column;
-    justify-content: center; /* center vertically */
-    align-items: center; /* center horizontally */
+    justify-content: center;
+    align-items: center; 
     text-align: center;
-    color: #4a6735; /* green text */
+    color: #4a6735; 
     box-sizing: border-box;
 }
 
@@ -2457,7 +2536,7 @@ h2 {
 
 /* About Us Hero Section */
 #beginning {
-    background-image: url('about us/images/people-planting-vector-illustration_862994-461134.jpg'); 
+    background-image: url('aboutus/images/people-planting-vector-illustration_862994-461134.jpg'); 
     background-size: cover;    
     background-position: center; 
     background-repeat: no-repeat; 
@@ -2482,7 +2561,7 @@ h2 {
 
 /* Dashboard Hero Section */
 .hero-dashboard {
-    background-image: url("Service Dashboard/images2/istockphoto-1483284915-612x612.jpg"); 
+    background-image: url("ServiceDashboard/images2/istockphoto-1483284915-612x612.jpg"); 
     background-size: cover;    
     background-position: center; 
     background-repeat: no-repeat; 
@@ -3099,6 +3178,51 @@ filter: brightness(0.55);
 
 .dark-mode .share-btn:hover {
     background-color: #4a4a4a;
+}
+
+
+.dark-mode .delete-story-btn {
+    background-color: #8b1e1e;
+    color: #fff;
+}
+
+.dark-mode .delete-story-btn:hover {
+    background-color: #a62828;
+}
+
+.dark-mode .story-popup {
+    background: rgba(0,0,0,0.75);
+}
+
+.dark-mode .story-popup-content {
+    background-color: #272926;
+    color: #e6ecd9;
+    border: 1px solid #2a391f;
+}
+
+.dark-mode #storyForm input,
+.dark-mode #storyForm textarea {
+    background-color: #1e221d;
+    color: #e4f0dc;
+    border: 1px solid #283321;
+}
+
+.dark-mode #storyForm input::placeholder,
+.dark-mode #storyForm textarea::placeholder {
+    color: #a8b6a0;
+}
+
+.dark-mode .submit-story-btn {
+    background-color: #171915;
+    color: #f1f7ec;
+}
+
+.dark-mode .submit-story-btn:hover {
+    background-color: #36422e;
+}
+
+.dark-mode .close-popup {
+    color: #d5e9c5;
 }
 
 /* Donation */
