@@ -478,7 +478,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.title.includes("Customer Dashboard")) loadDashboardRequests();
 });
 
-//      SHARE YOUR STORY 
+//SHARE YOUR STORY 
 document.addEventListener("DOMContentLoaded", () => {
 
     // OPEN/CLOSE POPUP
@@ -1217,6 +1217,24 @@ if (uploadArea) {
     }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector("nav");
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("show-nav");
+        });
+    }
+
+    document.addEventListener("click", (e) => {
+        if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+            navMenu.classList.remove("show-nav");
+        }
+    });
+});
+
 
 
 
@@ -1224,3 +1242,4 @@ if (uploadArea) {
 // console code to delete all localStorage items in services
 //      localStorage.removeItem("providerServices");
 // =========================================================
+
