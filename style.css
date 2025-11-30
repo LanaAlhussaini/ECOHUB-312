@@ -2677,6 +2677,26 @@ textarea {
 .file-upload-area .upload-icon { font-size: 2.5rem; color: #666; margin-bottom: 1rem; }
 .file-upload-area .upload-text { font-size: 1rem; color: #007bff; font-weight: bold; text-decoration: underline; }
 
+.file-upload-area {
+    position: relative;
+    overflow: hidden;
+}
+
+/* When an image is chosen, hide icon + text */
+.file-upload-area.has-image .upload-icon,
+.file-upload-area.has-image .upload-text {
+    display: none;
+}
+
+/* Preview image style */
+.file-preview-img {
+    display: block;
+    max-width: 100%;
+    max-height: 220px; /* adjust if you want */
+    margin: 0 auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
 
 /* ==================================== */
 /* 6. BUTTONS                           */
@@ -2756,9 +2776,9 @@ textarea {
 
 .btn2 {
     display: block;
-    width: 100%;
+     width: auto; 
     max-width: 450px;
-    margin: 15px auto;
+     margin: 15px auto; 
     padding: 18px 20px;
     font-size: 1.1rem;
     font-weight: bold;
@@ -2775,6 +2795,7 @@ textarea {
     background-color: #e0e0e0;
     border-color: #bbb;
 }
+
 /* ==================================== */
 /* 8. MANAGE STAFF SPECIFIC STYLES      */
 /* ==================================== */
@@ -3658,6 +3679,94 @@ filter: brightness(0.55);
     color: #c3d2c0;
 }
 
+/* ABOUT US – Dark Mode Hero */
+.dark-mode #beginning {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('about us/images/aboutus_dark.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Story Section */
+.dark-mode #our-story {
+    background-color: #1f2820;
+}
+
+.dark-mode #our-story p {
+    color: #d0d0d0;
+}
+
+/* Team Section */
+.dark-mode .team-member img {
+    filter: brightness(0.85) contrast(1.05);
+}
+
+/* Join Form */
+.dark-mode #join-form {
+    background-color: #1b241b;
+}
+
+.dark-mode .form-container-styled {
+    background-color: #1f1f1f;
+    border-color: #343434;
+}
+
+.dark-mode .form-group-styled input,
+.dark-mode .form-group-styled select,
+.dark-mode .form-group-styled textarea {
+    background-color: #262626;
+    color: #f3f3f3;
+    border-color: #3a3a3a;
+}
+
+
+
+/* DASHBOARD – Dark Mode Hero */
+.dark-mode .hero-dashboard {
+    background-image:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("Service Dashboard/images2/dashboard_dark.png");
+    background-size: cover;
+    background-position: center; 
+    background-blend-mode: multiply;
+}
+
+/* Service List */
+.dark-mode .services-list-container {
+    background-color: #202820;
+}
+
+.dark-mode .services-list li {
+    background-color: #252525;
+    border-color: #3a3a3a;
+}
+
+/* Buttons */
+.dark-mode .btn2 {
+    background-color: #252525;
+    color: #f5f5f5;
+    border-color: #444;
+}
+
+.dark-mode #beginning h1 {
+    color: #fff;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.9);
+}
+
+/* TEAM CARDS – DARK MODE */
+.dark-mode .team-member a {
+    color: #f5f5f5;              /* name text */
+}
+
+.dark-mode .team-member a:hover {
+    color: #6fd39a;              /* or your accent color */
+}
+
+.dark-mode .team-member p {
+    color: #c0c0c0;              /* role text: "Head of Human Resources" etc. */
+}
+
 .request-list {
     display: flex;
     flex-wrap: wrap; 
@@ -3716,3 +3825,340 @@ filter: brightness(0.55);
         height: 180px;
     }
 
+/* Custom CSS for Error States and Required Indicators */
+
+/* Makes required labels look like they have a red star */
+.required label::after {
+    content: " *";
+    color: #e74c3c; /* Red color */
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Styles for the error state on input fields */
+.error-field {
+    border: 2px solid #e74c3c !important; /* Red border */
+    background-color: #fce8e6; /* Light red background */
+}
+
+/* Style for the general error message container */
+#form-error-message {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #e74c3c;
+    background-color: #fdeaea;
+    color: #c0392b;
+    border-radius: 5px;
+    display: none; /* Hidden by default */
+    font-weight: 500;
+}
+
+/* Optional: Improve styling for the file upload label when error occurs */
+.file-upload-area.error-field {
+    border-color: #e74c3c !important;
+}
+
+/* =========================================
+   UNIFIED FORM + BUTTON STYLES (LIGHT MODE)
+   Applies to:
+   - About Us "Join Our Team" form (#join-form) :contentReference[oaicite:0]{index=0}
+   - Manage Staff "Add Staff" form (#add-staff-form) :contentReference[oaicite:1]{index=1}
+   - Manage Staff "Delete Staff" form (#delete-staff-form) :contentReference[oaicite:2]{index=2}
+   - Add New Service form (.form-container form) :contentReference[oaicite:3]{index=3}
+   ========================================= */
+
+/* 1. Card containers */
+#join-form,
+.content-box,
+.form-container {
+    max-width: 720px;
+    margin: 2rem auto;
+    padding: 2rem 2.5rem;
+    background-color: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #e4e4e4;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* Keep manage_staff delete list layout: only adjust spacing of the form itself */
+#delete-staff-form {
+    margin-top: 1rem;
+}
+
+/* 2. Form titles */
+.form-title,
+#join-form > h2,
+.main-title {
+    text-align: left;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #183417;
+}
+
+/* 3. Generic form groups */
+.form-group,
+.form-group-styled,
+#join-form .required {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.1rem;
+}
+
+/* 4. Labels */
+.form-group label,
+.form-group-styled label,
+#join-form label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #263826;
+}
+
+/* 5. Inputs, selects, textareas (all forms) */
+#join-form input,
+#join-form select,
+#join-form textarea,
+#add-staff-form input,
+#add-staff-form select,
+#add-staff-form textarea,
+.form-container input,
+.form-container select,
+.form-container textarea {
+    padding: 0.7rem 0.9rem;
+    border-radius: 12px;
+    border: 1px solid #d2d8d2;
+    font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
+    background-color: #f8faf8;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+#join-form textarea,
+#add-staff-form textarea,
+.form-container textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+/* Focus state */
+#join-form input:focus,
+#join-form select:focus,
+#join-form textarea:focus,
+#add-staff-form input:focus,
+#add-staff-form select:focus,
+#add-staff-form textarea:focus,
+.form-container input:focus,
+.form-container select:focus,
+.form-container textarea:focus {
+    border-color: #4f9b5c;
+    box-shadow: 0 0 0 3px rgba(79, 155, 92, 0.18);
+    background-color: #ffffff;
+}
+
+/* 6. Two-column name group (Manage Staff) */
+.name-group {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+/* 7. File upload area (shared style) */
+.file-upload-area {
+    border: 1.5px dashed #a9b9a9;
+    border-radius: 14px;
+    padding: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    background-color: #f7fbf7;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.1s ease;
+}
+
+.file-upload-area:hover {
+    border-color: #4f9b5c;
+    background-color: #f0f7f0;
+    transform: translateY(-1px);
+}
+
+.upload-icon {
+    font-size: 1.4rem;
+}
+
+.upload-text {
+    font-size: 0.95rem;
+    color: #4a5b4a;
+}
+
+/* Hide raw file inputs if not already hidden */
+.file-upload-area input[type="file"] {
+    display: none;
+}
+
+/* 8. Staff delete list — keep layout but unify subtle look */
+.staff-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.2rem 0;
+}
+
+.staff-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.6rem 0.4rem;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.staff-item:last-child {
+    border-bottom: none;
+}
+
+.staff-info .name {
+    font-weight: 600;
+    color: #1f2d1f;
+}
+
+.staff-info .position {
+    font-size: 0.85rem;
+    color: #6a756a;
+}
+
+/* 9. UNIFIED BUTTONS (all main actions) */
+
+.submit-btn,
+#join-form button[type="submit"],
+.button-container .btn2 {
+    
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.6rem;
+    border-radius: 999px;
+    border: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #4f9b5c;
+    color: #ffffff;
+    box-shadow: 0 10px 18px rgba(79, 155, 92, 0.32);
+    transition: background-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+
+.submit-btn:hover,
+#join-form button[type="submit"]:hover,
+.button-container .btn2:hover {
+    background-color: #3f7d4a;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 22px rgba(79, 155, 92, 0.4);
+}
+
+.submit-btn:active,
+#join-form button[type="submit"]:active,
+.button-container .btn2:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 12px rgba(79, 155, 92, 0.35);
+}
+
+/* Make form buttons align nicely */
+#join-form button[type="submit"],
+#add-staff-form .submit-btn,
+#delete-staff-form .submit-btn,
+.form-container .submit-btn {
+   margin: 1rem auto;     
+    display: block; 
+}
+
+
+/* =========================================
+   DARK MODE OVERRIDES FOR UNIFIED FORMS
+   (body has class "dark-mode" from Script.js)
+   ========================================= */
+.dark-mode #join-form,
+.dark-mode .content-box,
+.dark-mode .form-container {
+    background-color: #1c241c;
+    border-color: #303a30;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+}
+
+.dark-mode .form-title,
+.dark-mode #join-form > h2,
+.dark-mode .main-title {
+    color: #f4f6f3;
+}
+
+.dark-mode .form-group label,
+.dark-mode .form-group-styled label,
+.dark-mode #join-form label {
+    color: #e5ebe5;
+}
+
+.dark-mode #join-form input,
+.dark-mode #join-form select,
+.dark-mode #join-form textarea,
+.dark-mode #add-staff-form input,
+.dark-mode #add-staff-form select,
+.dark-mode #add-staff-form textarea,
+.dark-mode .form-container input,
+.dark-mode .form-container select,
+.dark-mode .form-container textarea {
+    background-color: #242824;
+    border-color: #3e463e;
+    color: #f4f4f4;
+}
+
+.dark-mode #join-form input::placeholder,
+.dark-mode #join-form textarea::placeholder,
+.dark-mode #add-staff-form input::placeholder,
+.dark-mode #add-staff-form textarea::placeholder,
+.dark-mode .form-container input::placeholder,
+.dark-mode .form-container textarea::placeholder {
+    color: #9ea89e;
+}
+
+/* File upload in dark mode */
+.dark-mode .file-upload-area {
+    background-color: #232723;
+    border-color: #4f6b4f;
+}
+
+.dark-mode .upload-text {
+    color: #dbe4db;
+}
+
+/* Staff list in dark mode */
+.dark-mode .staff-item {
+    border-bottom-color: #3a423a;
+}
+
+.dark-mode .staff-info .name {
+    color: #f0f4f0;
+}
+
+.dark-mode .staff-info .position {
+    color: #b0b9b0;
+}
+
+/* Buttons in dark mode */
+.dark-mode .submit-btn,
+.dark-mode #join-form button[type="submit"],
+.dark-mode .button-container .btn2 {
+    background-color: #5fb36b;
+    box-shadow: 0 10px 18px rgba(56, 132, 73, 0.6);
+}
+
+.dark-mode .submit-btn:hover,
+.dark-mode #join-form button[type="submit"]:hover,
+.dark-mode .button-container .btn2:hover {
+    background-color: #4b9257;
+    box-shadow: 0 14px 22px rgba(56, 132, 73, 0.75);
+}
+
+.error {
+    border: 2px solid #c0392b !important;
+}

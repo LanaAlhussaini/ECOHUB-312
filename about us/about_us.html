@@ -74,25 +74,28 @@
          <h2>Join Our Team!</h2>
         <section id="join-form">
            
-            
-            <form action="/submit-join-form" method="POST" enctype="multipart/form-data">
+          
+             <form action="/submit-join-form" method="POST" enctype="multipart/form-data"> 
                 
-                 <div>
+              <!-- Global error message container -->
+                    <div id="form-error-message"></div>
+
+                <div class="required" id="name-container">
                 <label for="join-name">Name:</label>
                 <input type="text" id="join-name" name="member_name" required>
                 </div>
 
-                 <div>
+                <div class="required">
                 <label for="join-dob">Date of Birth:</label>
                 <input type="date" id="join-dob" name="member_dob">
                 </div>
 
-                 <div>
+                 <div class="required" id="email-container">
                 <label for="join-email">Email:</label>
                 <input type="email" id="join-email" name="member_email" required>
                 </div>
 
-                <div>
+               <div class="required">
              <label for="expertise">Area of expertise:</label>
              <select id="expertise" name="expertise" required>
              <option value="" disabled selected>-- Select an Area --</option>
@@ -108,23 +111,23 @@
              </select>
              </div> 
 
-                <div>
+                <div class="required">
                 <label for="join-skills">Skills:</label>
                 <textarea id="join-skills" name="member_skills" rows="3"></textarea>
                 </div>
 
-                 <div>
+                 <div class="required">
                 <label for="join-education">Education:</label>
                 <textarea id="join-education" name="member_education" rows="3"></textarea>
                 </div>
 
-                 <div>
+                 <div class="required">
                 <label for="join-message">General Message:</label>
                 <textarea id="join-message" name="member_message" rows="5"></textarea>
                 </div>
 
                 
-<div class="form-group-styled">
+<div class="form-group-styled required">
     <label>Upload your photo:</label>
    
     <label for="join-photo" class="file-upload-area">
