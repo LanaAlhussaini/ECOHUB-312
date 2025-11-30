@@ -2457,7 +2457,7 @@ h2 {
 
 /* About Us Hero Section */
 #beginning {
-    background-image: url('about us/images/people-planting-vector-illustration_862994-461134.jpg'); 
+    background-image: url('aboutus/images/people-planting-vector-illustration_862994-461134.jpg'); 
     background-size: cover;    
     background-position: center; 
     background-repeat: no-repeat; 
@@ -2482,7 +2482,7 @@ h2 {
 
 /* Dashboard Hero Section */
 .hero-dashboard {
-    background-image: url("Service Dashboard/images2/istockphoto-1483284915-612x612.jpg"); 
+    background-image: url("ServiceDashboard/images2/istockphoto-1483284915-612x612.jpg"); 
     background-size: cover;    
     background-position: center; 
     background-repeat: no-repeat; 
