@@ -18,83 +18,63 @@ body {
         box-sizing: border-box;
     }
 
-    /* ====== HEADER (FIXED NAVBAR) ====== */
-   /* header {
-        background-color: #4a6735; /* Dark green 
-        color: white;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 20px 60px;
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 100;
-        box-sizing: border-box;
-    }
-
-        header .logo {
-            margin-right: 40px;
-        }
-
-            header .logo img {
-                height: 60px;
-                width: auto;
-                border-radius: 6px;
-            }
-
-            @media (max-width: 830px) {
-            .menu-toggle {
-                display: block;
-            }
-        }
-    /* ====== NAVIGATION LINKS ====== */
-    /*nav {
-        display: flex;
-        gap: 20px;
-    }
-
-        nav a {
-            text-decoration: none;
-            color: #f5f2e7;
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-            nav a:hover {
-                color: #8b6b4a;
-            }*/
-
-    /* ================================
-   HEADER - DESKTOP VERSION
-================================ */
-
+/* ===== HEADER ===== */
 header {
-    background-color: #4a6735; /* Dark green */
+    background-color: #4a6735;
     color: white;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row; /* جميع العناصر في خط واحد */
     align-items: center;
-    padding: 20px 60px;
+    padding: 15px 25px;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
+    gap: 20px; /* مسافة بين اللوجو وروابط الهيدر */
     z-index: 1000;
     box-sizing: border-box;
 }
 
-/* Logo */
+/* اللوجو */
 header .logo img {
-    height: 55px;
+    height: 60px;
     width: auto;
+    border-radius: 6px;
+}
+
+/* زر الثيم */
+.mode-toggle {
+    width: 42px;
+    height: 42px;
+    background-color: #b0700f;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    transition: .2s;
+    margin-left: auto; /* يجعل الزر يمين الهيدر دائمًا */
+}
+
+.mode-toggle:hover {
+    background-color: #a44a00;
+}
+
+/* Menu toggle (الثلاث شرطات) */
+.menu-toggle {
+    display: none; /* يظهر فقط للشاشات الصغيرة */
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px; /* مسافة بسيطة عن الزر الآخر */
 }
 
 /* Navigation Links */
 nav {
     display: flex;
-    gap: 18px;
+    gap: 20px;
 }
 
 nav a {
@@ -106,69 +86,17 @@ nav a {
 }
 
 nav a:hover {
-    color: #c1e1c1;
+    color: #8b6b4a;
 }
 
-  /* THEME TOGGLE BUTTON*/
-
-.mode-toggle {
-    position: static; 
-    margin-left: 20px;
-    width: 42px;
-    height: 42px;
-    background-color: #b0700f;
-    border: none;
-    border-radius: 50%;
-    font-size: 20px;
-    color: white;
-    cursor: pointer;
-    transition: .2s;
-}
-
-.mode-toggle:hover {
-    background-color: #a44a00;
-}
-
-
-@media (max-width: 480px) {
-    .mode-toggle {
-        right: 12px;
-        top: 18px;
-        transform: none;
-    }
-}
-
-.menu-toggle {
-    display: none;
-    font-size: 30px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-
-
-    /*  RESPONSIVE */
-
-@media (max-width: 830px) {
-
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) { /* الآيباد والجوال */
     header {
         padding: 15px 20px;
-        justify-content: center;
     }
 
     .menu-toggle {
-        display: block;
-        position: absolute;
-        left: 20px;
-        top: 15px;
-    }
-
-    .mode-toggle {
-        position: absolute;
-        right: 20px;
-        top: 12px;
-        z-index: 9000;
+        display: block; /* يظهر على الشاشات الصغيرة */
     }
 
     nav {
@@ -176,12 +104,14 @@ nav a:hover {
         top: 70px;
         left: 0;
         width: 100%;
-        background-color: #304d23;
         flex-direction: column;
-        padding: 20px 0;
         gap: 18px;
+        background-color: #304d23;
         display: none;
         border-bottom: 4px solid #203817;
+        align-items: center;
+        padding: 15px 0;
+        z-index: 900;
     }
 
     nav.show-nav {
@@ -192,6 +122,11 @@ nav a:hover {
         font-size: 18px;
     }
 }
+
+
+ 
+
+
 
 /* ====== FOOTER SECTION ====== */
 footer {
