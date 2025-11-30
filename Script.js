@@ -202,12 +202,12 @@ function getServiceImage(serviceValue) {
 
         // Environmental Workshops
         case "eco-crafts-workshop": return "Eco Crafts Workshop.jpg";
-        case "green-living-workshop": return "/HomeImages/Green Living Workshop[1].jpg";
-        case "garden-care-workshop": return "/Garden Care Basics Workshop[1].jpg";
+        case "green-living-workshop": return "HomeImages/Green Living Workshop[1].jpg";
+        case "garden-care-workshop": return "Garden Care Basics Workshop[1].jpg";
 
         // Garden Maintenance
         case "tree-trimming": return "Tree Trimming.jpg";
-        case "garden-plant-care": return "/HomeImages/Garden Plant Care[1].jpg";
+        case "garden-plant-care": return "HomeImages/Garden Plant Care[1].jpg";
         case "garden-landscaping": return "Garden Landscaping.jpg";
 
         // Default
@@ -239,6 +239,7 @@ function showTempRequests(displayBox, form) {
                         <p class="request-meta">Due Date: ${req.date}</p>
                         <p class="request-meta">Status: <strong class="status-text-pending">New - Awaiting Review</strong></p>
                         <p class="request-meta">Description: ${req.desc.substring(0, 70)}...</p>
+                        <button class="delete-temp-btn" data-index="${index}" style="margin-top:10px;">Delete</button>
                     </div>
                 </div>
             </div>
@@ -248,10 +249,23 @@ function showTempRequests(displayBox, form) {
     form.reset();
 }
 
+const displayBox = document.getElementById("requestDisplay");
+if (displayBox) {
+    displayBox.addEventListener("click", function (e) {
+        if (e.target.classList.contains("delete-temp-btn")) {
+            let index = e.target.dataset.index;
+            tempRequests.splice(index, 1); // delete from temp array
+            showTempRequests(displayBox, document.getElementById("requestServiceForm")); // update display
+        }
+    });
+}
+
 // ===== Save request to localStorage =====
 function saveRequestToLocalStorage(requestObj) {
     let stored = JSON.parse(localStorage.getItem("requests")) || [];
+    const id = Date.now();
     stored.push({
+        id: id,
         service: requestObj.service,
         name: requestObj.name,
         date: requestObj.date,
@@ -262,15 +276,19 @@ function saveRequestToLocalStorage(requestObj) {
 }
 
 // ===== Validate service request form =====
+let formSubmitted = false;
 function validateRequestForm(e) {
     e.preventDefault();
+
+    if (formSubmitted) return; //avoid multiple submissions
+    formSubmitted = true;
 
     let form = e.target;
     let service = document.getElementById("serviceType").value;
     let name = document.getElementById("fullName").value.trim();
     let date = document.getElementById("preferredDate").value;
     let desc = document.getElementById("notes").value.trim();
-    let displayBox = document.getElementById("new-requests-container");
+    let displayBox = document.getElementById("requestDisplay");
 
     let errorMessage = "";
 
@@ -301,17 +319,25 @@ function validateRequestForm(e) {
 
     if (errorMessage !== "") {
         alert("Please fix the following before submitting:\n\n" + errorMessage);
+        formSubmitted = false; //if errors, allow resubmission
         return;
     }
 
     const confirmMessage = "Your service request has been sent successfully!\n\nDo you want to stay on this page to add another service (OK), or return to the dashboard (Cancel)?";
     let stay = confirm(confirmMessage);
 
-    let requestObj = { service, name, date, desc };
+    let requestObj = {
+        id: Date.now(),
+        service,
+        name,
+        date,
+        desc
+    };
 
     if (stay) {
         tempRequests.push(requestObj);
         showTempRequests(displayBox, form);
+        formSubmitted = false; //allow resubmission for multipul requests
     } else {
         saveRequestToLocalStorage(requestObj);
         window.location.href = "Customer_Dashboard.html";
@@ -409,13 +435,30 @@ function loadDashboardRequests() {
                         <p class="request-meta">Date: ${req.date}</p>
                         <p class="request-meta">Name: ${req.name}</p>
                         <p class="request-meta details-text">Description: ${req.desc.substring(0, 50)}...</p>
-                        <a href="#" class="status-details-link">Details...</a>
+                        <a href="requestDetails.html?id=${req.id}" class="status-details-link">Details...</a>
+                        <button class="delete-btn" data-id="${req.id}" style="margin-top:10px;">Delete</button>
                     </div>
                 </div>
             </div>
         `;
     });
 }
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const requestList = document.querySelector(".request-list");
+    if (requestList) {
+        requestList.addEventListener("click", function (e) {
+            if (e.target.classList.contains("delete-btn")) {
+                let id = e.target.dataset.id;
+                let stored = JSON.parse(localStorage.getItem("requests")) || [];
+                stored = stored.filter(r => r.id != id);
+                localStorage.setItem("requests", JSON.stringify(stored));
+                loadDashboardRequests();
+            }
+        });
+    }
+});
 
 // ================================================
 // EVENT LISTENERS
