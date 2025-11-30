@@ -43,6 +43,12 @@ body {
                 width: auto;
                 border-radius: 6px;
             }
+
+            @media (max-width: 830px) {
+            .menu-toggle {
+                display: block;
+            }
+        }
     /* ====== NAVIGATION LINKS ====== */
     nav {
         display: flex;
@@ -724,15 +730,6 @@ img {
     height: auto;
 }
 
-/* Make tables flexible if used */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 10px;
-    text-align: left;
-}
 
 /* Ensure main containers shrink properly */
 .container, .main-content, .vision-text, .vision-image, 
