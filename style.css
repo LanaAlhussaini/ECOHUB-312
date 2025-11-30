@@ -195,66 +195,78 @@ footer {
         }
 /*---------------------------------------------------------------------------------------------------------------------*/
 
-/*------------------------------*/
-/*-------------HOME-------------*/
-/*------------------------------*/
+.hero1 {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* IMAGES */
+.hero1-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* default */
+.light-img { display: block; }
+.dark-img { display: none; }
+
+/* dark mode toggle */
+.dark-mode .light-img { display: none; }
+.dark-mode .dark-img { display: block; }
+
+/* CONTENT OVER IMAGE */
+.hero1-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    width: 100%;
+    max-width: 700px;
+    color: white;
+}
+
+/* text */
+.hero1-content h1 {
+    color: rgb(60, 60, 60);
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.hero1-content .welcome-text {
+    color: #283321;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+/* button */
+.main-btn {
+    display: inline-block;
+    padding: 10px 28px;
+    background-color: #efb780;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.main-btn:hover {
+    background-color: #e2914a;
+    transform: scale(1.05);
+}
+
+@media(max-width:600px){
+    .hero1-content h1 {
+        font-size: 2.5rem;
+    }
+}
 
 
- /*  main SECTION */
-        .main {
-            position: relative;
-            height: 700px;
-            width: 100%;
-            margin-top: 6px;
-            background-image: url('HomeImages/home.jpeg') ;
-            background-size: cover;       
-            background-position: center;  
-            background-repeat: no-repeat;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: rgb(103, 97, 76);
-            overflow: hidden;
-        }
 
-        .main-content {
-            position: relative;
-            z-index: 1;
-            max-width: 700px;
-        }
-
-        .main h1 {
-            font-size: 5rem;
-            margin-top: 60px;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
-
-        .main .welcome-text {
-            font-size: 1.2rem;
-            margin-top: 20px;
-            margin-bottom: 25px;
-            color: #6a7162;
-        }
-
-        .main-btn {
-            display: inline-block;
-            background-color: #efb780;
-            color: white;
-            text-decoration: none;
-            padding: 10px 28px;
-            margin-top: 100px;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-            .main-btn:hover {
-                background-color: #e2914a;
-                transform: scale(1.05);
-            }
 
         /*  Vision Section */
         .vision {
@@ -3169,6 +3181,9 @@ textarea {
 }
 
 .dark-mode .main .welcome-text {
+    color: #cfcfcf;
+}
+.dark-mode .main h1 {
     color: #cfcfcf;
 }
 
