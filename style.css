@@ -3995,7 +3995,7 @@ filter: brightness(0.55);
 .dark-mode #beginning {
     background-image:
         linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-        url('about us/images/aboutus_dark.png');
+        url('about\us/images/aboutus_dark.png');
     background-size: cover;
     background-position: center;
 }
@@ -4038,7 +4038,7 @@ filter: brightness(0.55);
 .dark-mode .hero-dashboard {
     background-image:
         linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-        url("Service Dashboard/images2/dashboard_dark.png");
+        url("ServiceDashboard/images2/dashboard_dark.png");
     background-size: cover;
     background-position: center; 
     background-blend-mode: multiply;

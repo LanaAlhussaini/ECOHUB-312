@@ -601,6 +601,561 @@ function reloadStories() {
     stories.forEach((story, index) => addStoryToPage(story, index));
 }
 
+// ================================================
+// ABOUT US PAGE [JOIN THE TEAM FORM VALIDATION + PREVIEW]
+// ================================================
+document.addEventListener('DOMContentLoaded', function () {
+    const joinForm = document.querySelector('#join-form form');
+    if (!joinForm) return;
+
+    // Fields
+    const nameField       = document.getElementById('join-name');
+    const dobField        = document.getElementById('join-dob');
+    const photoField      = document.getElementById('join-photo');
+    const emailField      = document.getElementById('join-email');
+    const expertiseField  = document.getElementById('expertise');
+    const skillsField     = document.getElementById('join-skills');
+    const educationField  = document.getElementById('join-education');
+    const messageField    = document.getElementById('join-message');
+
+    const uploadArea = photoField ? photoField.closest('.file-upload-area') : null;
+
+    // -----------------------------
+    // PHOTO PREVIEW
+    // -----------------------------
+    if (photoField && uploadArea) {
+        const previewImg = document.createElement('img');
+        previewImg.className = 'file-preview-img';
+        previewImg.style.display = 'none';
+        uploadArea.appendChild(previewImg);
+
+        photoField.addEventListener('change', function () {
+            const file = this.files[0];
+
+            if (!file) {
+                previewImg.style.display = 'none';
+                uploadArea.classList.remove('has-image');
+                return;
+            }
+
+            if (!file.type.startsWith('image/')) {
+                alert('Please upload a valid image file (jpg, png, etc.).');
+                this.value = '';
+                previewImg.style.display = 'none';
+                uploadArea.classList.remove('has-image');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImg.src = e.target.result;
+                previewImg.style.display = 'block';
+                uploadArea.classList.add('has-image');
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    // -----------------------------
+    // FORM VALIDATION
+    // -----------------------------
+    joinForm.addEventListener('submit', function (event) {
+        // We keep this to stop the real HTTP submit
+        event.preventDefault();
+
+        let isValid = true;
+        let errorMessage = '';
+
+        // Clear previous errors
+        [
+            nameField,
+            dobField,
+            emailField,
+            expertiseField,
+            skillsField,
+            educationField,
+            messageField
+        ].forEach(f => f && f.classList.remove('error'));
+
+        if (uploadArea) uploadArea.classList.remove('error');
+
+        // --------- A) EMPTY FIELDS ----------
+        const requiredFields = [
+            { field: nameField,      name: 'Name' },
+            { field: dobField,       name: 'Date of Birth' },
+            { field: emailField,     name: 'Email' },
+            { field: expertiseField, name: 'Area of Expertise' },
+            { field: skillsField,    name: 'Skills' },
+            { field: educationField, name: 'Education' },
+            { field: messageField,   name: 'General Message' }
+        ];
+
+        requiredFields.forEach(item => {
+            const el = item.field;
+            if (!el) return;
+
+            const isSelect = el.tagName === 'SELECT';
+            const value = el.value.trim();
+
+            if (value === '' || (isSelect && el.value === '')) {
+                isValid = false;
+                errorMessage += `• ${item.name} field cannot be empty.\n`;
+                el.classList.add('error');
+            }
+        });
+
+        // Photo required
+        if (!photoField || photoField.files.length === 0) {
+            isValid = false;
+            errorMessage += '• Photo field cannot be empty.\n';
+            if (uploadArea) uploadArea.classList.add('error');
+        }
+
+        // --------- B) NAME RULE (NO NUMBERS) ----------
+        const nameValue = nameField.value.trim();
+        const numberCheck = /\d/;
+
+        if (nameValue !== '' && numberCheck.test(nameValue)) {
+            isValid = false;
+            errorMessage += '• The Name field cannot contain numbers.\n';
+            nameField.classList.add('error');
+        }
+
+        // --------- C) PHOTO TYPE ----------
+        if (photoField && photoField.files.length > 0) {
+            const file = photoField.files[0];
+            if (!file.type.startsWith('image/')) {
+                isValid = false;
+                errorMessage += '• Photo field accepts only images (e.g., .jpg, .png).\n';
+                if (uploadArea) uploadArea.classList.add('error');
+            }
+        }
+
+        // --------- D) DOB RULE (not after 2008) ----------
+        if (dobField.value) {
+            const dob = new Date(dobField.value);
+            const maxDate = new Date('2008-12-31T23:59:59');
+
+            if (dob > maxDate) {
+                isValid = false;
+                errorMessage += '• Date of Birth should not be after the year 2008.\n';
+                dobField.classList.add('error');
+            }
+        }
+
+        // --------- SUBMIT OR SHOW ERRORS ----------
+        if (!isValid) {
+            alert('Please correct the following errors before submitting:\n\n' + errorMessage);
+
+            const firstErrorField = joinForm.querySelector('.error');
+            if (firstErrorField) {
+                firstErrorField.focus();
+            }
+            return;
+        }
+
+        // SUCCESS MESSAGE (no real server submit)
+        const senderName = nameField.value.trim();
+        alert(
+            `Confirmation:\n\n` +
+            `Thank you for applying, ${senderName}! Your application has been submitted successfully.`
+        );
+
+        // Reset form + preview
+        joinForm.reset();
+        if (uploadArea && photoField) {
+            const previewImg = uploadArea.querySelector('.file-preview-img');
+            if (previewImg) previewImg.style.display = 'none';
+            uploadArea.classList.remove('has-image');
+            photoField.value = '';
+        }
+    });
+});
+// ================================================
+// NEW SERVICE PAGE – ADD NEW SERVICE FORM + PREVIEW
+// ================================================
+document.addEventListener('DOMContentLoaded', function () {
+    // Target the "Add new Service" form on new_service.html
+    const serviceForm = document.querySelector('form[action="/submit-new-service"]');
+    if (!serviceForm) return; // Not on this page
+
+    const nameField  = document.getElementById('service-name');
+    const priceField = document.getElementById('service-price');
+    const descField  = document.getElementById('service-description');
+    const photoField = document.getElementById('service-photo');
+
+    const uploadArea = photoField ? photoField.closest('.file-upload-area') : null;
+
+    // -----------------------------
+    // PHOTO PREVIEW
+    // -----------------------------
+    if (photoField && uploadArea) {
+        const previewImg = document.createElement('img');
+        previewImg.className = 'file-preview-img';
+        previewImg.style.display = 'none';
+        uploadArea.appendChild(previewImg);
+
+        photoField.addEventListener('change', function () {
+            const file = this.files[0];
+
+            if (!file) {
+                previewImg.style.display = 'none';
+                uploadArea.classList.remove('has-image');
+                return;
+            }
+
+            if (!file.type.startsWith('image/')) {
+                alert('Please upload a valid image file (jpg, png, etc.).');
+                this.value = '';
+                previewImg.style.display = 'none';
+                uploadArea.classList.remove('has-image');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImg.src = e.target.result;
+                previewImg.style.display = 'block';
+                uploadArea.classList.add('has-image');
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    // -----------------------------
+    // FORM VALIDATION
+    // -----------------------------
+    serviceForm.addEventListener('submit', function (e) {
+        e.preventDefault(); // handle with JS
+
+        let isValid = true;
+        let errorMessage = '';
+
+        // Clear previous error styles
+        [nameField, priceField, descField].forEach(f => {
+            if (f) f.classList.remove('error');
+        });
+        if (uploadArea) uploadArea.classList.remove('error');
+
+        const numberCheck = /\d/;
+        const letterCheck = /[A-Za-z]/;
+
+        // --------- A) EMPTY FIELDS ----------
+        if (!nameField.value.trim()) {
+            isValid = false;
+            errorMessage += '• Service name cannot be empty.\n';
+            nameField.classList.add('error');
+        }
+
+        if (!priceField.value.trim()) {
+            isValid = false;
+            errorMessage += '• Price cannot be empty.\n';
+            priceField.classList.add('error');
+        }
+
+        if (!descField.value.trim()) {
+            isValid = false;
+            errorMessage += '• Description cannot be empty.\n';
+            descField.classList.add('error');
+        }
+
+        if (!photoField || photoField.files.length === 0) {
+            isValid = false;
+            errorMessage += '• Service photo cannot be empty.\n';
+            if (uploadArea) uploadArea.classList.add('error');
+        }
+
+        // --------- B) SERVICE NAME – NO NUMBERS ----------
+        const nameValue = nameField.value.trim();
+        if (nameValue && numberCheck.test(nameValue)) {
+            isValid = false;
+            errorMessage += '• Service name cannot contain numbers.\n';
+            nameField.classList.add('error');
+        }
+
+        // --------- C) PRICE – NO LETTERS (NUMBERS ONLY) ----------
+        const priceValue = priceField.value.trim();
+        if (priceValue && letterCheck.test(priceValue)) {
+            isValid = false;
+            errorMessage += '• Price cannot contain letters. Use numbers only (e.g., 50 or 50.00).\n';
+            priceField.classList.add('error');
+        }
+
+        // --------- D) PHOTO TYPE ----------
+        if (photoField && photoField.files.length > 0) {
+            const file = photoField.files[0];
+            if (!file.type.startsWith('image/')) {
+                isValid = false;
+                errorMessage += '• Service photo must be a valid image file.\n';
+                if (uploadArea) uploadArea.classList.add('error');
+            }
+        }
+
+        // --------- FINAL RESULT ----------
+        if (!isValid) {
+            alert('Please correct the following errors before submitting:\n\n' + errorMessage);
+
+            const firstError = serviceForm.querySelector('.error');
+            if (firstError) firstError.focus();
+            return;
+        }
+
+        // SUCCESS
+        const serviceName = nameField.value.trim();
+        alert(
+            'Confirmation:\n\n' +
+            `New service "${serviceName}" has been added successfully.`
+        );
+
+        // Reset form + preview
+        serviceForm.reset();
+        if (uploadArea && photoField) {
+            const previewImg = uploadArea.querySelector('.file-preview-img');
+            if (previewImg) previewImg.style.display = 'none';
+            uploadArea.classList.remove('has-image');
+            photoField.value = '';
+        }
+    });
+});
+
+
+// ================================================
+// MANAGE STAFF MEMBERS — FULL VALIDATION + PREVIEW
+// ================================================
+document.addEventListener('DOMContentLoaded', function () {
+
+    // -------------------------------
+    // 1) DELETE STAFF FORM
+    // -------------------------------
+    const deleteForm = document.getElementById('delete-staff-form');
+
+    if (deleteForm) {
+        deleteForm.addEventListener('submit', function (e) {
+            const checked = deleteForm.querySelectorAll('input[name="delete_staff"]:checked');
+
+            if (checked.length === 0) {
+                e.preventDefault();
+                alert('Please select at least one staff member to delete.');
+                return;
+            }
+
+            if (!confirm('Are you sure you want to delete the selected staff member(s)?')) {
+                e.preventDefault();
+            }
+        });
+    }
+
+
+
+    // -------------------------------
+    // 2) ADD STAFF FORM
+    // -------------------------------
+    const addStaffForm = document.getElementById('add-staff-form');
+
+    if (addStaffForm) {
+        const firstName  = document.getElementById('first-name');
+        const lastName   = document.getElementById('last-name');
+        const dobField   = document.getElementById('dob');
+        const emailField = document.getElementById('email');
+        const position   = document.getElementById('position');
+        const education  = document.getElementById('education');
+        const skills     = document.getElementById('skills');
+        const photoField = document.getElementById('staff-photo');
+
+        const uploadArea = photoField ? photoField.closest('.file-upload-area') : null;
+
+        // --------------------------
+        // IMAGE PREVIEW
+        // --------------------------
+        if (photoField && uploadArea) {
+            const previewImg = document.createElement('img');
+            previewImg.className = 'file-preview-img';
+            previewImg.style.display = 'none';
+            uploadArea.appendChild(previewImg);
+
+            photoField.addEventListener('change', function () {
+                const file = this.files[0];
+
+                if (!file) {
+                    previewImg.style.display = 'none';
+                    uploadArea.classList.remove('has-image');
+                    return;
+                }
+
+                if (!file.type.startsWith('image/')) {
+                    alert('Please upload a valid image file (jpg, png, etc.).');
+                    this.value = '';
+                    previewImg.style.display = 'none';
+                    uploadArea.classList.remove('has-image');
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImg.src = e.target.result;
+                    previewImg.style.display = 'block';
+                    uploadArea.classList.add('has-image');
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+
+
+        // -------------------------------
+        // FORM VALIDATION
+        // -------------------------------
+        addStaffForm.addEventListener('submit', function (e) {
+
+            let isValid = true;
+            let errorMessage = '';
+
+            // Clear old error classes
+            [firstName, lastName, dobField, emailField, position, education, skills].forEach(f => {
+                f.classList.remove('error');
+            });
+            if (uploadArea) uploadArea.classList.remove('error');
+
+            const numberCheck = /\d/;
+
+
+            // -------------------------
+            // A) EMPTY FIELD CHECKS
+            // -------------------------
+            if (!firstName.value.trim()) {
+                isValid = false;
+                errorMessage += '• First name cannot be empty.\n';
+                firstName.classList.add('error');
+            }
+            if (!lastName.value.trim()) {
+                isValid = false;
+                errorMessage += '• Last name cannot be empty.\n';
+                lastName.classList.add('error');
+            }
+            if (!dobField.value.trim()) {
+                isValid = false;
+                errorMessage += '• Date of Birth cannot be empty.\n';
+                dobField.classList.add('error');
+            }
+            if (!emailField.value.trim()) {
+                isValid = false;
+                errorMessage += '• Email cannot be empty.\n';
+                emailField.classList.add('error');
+            }
+            if (!position.value.trim()) {
+                isValid = false;
+                errorMessage += '• Area of Expertise cannot be empty.\n';
+                position.classList.add('error');
+            }
+            if (!education.value.trim()) {
+                isValid = false;
+                errorMessage += '• Education cannot be empty.\n';
+                education.classList.add('error');
+            }
+            if (!skills.value.trim()) {
+                isValid = false;
+                errorMessage += '• Skills cannot be empty.\n';
+                skills.classList.add('error');
+            }
+            if (photoField.files.length === 0) {
+                isValid = false;
+                errorMessage += '• Staff photo cannot be empty.\n';
+                if (uploadArea) uploadArea.classList.add('error');
+            }
+
+
+            // -------------------------
+            // B) NAME RULE — NO NUMBERS
+            // -------------------------
+            if (firstName.value.trim() && numberCheck.test(firstName.value)) {
+                isValid = false;
+                errorMessage += '• First name cannot contain numbers.\n';
+                firstName.classList.add('error');
+            }
+
+            if (lastName.value.trim() && numberCheck.test(lastName.value)) {
+                isValid = false;
+                errorMessage += '• Last name cannot contain numbers.\n';
+                lastName.classList.add('error');
+            }
+
+
+            // -------------------------
+            // C) EMAIL FORMAT
+            // -------------------------
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (emailField.value.trim() && !emailRegex.test(emailField.value.trim())) {
+                isValid = false;
+                errorMessage += '• Please enter a valid email address.\n';
+                emailField.classList.add('error');
+            }
+
+
+            // -------------------------
+            // D) DOB RULE
+            // -------------------------
+            if (dobField.value.trim()) {
+                const dob = new Date(dobField.value);
+                const maxDate = new Date('2008-12-31T23:59:59');
+
+                if (dob > maxDate) {
+                    isValid = false;
+                    errorMessage += '• Date of Birth cannot be after 2008.\n';
+                    dobField.classList.add('error');
+                }
+            }
+
+
+            // -------------------------
+            // E) IMAGE TYPE
+            // -------------------------
+            if (photoField.files.length > 0) {
+                const file = photoField.files[0];
+                if (!file.type.startsWith('image/')) {
+                    isValid = false;
+                    errorMessage += '• Staff photo must be a valid image file.\n';
+                    if (uploadArea) uploadArea.classList.add('error');
+                }
+            }
+
+
+            // -------------------------
+            // FINAL DECISION
+            // -------------------------
+            if (!isValid) {
+                e.preventDefault();
+                alert("Please fix the following errors:\n\n" + errorMessage);
+                return;
+            }
+
+            // -------------------------
+            // SUCCESS — ADD TO LIST
+            // -------------------------
+            const fullName = `${firstName.value.trim()} ${lastName.value.trim()}`;
+            const staffList = document.querySelector('.staff-list');
+
+            if (staffList) {
+                const li = document.createElement('li');
+                li.className = 'staff-item';
+
+                li.innerHTML = `
+                    <input type="checkbox" name="delete_staff">
+                    <div class="placeholder-icon">👤</div>
+                    <div class="staff-info">
+                        <span class="name">${fullName}</span>
+                        <span class="position">${position.value.trim()}</span>
+                    </div>
+                `;
+
+                staffList.appendChild(li);
+            }
+
+            alert(`New staff member "${fullName}" has been added successfully.`);
+        });
+    }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const menuToggle = document.querySelector(".menu-toggle");
