@@ -3159,6 +3159,51 @@ filter: brightness(0.55);
     background-color: #4a4a4a;
 }
 
+
+.dark-mode .delete-story-btn {
+    background-color: #8b1e1e;
+    color: #fff;
+}
+
+.dark-mode .delete-story-btn:hover {
+    background-color: #a62828;
+}
+
+.dark-mode .story-popup {
+    background: rgba(0,0,0,0.75);
+}
+
+.dark-mode .story-popup-content {
+    background-color: #272926;
+    color: #e6ecd9;
+    border: 1px solid #2a391f;
+}
+
+.dark-mode #storyForm input,
+.dark-mode #storyForm textarea {
+    background-color: #1e221d;
+    color: #e4f0dc;
+    border: 1px solid #283321;
+}
+
+.dark-mode #storyForm input::placeholder,
+.dark-mode #storyForm textarea::placeholder {
+    color: #a8b6a0;
+}
+
+.dark-mode .submit-story-btn {
+    background-color: #171915;
+    color: #f1f7ec;
+}
+
+.dark-mode .submit-story-btn:hover {
+    background-color: #36422e;
+}
+
+.dark-mode .close-popup {
+    color: #d5e9c5;
+}
+
 /* Donation */
 .dark-mode .donation {
     background-color: #1f1f1f;
