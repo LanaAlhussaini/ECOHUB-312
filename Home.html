@@ -130,6 +130,34 @@
             </div>
         </section>
 
+        <!-- story-popup -->
+   <div id="story-popup" class="story-popup">
+      <div class="story-popup-content">
+        <span class="close-popup">&times;</span>
+        <h2>Share Your Story</h2>
+
+        <form id="storyForm">
+            <label>Full Name</label>
+            <input type="text" id="storyName" required placeholder="Enter your name">
+
+            <label>Story Title</label>
+            <input type="text" id="storyTitle" required placeholder="Enter a title">
+
+            <label>Before Image (optional)</label>
+            <input type="file" id="beforeImage" accept="image/*">
+
+            <label>After Image (optional)</label>
+            <input type="file" id="afterImage" accept="image/*">
+
+            <label>Your Story</label>
+            <textarea id="storyText" required placeholder="Write your story..." rows="4"></textarea>
+
+            <button type="submit" class="submit-story-btn">Submit Story</button>
+        </form>
+       </div>
+    </div>
+
+
         <!-- Donation Section (Extra functionallty)-->
         <section class="donation">
             <div class="donation-section">

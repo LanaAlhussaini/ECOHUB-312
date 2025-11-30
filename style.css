@@ -486,6 +486,85 @@ footer {
             }
         }
 
+                /* Popup background */
+        .story-popup {
+            display: none; 
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        /* Popup content */
+        .story-popup-content {
+            background: white;
+            width: 400px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Close button */
+        .close-popup {
+            float: right;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* Inputs */
+        #storyForm input, #storyForm textarea {
+            width: 100%;
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #aaa;
+            box-sizing: border-box;
+        }
+
+        /* Submit button */
+        .submit-story-btn {
+            background-color: #4a6735;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .submit-story-btn:hover {
+            background-color: #395229;
+        }
+
+                .delete-story-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #d9534f;
+            color: white;
+            border: none;
+            padding: 5px 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            z-index: 5;
+        }
+
+        .delete-story-btn:hover {
+            background: #c9302c;
+        }
+
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: scale(0.9);}
+            to   {opacity: 1; transform: scale(1);}
+        }
+
+
 
         /* ===== Donation Section ===== */
         .donation {
