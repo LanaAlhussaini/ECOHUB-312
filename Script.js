@@ -771,152 +771,191 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
 // ================================================
-// NEW SERVICE PAGE – ADD NEW SERVICE FORM + PREVIEW
+// SERVICE PROVIDER – ADD NEW SERVICE + DASHBOARD
 // ================================================
-document.addEventListener('DOMContentLoaded', function () {
-    // Target the "Add new Service" form on new_service.html
-    const serviceForm = document.querySelector('form[action="/submit-new-service"]');
-    if (!serviceForm) return; // Not on this page
 
-    const nameField  = document.getElementById('service-name');
-    const priceField = document.getElementById('service-price');
-    const descField  = document.getElementById('service-description');
-    const photoField = document.getElementById('service-photo');
+// Helpers to read/write from localStorage
+function getProviderServices() {
+    return JSON.parse(localStorage.getItem("providerServices")) || [];
+}
 
-    const uploadArea = photoField ? photoField.closest('.file-upload-area') : null;
+function saveProviderServices(services) {
+    localStorage.setItem("providerServices", JSON.stringify(services));
+}
 
-    // -----------------------------
-    // PHOTO PREVIEW
-    // -----------------------------
-    if (photoField && uploadArea) {
-        const previewImg = document.createElement('img');
-        previewImg.className = 'file-preview-img';
-        previewImg.style.display = 'none';
-        uploadArea.appendChild(previewImg);
+// ---------- A) Image preview for Add New Service ----------
+function setupNewServicePreview() {
+    const fileInput = document.getElementById("service-photo");
+    if (!fileInput) return; // not on new_service.html
 
-        photoField.addEventListener('change', function () {
-            const file = this.files[0];
+    const uploadArea = fileInput.closest(".file-upload-area");
+    if (!uploadArea) return;
 
-            if (!file) {
-                previewImg.style.display = 'none';
-                uploadArea.classList.remove('has-image');
-                return;
+    const icon = uploadArea.querySelector(".upload-icon");
+    const text = uploadArea.querySelector(".upload-text");
+    let previewImg = uploadArea.querySelector(".image-preview");
+
+    fileInput.addEventListener("change", function () {
+        const file = this.files[0];
+
+        // If user cleared the file dialog
+        if (!file) {
+            if (previewImg) {
+                previewImg.remove();
+                previewImg = null;
             }
-
-            if (!file.type.startsWith('image/')) {
-                alert('Please upload a valid image file (jpg, png, etc.).');
-                this.value = '';
-                previewImg.style.display = 'none';
-                uploadArea.classList.remove('has-image');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                previewImg.src = e.target.result;
-                previewImg.style.display = 'block';
-                uploadArea.classList.add('has-image');
-            };
-            reader.readAsDataURL(file);
-        });
-    }
-
-    // -----------------------------
-    // FORM VALIDATION
-    // -----------------------------
-    serviceForm.addEventListener('submit', function (e) {
-        e.preventDefault(); // handle with JS
-
-        let isValid = true;
-        let errorMessage = '';
-
-        // Clear previous error styles
-        [nameField, priceField, descField].forEach(f => {
-            if (f) f.classList.remove('error');
-        });
-        if (uploadArea) uploadArea.classList.remove('error');
-
-        const numberCheck = /\d/;
-        const letterCheck = /[A-Za-z]/;
-
-        // --------- A) EMPTY FIELDS ----------
-        if (!nameField.value.trim()) {
-            isValid = false;
-            errorMessage += '• Service name cannot be empty.\n';
-            nameField.classList.add('error');
-        }
-
-        if (!priceField.value.trim()) {
-            isValid = false;
-            errorMessage += '• Price cannot be empty.\n';
-            priceField.classList.add('error');
-        }
-
-        if (!descField.value.trim()) {
-            isValid = false;
-            errorMessage += '• Description cannot be empty.\n';
-            descField.classList.add('error');
-        }
-
-        if (!photoField || photoField.files.length === 0) {
-            isValid = false;
-            errorMessage += '• Service photo cannot be empty.\n';
-            if (uploadArea) uploadArea.classList.add('error');
-        }
-
-        // --------- B) SERVICE NAME – NO NUMBERS ----------
-        const nameValue = nameField.value.trim();
-        if (nameValue && numberCheck.test(nameValue)) {
-            isValid = false;
-            errorMessage += '• Service name cannot contain numbers.\n';
-            nameField.classList.add('error');
-        }
-
-        // --------- C) PRICE – NO LETTERS (NUMBERS ONLY) ----------
-        const priceValue = priceField.value.trim();
-        if (priceValue && letterCheck.test(priceValue)) {
-            isValid = false;
-            errorMessage += '• Price cannot contain letters. Use numbers only (e.g., 50 or 50.00).\n';
-            priceField.classList.add('error');
-        }
-
-        // --------- D) PHOTO TYPE ----------
-        if (photoField && photoField.files.length > 0) {
-            const file = photoField.files[0];
-            if (!file.type.startsWith('image/')) {
-                isValid = false;
-                errorMessage += '• Service photo must be a valid image file.\n';
-                if (uploadArea) uploadArea.classList.add('error');
-            }
-        }
-
-        // --------- FINAL RESULT ----------
-        if (!isValid) {
-            alert('Please correct the following errors before submitting:\n\n' + errorMessage);
-
-            const firstError = serviceForm.querySelector('.error');
-            if (firstError) firstError.focus();
+            if (icon) icon.style.display = "block";
+            if (text) text.textContent = "upload from file";
             return;
         }
 
-        // SUCCESS
-        const serviceName = nameField.value.trim();
-        alert(
-            'Confirmation:\n\n' +
-            `New service "${serviceName}" has been added successfully.`
-        );
+        // Only allow images
+        if (!file.type.startsWith("image/")) {
+            alert("Photo field accepts only images (e.g., .jpg, .png).");
+            this.value = "";
+            if (previewImg) {
+                previewImg.remove();
+                previewImg = null;
+            }
+            if (icon) icon.style.display = "block";
+            if (text) text.textContent = "upload from file";
+            return;
+        }
 
-        // Reset form + preview
-        serviceForm.reset();
-        if (uploadArea && photoField) {
-            const previewImg = uploadArea.querySelector('.file-preview-img');
-            if (previewImg) previewImg.style.display = 'none';
-            uploadArea.classList.remove('has-image');
-            photoField.value = '';
+        // Create preview <img> once
+        if (!previewImg) {
+            previewImg = document.createElement("img");
+            previewImg.classList.add("image-preview");
+            previewImg.style.maxWidth = "100%";
+            previewImg.style.maxHeight = "220px";
+            previewImg.style.display = "block";
+            previewImg.style.margin = "12px auto 0";
+            uploadArea.appendChild(previewImg);
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            previewImg.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+
+        if (icon) icon.style.display = "none";
+        if (text) text.textContent = file.name;
+    });
+}
+
+// ---------- B) Handle Add New Service form ----------
+function setupAddNewServiceForm() {
+    // This form exists only on new_service.html
+    const form = document.querySelector('form[action="/submit-new-service"]');
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const nameInput = document.getElementById("service-name");
+        const priceInput = document.getElementById("service-price");
+        const descInput = document.getElementById("service-description");
+        const photoInput = document.getElementById("service-photo");
+
+        const name = nameInput.value.trim();
+        const priceText = priceInput.value.trim();
+        const desc = descInput.value.trim();
+        const photoFile = photoInput.files[0];
+
+        let errors = "";
+
+        // Empty fields
+        if (!name) errors += "• Service name cannot be empty.\n";
+        if (!priceText) errors += "• Price cannot be empty.\n";
+        if (!desc) errors += "• Description cannot be empty.\n";
+        if (!photoFile) errors += "• Please upload a service image.\n";
+
+        // Name rule: can't start with a number
+        if (name && /^\d/.test(name)) {
+            errors += "• Service name cannot start with a number.\n";
+        }
+
+        // Price rule: must be a number
+        const priceNumber = parseFloat(priceText);
+        if (priceText && isNaN(priceNumber)) {
+            errors += "• Price must contain numbers only.\n";
+        }
+
+        // Photo type rule: only images
+        if (photoFile && !photoFile.type.startsWith("image/")) {
+            errors += "• Photo field accepts images only (e.g., .jpg, .png).\n";
+        }
+
+        if (errors) {
+            alert("Please fix the following before submitting:\n\n" + errors);
+            return;
+        }
+
+        // Build service object to store (we store image name only; not the actual file)
+        const services = getProviderServices();
+        services.push({
+            id: Date.now(),
+            name: name,
+            price: priceNumber,
+            description: desc,
+            imageName: photoFile.name
+        });
+        saveProviderServices(services);
+
+        alert(`The new service "${name}" has been added successfully.`);
+
+        // Reset form + reset preview back to icon/text
+        form.reset();
+        const uploadArea = photoInput.closest(".file-upload-area");
+        if (uploadArea) {
+            const icon = uploadArea.querySelector(".upload-icon");
+            const text = uploadArea.querySelector(".upload-text");
+            const preview = uploadArea.querySelector(".image-preview");
+            if (preview) preview.remove();
+            if (icon) icon.style.display = "block";
+            if (text) text.textContent = "upload from file";
         }
     });
+}
+
+// ---------- C) Render services on Provider Dashboard ----------
+function renderProviderDashboardServices() {
+    const list = document.querySelector(".services-list");
+    if (!list) return;   // not on dashboard page
+
+    const stored = getProviderServices();
+    if (!stored.length) return; // no extra services; keep static ones
+
+    // Small separator item (optional)
+    const separator = document.createElement("li");
+    separator.innerHTML = `
+        <span class="service-text"><strong>— Added Services —</strong></span>
+    `;
+    list.appendChild(separator);
+
+    stored.forEach(service => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+            <span class="icon">🌿</span>
+            <span class="service-text">
+                ${service.name} &nbsp;–&nbsp; ${service.price} SR
+            </span>
+            <span class="icon">🌿</span>
+        `;
+        list.appendChild(li);
+    });
+}
+
+// ---------- D) Attach when DOM is ready ----------
+document.addEventListener("DOMContentLoaded", function () {
+    setupAddNewServiceForm();        // add/validate + save to localStorage
+    setupNewServicePreview();        // show image preview when choosing file
+    renderProviderDashboardServices(); // read services from localStorage on Dashboard
 });
+
 
 
 // ================================================
@@ -931,17 +970,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (deleteForm) {
         deleteForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // stay on page
+
             const checked = deleteForm.querySelectorAll('input[name="delete_staff"]:checked');
 
             if (checked.length === 0) {
-                e.preventDefault();
                 alert('Please select at least one staff member to delete.');
                 return;
             }
 
             if (!confirm('Are you sure you want to delete the selected staff member(s)?')) {
-                e.preventDefault();
+                return;
             }
+
+            // Remove the selected staff items from the list
+            checked.forEach(box => {
+                const li = box.closest('.staff-item');
+                if (li) li.remove();
+            });
+
+            alert('Selected staff member(s) have been deleted successfully.');
         });
     }
 
@@ -965,7 +1013,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const uploadArea = photoField ? photoField.closest('.file-upload-area') : null;
 
         // --------------------------
-        // IMAGE PREVIEW
+        // IMAGE PREVIEW  (unchanged)
         // --------------------------
         if (photoField && uploadArea) {
             const previewImg = document.createElement('img');
@@ -1003,9 +1051,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         // -------------------------------
-        // FORM VALIDATION
+        // FORM VALIDATION + ADD TO LIST
         // -------------------------------
         addStaffForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // stay on page, no /add-action
 
             let isValid = true;
             let errorMessage = '';
@@ -1124,13 +1173,12 @@ document.addEventListener('DOMContentLoaded', function () {
             // FINAL DECISION
             // -------------------------
             if (!isValid) {
-                e.preventDefault();
                 alert("Please fix the following errors:\n\n" + errorMessage);
                 return;
             }
 
             // -------------------------
-            // SUCCESS — ADD TO LIST
+            // SUCCESS — ADD TO DELETE LIST
             // -------------------------
             const fullName = `${firstName.value.trim()} ${lastName.value.trim()}`;
             const staffList = document.querySelector('.staff-list');
@@ -1152,6 +1200,27 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             alert(`New staff member "${fullName}" has been added successfully.`);
+            // note: we do NOT reset the form here so preview stays visible
+
+            // Reset form
+addStaffForm.reset();
+
+// Reset preview
+if (uploadArea) {
+    const previewImg = uploadArea.querySelector('.file-preview-img');
+    if (previewImg) previewImg.style.display = 'none';
+    uploadArea.classList.remove('has-image');
+} 
+
         });
+        
     }
 });
+
+
+
+
+// =========================================================
+// console code to delete all localStorage items in services
+//      localStorage.removeItem("providerServices");
+// =========================================================
