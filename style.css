@@ -19,8 +19,8 @@ body {
     }
 
     /* ====== HEADER (FIXED NAVBAR) ====== */
-    header {
-        background-color: #4a6735; /* Dark green */
+   /* header {
+        background-color: #4a6735; /* Dark green 
         color: white;
         display: flex;
         justify-content: flex-start;
@@ -50,7 +50,7 @@ body {
             }
         }
     /* ====== NAVIGATION LINKS ====== */
-    nav {
+    /*nav {
         display: flex;
         gap: 20px;
     }
@@ -64,9 +64,135 @@ body {
 
             nav a:hover {
                 color: #8b6b4a;
-            }
+            }*/
 
-    
+    /* ================================
+   HEADER - DESKTOP VERSION
+================================ */
+
+header {
+    background-color: #4a6735; /* Dark green */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+/* Logo */
+header .logo img {
+    height: 55px;
+    width: auto;
+}
+
+/* Navigation Links */
+nav {
+    display: flex;
+    gap: 18px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #f5f2e7;
+    font-size: 15px;
+    font-weight: 500;
+    transition: .2s;
+}
+
+nav a:hover {
+    color: #c1e1c1;
+}
+
+  /* THEME TOGGLE BUTTON*/
+
+.mode-toggle {
+    position: static; 
+    margin-left: 20px;
+    width: 42px;
+    height: 42px;
+    background-color: #b0700f;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.mode-toggle:hover {
+    background-color: #a44a00;
+}
+
+
+@media (max-width: 480px) {
+    .mode-toggle {
+        right: 12px;
+        top: 18px;
+        transform: none;
+    }
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+
+    /*  RESPONSIVE */
+
+@media (max-width: 830px) {
+
+    header {
+        padding: 15px 20px;
+        justify-content: center;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        left: 20px;
+        top: 15px;
+    }
+
+    .mode-toggle {
+        position: absolute;
+        right: 20px;
+        top: 12px;
+        z-index: 9000;
+    }
+
+    nav {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #304d23;
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 18px;
+        display: none;
+        border-bottom: 4px solid #203817;
+    }
+
+    nav.show-nav {
+        display: flex;
+    }
+
+    nav a {
+        font-size: 18px;
+    }
+}
+
 /* ====== FOOTER SECTION ====== */
 footer {
     background-color: #3e3e3e; /* Dark grey */
@@ -2382,7 +2508,7 @@ img {
     position: relative;
     width: 100%;
     min-height: 100vh; 
-    height: 1000px;
+    height: auto;
     margin: 0;
     background-color: #e4eed9; 
     display: flex;
@@ -2471,20 +2597,85 @@ img {
         color: #8a9679;
     }
 
-/* =======RESPONSIVE========= */
-@media (max-width: 900px) {
+/* ============================= */
+/*      RESPONSIVE DESIGN        */
+/* ============================= */
+
+@media (max-width: 992px) {
+
+    .sort-container {
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    .service-container {
+        max-width: 90%;
+        padding: 15px;
+    }
+
     .service-container img {
-        float: none;
-        display: block;
-        margin: 0 auto 10px auto;
+        width: 180px;
+        height: 120px;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+
+    .ECOHUP-Services {
+        height: auto;
+        padding-top: 40px;
+    }
+
     .sort-container {
         justify-content: center;
+        margin: 10px 0 20px 0;
+    }
+
+    .service-container {
+        max-width: 95%;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .service-container img {
+        float: none !important;
+        display: block;
+        margin: 0 auto 15px auto;
+        width: 90%;
+        height: auto;
+    }
+
+    .service-container p {
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    .service-container h3 {
+        text-align: center;
     }
 }
+
+@media (max-width: 480px) {
+
+    .service-container {
+        padding: 10px;
+    }
+
+    .service-container img {
+        width: 100%;
+        height: auto;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    .sort-container select {
+        width: 90%;
+        font-size: 0.9rem;
+    }
+}
+
 
 /*---------------------------------------------------------------------------------------------------------------------*/
 
