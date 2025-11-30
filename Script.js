@@ -478,4 +478,126 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.title.includes("Customer Dashboard")) loadDashboardRequests();
 });
 
+//      SHARE YOUR STORY 
+document.addEventListener("DOMContentLoaded", () => {
+
+    // OPEN/CLOSE POPUP
+    const popup = document.getElementById("story-popup");
+    const openBtn = document.querySelector(".share-btn");
+    const closeBtn = document.querySelector(".close-popup");
+
+    if (openBtn) {
+        openBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            popup.style.display = "flex";
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+            popup.style.display = "none";
+        });
+    }
+
+    window.addEventListener("click", (e) => {
+        if (e.target === popup) popup.style.display = "none";
+    });
+
+    //   STORY FORM SUBMISSION
+    const form = document.getElementById("storyForm");
+
+    if (form) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            let name = document.getElementById("storyName").value.trim();
+            let title = document.getElementById("storyTitle").value.trim();
+            let text = document.getElementById("storyText").value.trim();
+
+            const beforeFile = document.getElementById("beforeImage").files[0];
+            const afterFile = document.getElementById("afterImage").files[0];
+
+            const toBase64 = (file) => new Promise((resolve) => {
+                if (!file) return resolve(null);
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.readAsDataURL(file);
+            });
+
+            const beforeImg = await toBase64(beforeFile);
+            const afterImg = await toBase64(afterFile);
+
+            
+            const newStory = { name, title, text, beforeImg, afterImg };
+
+            // Save to localStorage
+            let stories = JSON.parse(localStorage.getItem("stories")) || [];
+            stories.push(newStory);
+            localStorage.setItem("stories", JSON.stringify(stories));
+
+            addStoryToPage(newStory, stories.length - 1);
+
+            form.reset();
+            popup.style.display = "none";
+        });
+    }
+
+    //   LOAD EXISTING STORIES
+    let savedStories = JSON.parse(localStorage.getItem("stories")) || [];
+    savedStories.forEach((story, index) => addStoryToPage(story, index));
+});
+
+
+//   ADD STORY CARD TO PAGE
+function addStoryToPage(story, index) {
+    const container = document.querySelector(".stories-container");
+    if (!container) return;
+
+    let before = story.beforeImg ? story.beforeImg : "HomeImages/default-before.png";
+    let after = story.afterImg ? story.afterImg : "HomeImages/default-after.png";
+
+    const div = document.createElement("div");
+    div.classList.add("story-item");
+
+    div.innerHTML = `
+        <button class="delete-story-btn" data-index="${index}">🗑</button>
+        <img src="${before}" class="before-img">
+        <img src="${after}" class="after-img">
+        <div class="overlay-story">
+            <h3>${story.title}</h3>
+            <p>"${story.text}" — <strong>${story.name}</strong></p>
+        </div>
+    `;
+
+    container.appendChild(div);
+
+    // Attach delete event to this new item
+    div.querySelector(".delete-story-btn").addEventListener("click", deleteStory);
+}
+
+
+//   DELETE STORY
+function deleteStory(event) {
+    const index = event.target.dataset.index;
+
+    if (!confirm("Are you sure you want to delete this story?")) return;
+
+    let stories = JSON.parse(localStorage.getItem("stories")) || [];
+    stories.splice(index, 1);
+    localStorage.setItem("stories", JSON.stringify(stories));
+
+    reloadStories();
+}
+
+
+//   RELOAD STORIES AFTER DELETE
+function reloadStories() {
+    const container = document.querySelector(".stories-container");
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    let stories = JSON.parse(localStorage.getItem("stories")) || [];
+    stories.forEach((story, index) => addStoryToPage(story, index));
+}
 
